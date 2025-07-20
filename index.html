@@ -1,0 +1,402 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+    <title>Juliana Palavissini | Alisamento Capilar</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      /* Custom Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+      }
+      
+      .animate-section {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+      
+      .hover-grow {
+        transition: transform 0.3s ease;
+      }
+      
+      .hover-grow:hover {
+        transform: scale(1.02);
+      }
+      
+      .btn-pulse:hover {
+        animation: pulse 1.5s infinite;
+      }
+      
+      /* Custom Scrollbar for Courses */
+      .course-scroll::-webkit-scrollbar {
+        height: 6px;
+      }
+      
+      .course-scroll::-webkit-scrollbar-track {
+        background: #f3f1f2;
+      }
+      
+      .course-scroll::-webkit-scrollbar-thumb {
+        background: #e0b7be;
+        border-radius: 3px;
+      }
+      
+      /* Hero Image Parallax Effect */
+      .hero-parallax {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+      /* Loading Animation for Images */
+      .img-loading {
+        background: linear-gradient(90deg, #f3f1f2 25%, #e0b7be 50%, #f3f1f2 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite linear;
+      }
+      
+      @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+
+      /* Mobile adjustments */
+      @media (max-width: 480px) {
+        .header-title {
+          font-size: 1.1rem;
+          padding-left: 0;
+        }
+        
+        .mentorship-title, .courses-title {
+          font-size: 1.3rem;
+          padding-top: 0.8rem;
+          padding-bottom: 0.5rem;
+        }
+        
+        .mentorship-card {
+          flex-direction: column;
+          gap: 1rem;
+        }
+        
+        .mentorship-content {
+          flex: none;
+          width: 100%;
+        }
+        
+        .mentorship-image {
+          width: 100%;
+          aspect-ratio: 16/9;
+        }
+        
+        .course-card {
+          min-width: 85vw;
+        }
+        
+        .footer-contact {
+          font-size: 0.9rem;
+        }
+        
+        .footer-title {
+          font-size: 1.1rem;
+        }
+        
+        .footer-copyright {
+          font-size: 0.8rem;
+        }
+        
+        /* Carrossel mobile */
+        .courses-carousel {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding-bottom: 1rem;
+        }
+        
+        .courses-carousel::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .course-slide {
+          scroll-snap-align: start;
+          flex: 0 0 85%;
+          margin-right: 1rem;
+        }
+        
+        .course-slide:last-child {
+          margin-right: 0;
+        }
+      }
+      
+      @media (min-width: 481px) {
+        .courses-carousel {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden"
+      style='font-family: "Noto Serif", "Noto Sans", sans-serif;'
+    >
+      <div>
+        <!-- Header with subtle slide-in animation -->
+        <header class="animate-section opacity-0" style="animation-delay: 0.1s;">
+          <div class="flex items-center bg-white p-4 pb-2 justify-between">
+            <h2 class="header-title text-[#161313] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Juliana Palavissini</h2>
+            <div class="flex w-12 items-center justify-end">
+              <button
+                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 bg-transparent text-[#161313] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0 hover:bg-[#f3f1f2] transition-colors"
+              >
+                <div class="text-[#161313]" data-icon="List" data-size="24px" data-weight="regular">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path
+                      d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+                    ></path>
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero Section with Parallax Effect (mantido como está) -->
+        <div class="@container">
+          <div class="@[480px]:p-4">
+            <div
+              class="hero-parallax flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 animate-section opacity-0"
+              style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAQaIWK5PaJ76MyvIpBs1yhYHsZCagYIoi8Yc7MxPiw-Wm_xGJnQXBDulVwJg8YHFroJHxrq8o01qZecQhqJXsRmP7hC177wKDbaAs4jKeTMY672VGrDJkeGSsFCmXcwixf8Ja7P-slYouPBuK6Imm-SiDaQi1CWRljgU_lhej2qPSNL07fzMsHwsvrQ4To7zkZbFv6KENZtzFmYQ1wnf2slv6kNna2wgKiTLFGiO1u8rOMwB7tcLmOXER3mEa6thnxw2vkmy_qpio");'
+            >
+              <div class="flex flex-col gap-2 text-center">
+                <h1
+                  class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] drop-shadow-lg"
+                >
+                  Juliana Palavissini
+                </h1>
+                <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal drop-shadow-md">Especialista em Alisamento Capilar</h2>
+              </div>
+              <button
+                class="btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#e0b7be] text-[#161313] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#d4a7b0] transition-colors"
+              >
+                <span class="truncate">Agendar via WhatsApp</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mentorship Section -->
+        <section class="animate-section opacity-0" style="animation-delay: 0.3s;">
+          <h2 class="mentorship-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Mentoria</h2>
+          
+          <!-- Mentoria VIP com destaque -->
+          <div class="p-4 relative">
+            <!-- Tag "EM ALTA" -->
+            <div class="absolute -top-2 -right-2 z-10 bg-[#e0b7be] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
+              EM ALTA!
+            </div>
+            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md border-2 border-[#e0b7be] mentorship-card">
+              <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <p class="text-[#e0b7be] text-sm font-bold leading-normal">Mentoria VIP</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4AF37" viewBox="0 0 256 256">
+                      <path d="M239.2,97.4A16.4,16.4,0,0,0,224.6,86l-59.4-4.1-22-55.5A16.4,16.4,0,0,0,128,16h0a16.4,16.4,0,0,0-15.2,10.4L90.8,81.9,31.4,86A16.5,16.5,0,0,0,16.8,97.4,16.8,16.8,0,0,0,22,115.5l45.4,38.4L53.9,207a18.5,18.5,0,0,0,7.4,17.7,16,16,0,0,0,17.1.9L128,202.7l49.6,23.9a16,16,0,0,0,17.1-.9,18.5,18.5,0,0,0,7.4-17.7l-13.5-53.1,45.4-38.4A16.8,16.8,0,0,0,239.2,97.4Z"></path>
+                    </svg>
+                  </div>
+                  <p class="text-[#161313] text-base font-bold leading-tight">Mentoria Individual Premium</p>
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                    Mentoria 1:1 para profissionais que buscam dominar técnicas avançadas de alisamento.
+                  </p>
+                </div>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#e0b7be] text-white text-sm font-medium leading-normal w-fit hover:bg-[#d4a7b0] transition-colors"
+                >
+                  <span class="truncate">Garanta sua vaga</span>
+                </button>
+              </div>
+              <div
+                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7Nf--BwH82vTNyvk4FCAdZfInIglFgcMngtpJ2eOiY_U0OFkhtAeXHHFGCJPkQPgs6OZfjKt1cHDd6sqC2CGkOdEqT3qF4nKgm6PVz6eaUnhSJCR0uPW3li8qlOLJI12KkulXT2RSoMaAOfPmK7a-0l9WPVVz9s03mLW8eZ3iZXoSCM__dxg2MYttwNSIgJpyP0n75gQ272Ul1mZwc9ZPCrRXxpQIxON89K3ZqZ2twfXaHANcl557T-9s398SyzFrwyxnJ6vt-RA");'
+              ></div>
+            </div>
+          </div>
+
+          <!-- Mentoria em Grupo (padrão) -->
+          <div class="p-4">
+            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
+              <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
+                <div class="flex flex-col gap-1">
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Mentoria em Grupo</p>
+                  <p class="text-[#161313] text-base font-bold leading-tight">Mentoria Coletiva</p>
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Mentoria em grupo para profissionais que buscam aprimorar suas técnicas de alisamento capilar.</p>
+                </div>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#e0b7be] hover:text-white transition-colors"
+                >
+                  <span class="truncate">Saiba Mais</span>
+                </button>
+              </div>
+              <div
+                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
+                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCKz8TuThLyg5qfLgvWTbuY6Hvj5o_XE_panO1Y0vruWFJJCyIaGGrHXTlcVX_5ydgD1-PGZldO4gtGtXXafOx1s9Ba9KSHX8NnfJDVRCLvOJ1DASEON8U361Pzdpp1_xLsk3nGWt0qNd7RN306KSAm9I1T28dxMHweGL1DxahI7fjXe7oP3ecVUESrWcIDbenvKpjhsE1cFRWXseCU4CIsR2TS16_17XG7pOQe4LnU1DTar3F3qOMv0_4BNEfUeLK7ei-m7L6lOdg");'
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Courses Section - Modificada para ter carrossel mobile -->
+        <section class="animate-section opacity-0" style="animation-delay: 0.4s;">
+          <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Cursos</h2>
+          <div class="px-4">
+            <div class="courses-carousel">
+              <!-- Curso 1 -->
+              <div class="course-slide">
+                <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
+                  <div
+                    class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAZ6th4OaZ-wE6ZCKWzuVV72dG-ka0KsOiUkyHd4SYusRwTkiw75S2nW2xV3jdLaZS1uh97t_kMcolb1eQJx4j1LeC8eWLncKr-41GUAl8yJLKgT0fchmUEJT0IvsKAYpBvAV5zhgbXA7pUJvSVzoyeaF3uXzZKRBuSu6X0RHDFrdznd4ei5EpLRWWJUItvgVxEtiTadxomHcbZpyWv5gR_lWOG-BuJF1ryeR2J2fnhBbcllQdOAnuG7FNPbjhMK5ceM_qsoANJMII");'
+                  ></div>
+                  <div>
+                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento Capilar</p>
+                    <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
+                  </div>
+                  <button class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#e0b7be] hover:text-white transition-colors">
+                    Detalhes
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Curso 2 -->
+              <div class="course-slide">
+                <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
+                  <div
+                    class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkRIxgvcx5BqP2U-Zy7wGxb6i27MLHPbsN_cjFxVw-sG6DFrpuerS3jEvCK-dbTUZ1LIo1a0fiUXAwJMulkZ-yZFx9vMLKuzJzq9a7KgJZ5TM66jOShM7OJ4fZIsqfG0h78AFPmMHt_uu06BXXbx1iYz1yiGHXR2XkpqZWlSUTWJpeXNn4tPU3zyJLOs2dUkquhmkG9-VUoYo4XJW7zG0azBdn_Ukk82qY2Emt90eWcxWvCNLU_NO8NaTyg7U1Rl1yP0reWiAPpJI");'
+                  ></div>
+                  <div>
+                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento Capilar Avançado</p>
+                    <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
+                  </div>
+                  <button class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#e0b7be] hover:text-white transition-colors">
+                    Detalhes
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Curso 3 -->
+              <div class="course-slide">
+                <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
+                  <div
+                    class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAhxBfFjXl2eABeO6GCtigUnVQgZGs4Hg0Aur4IFOXEg701Lu9iUsU-RAXX3vOULxUfrx35ZmOPzd1BZWqa2aW7cd-_tWdbuXyrVDRl21M6jWBCIQSIgJD0uKOB6E9O3VGo2aPwDRHOj5ONzIvwaUpAjNKARiVW8xpP_kulOBonrjMAoaSAtRlmeUx5qTKVT7jThQT4gWveFnh__sCTDqkjoK-4YM606F2Or1NdiUWI6UURwRhFtKzKEu79kGc1n2aiJcCaR5Al18Q");'
+                  ></div>
+                  <div>
+                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento Capilar Master</p>
+                    <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
+                  </div>
+                  <button class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#e0b7be] hover:text-white transition-colors">
+                    Detalhes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer with Contact -->
+      <footer class="animate-section opacity-0" style="animation-delay: 0.5s;">
+        <div class="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#f9f9f9]">
+          <h3 class="footer-title text-[#161313] text-xl font-bold">Contato</h3>
+          <div class="flex flex-col gap-4">
+            <a href="tel:+554199999999" class="flex items-center justify-center gap-2 text-[#7f6c6f] hover:text-[#e0b7be] transition-colors footer-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.13L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46Z"></path>
+              </svg>
+              (41) 9999-9999
+            </a>
+            <a href="mailto:contato@julianapalavissini.com" class="flex items-center justify-center gap-2 text-[#7f6c6f] hover:text-[#e0b7be] transition-colors footer-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path>
+              </svg>
+              contato@julianapalavissini.com
+            </a>
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" class="hover:scale-110 transition-transform">
+              <div class="text-[#7f6c6f] hover:text-[#e0b7be] transition-colors" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path
+                    d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"
+                  ></path>
+                </svg>
+              </div>
+            </a>
+            <a href="#" class="hover:scale-110 transition-transform">
+              <div class="text-[#7f6c6f] hover:text-[#25D366] transition-colors" data-icon="WhatsAppLogo" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <p class="footer-copyright text-[#7f6c6f] text-base font-normal leading-normal">© 2024 Juliana Palavissini. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+      <!-- Floating WhatsApp Button -->
+      <a href="https://wa.me/554199999999" class="fixed bottom-6 right-6 z-50 animate-bounce">
+        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:scale-110 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 256 256">
+            <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <script>
+      // Simple intersection observer for animations
+      document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('.animate-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+            }
+          });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+          observer.observe(section);
+        });
+        
+        // Image loading simulation
+        const images = document.querySelectorAll('.img-loading');
+        images.forEach(img => {
+          // In a real scenario, you'd wait for the image to load
+          setTimeout(() => {
+            img.classList.remove('img-loading');
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>
