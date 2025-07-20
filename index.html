@@ -68,6 +68,15 @@
         background-size: 200% 100%;
         animation: shimmer 1.5s infinite linear;
       }
+
+      .border-gold-gradient {
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(45deg, #F5E6C8, #D4B483);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
       
       @keyframes shimmer {
         0% { background-position: 200% 0; }
