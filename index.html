@@ -69,14 +69,20 @@
         animation: shimmer 1.5s infinite linear;
       }
 
-      .border-gold-gradient {
-      border: 2px solid transparent;
-      background-clip: padding-box;
-      background-image: linear-gradient(white, white), 
-                        linear-gradient(45deg, #161313, #D4B483);
-      background-origin: border-box;
-      background-clip: padding-box, border-box;
-    }
+     .border-gold-gradient::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 0.75rem; 
+          padding: 2px; /* Espessura da borda */
+          background: linear-gradient(45deg, #F5E6C8, #D4B483);
+          -webkit-mask: 
+           linear-gradient(#fff 0 0) content-box, 
+           linear-gradient(#fff 0 0);
+         -webkit-mask-composite: xor;
+         mask-composite: exclude;
+         pointer-events: none;
+      }
       
       @keyframes shimmer {
         0% { background-position: 200% 0; }
@@ -240,7 +246,7 @@
             <div class="absolute -top-2 -right-2 z-10 bg-[#F5E6C8] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
               EM ALTA!
             </div>
-            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md border-2 border-[#F5E6C8] mentorship-card">
+             <div class="border-gold-gradient hover-grow flex items-stretch justify-between gap-4 p-4 mentorship-card">
               <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
                 <div class="flex flex-col gap-1">
                   <div class="flex items-center gap-2">
