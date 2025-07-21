@@ -100,6 +100,39 @@
         100% { background-position: -200% 0; }
       }
 
+      /* Video Expansion Effect */
+      .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        overflow: hidden;
+        border-radius: 0.75rem;
+        transition: all 0.5s ease;
+        margin-bottom: 1rem;
+      }
+      
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      
+      .video-card {
+        transition: all 0.5s ease;
+      }
+      
+      .video-card.expanded {
+        transform: scale(1.02);
+      }
+      
+      .video-card.expanded .video-container {
+        padding-bottom: 75%; /* Expanded aspect ratio */
+      }
+
       /* Efeitos de scroll para mobile */
       @media (max-width: 480px) {
         /* Animação de subida com desfoque */
@@ -199,6 +232,11 @@
         .course-slide:last-child {
           margin-right: 0;
         }
+        
+        /* Video adjustment for mobile */
+        .video-card.expanded .video-container {
+          padding-bottom: 65%; /* Slightly less expansion on mobile */
+        }
       }
       
       @media (min-width: 481px) {
@@ -284,25 +322,24 @@
             </div>
           </div>
 
-          <!-- Mentoria em Grupo (padrão) -->
+          <!-- Mentoria em Grupo (padrão) - Modificada para incluir vídeo -->
           <div class="p-4">
-            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
-              <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
-                  <p class="text-[#161313] text-base font-bold leading-tight">Técnica Exclusiva</p>
-                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.</p>
+            <div class="video-card hover-grow flex flex-col items-stretch gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
+                <p class="text-[#161313] text-base font-bold leading-tight">Técnica Exclusiva</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal mb-4">Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.</p>
+                
+                <!-- Container do vídeo -->
+                <div class="video-container">
+                  <iframe src="https://www.youtube.com/embed/SEU_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors"
-                >
-                  <span class="truncate">Saiba Mais</span>
-                </button>
               </div>
-              <div
-                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
-                style='background-image: url("FOTO002.png");'
-              ></div>
+              <button
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors"
+              >
+                <span class="truncate">Saiba Mais</span>
+              </button>
             </div>
           </div>
         </section>
@@ -467,6 +504,45 @@
             // Start observing
             scrollObserver.observe(el);
           });
+        }
+        
+        // Video expansion on scroll
+        const videoCard = document.querySelector('.video-card');
+        const videoContainer = document.querySelector('.video-container');
+        
+        if (videoCard && videoContainer) {
+          let lastScrollPosition = 0;
+          let ticking = false;
+          
+          const handleScroll = () => {
+            lastScrollPosition = window.scrollY;
+            
+            if (!ticking) {
+              window.requestAnimationFrame(() => {
+                const videoRect = videoCard.getBoundingClientRect();
+                const videoCenter = videoRect.top + (videoRect.height / 2);
+                const viewportHeight = window.innerHeight;
+                
+                // Calculate how much of the video is in the viewport center
+                const distanceFromCenter = Math.abs(viewportHeight / 2 - videoCenter);
+                const maxDistance = viewportHeight / 2;
+                const ratio = 1 - Math.min(distanceFromCenter / maxDistance, 1);
+                
+                // Apply expansion based on scroll position
+                if (ratio > 0.5) {
+                  videoCard.classList.add('expanded');
+                } else {
+                  videoCard.classList.remove('expanded');
+                }
+                
+                ticking = false;
+              });
+              
+              ticking = true;
+            }
+          };
+          
+          window.addEventListener('scroll', handleScroll);
         }
       });
     </script>
