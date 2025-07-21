@@ -475,61 +475,6 @@
       </a>
     </div>
 
-    <script>
-      // Simple intersection observer for animations
-      document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('.animate-section');
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-            }
-          });
-        }, { threshold: 0.1 });
-        
-        sections.forEach(section => {
-          observer.observe(section);
-        });
-        
-        // Image loading simulation
-        const images = document.querySelectorAll('.img-loading');
-        images.forEach(img => {
-          // In a real scenario, you'd wait for the image to load
-          setTimeout(() => {
-            img.classList.remove('img-loading');
-          }, 1000);
-        });
-
-        // Mobile scroll animations
-        if (window.innerWidth <= 480) {
-          const scrollElements = document.querySelectorAll('.scroll-animate');
-          
-          const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.animationPlayState = 'running';
-              }
-            });
-          }, { 
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
-          });
-
-          scrollElements.forEach(el => {
-            // Set initial styles for mobile
-            el.style.opacity = '0';
-            el.style.willChange = 'opacity, transform, filter';
-            el.style.animation = 'scrollUp 1s ease-out forwards paused';
-            
-            // Start observing
-            scrollObserver.observe(el);
-          });
-          
-          }
-        }
-      });
     </script>
   </body>
 </html>
