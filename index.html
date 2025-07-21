@@ -200,14 +200,16 @@
           margin-right: 0;
         }
         
-        /* Efeito de expansão do vídeo */
+        /* Efeito de expansão do vídeo - Versão otimizada */
         .video-expand-container {
           position: relative;
           width: 100%;
           overflow: hidden;
-          transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           border-radius: 12px;
           margin: 10px 0;
+          will-change: height;
+          touch-action: pan-y; /* Permite scroll vertical */
         }
         
         .video-expand-container.small {
@@ -245,6 +247,19 @@
           display: flex;
           align-items: center;
           justify-content: center;
+          z-index: 2;
+          pointer-events: none;
+        }
+        
+        /* Overlay para melhorar a interação em mobile */
+        .video-overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 1;
+          background: transparent;
         }
       }
       
@@ -271,10 +286,10 @@
         <header class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.1s;">
           <div class="flex items-center bg-white p-4 pb-2 justify-between">
             <h2 class="header-title text-[#161313] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Alisamento de Luxo</h2>
-          
+          </div>
         </header>
 
-        <!-- Hero Section with Parallax Effect (mantido como está) -->
+        <!-- Hero Section with Parallax Effect -->
         <div class="@container scroll-animate">
           <div class="@[480px]:p-4">
             <div
@@ -351,29 +366,23 @@
                 </button>
               </div>
               
-              <!-- Container do vídeo que vai expandir -->
+              <!-- Container do vídeo otimizado -->
               <div class="video-expand-container small" id="videoExpand">
-                  <div class="play-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#161313" viewBox="0 0 256 256">
-                      <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path>
-                    </svg>
-                  </div>
-                  Vídeo Demonstrativo
+                <div class="video-overlay" id="videoOverlay"></div>
+                <div class="play-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#161313" viewBox="0 0 256 256">
+                    <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path>
+                  </svg>
                 </div>
-               <div class="video-expand-container small" id="videoExpand">
-      <video class="video-expand" controls preload="metadata" poster="VIDEO001.mp4">
-        <source src="VIDEO001.mp4" type="video/mp4">
-      </video>
-    </div>
-
-  </div>
-</div>
+                <video class="video-expand" controls preload="metadata" poster="VIDEO001.mp4">
+                  <source src="VIDEO001.mp4" type="video/mp4">
+                </video>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Courses Section - Modificada para ter carrossel mobile -->
+        <!-- Courses Section -->
         <section class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.4s;">
           <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Cursos</h2>
           <div class="px-4">
@@ -483,10 +492,9 @@
     </div>
 
     <script>
-      // Simple intersection observer for animations
       document.addEventListener('DOMContentLoaded', () => {
+        // Animations for all devices
         const sections = document.querySelectorAll('.animate-section');
-        
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -502,16 +510,15 @@
         // Image loading simulation
         const images = document.querySelectorAll('.img-loading');
         images.forEach(img => {
-          // In a real scenario, you'd wait for the image to load
           setTimeout(() => {
             img.classList.remove('img-loading');
           }, 1000);
         });
 
-        // Mobile scroll animations
+        // Mobile specific optimizations
         if (window.innerWidth <= 480) {
+          // Mobile scroll animations
           const scrollElements = document.querySelectorAll('.scroll-animate');
-          
           const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
@@ -521,62 +528,73 @@
             });
           }, { 
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
+            rootMargin: '0px 0px -50px 0px'
           });
 
           scrollElements.forEach(el => {
-            // Set initial styles for mobile
             el.style.opacity = '0';
             el.style.willChange = 'opacity, transform, filter';
             el.style.animation = 'scrollUp 1s ease-out forwards paused';
-            
-            // Start observing
             scrollObserver.observe(el);
           });
           
-          // Efeito de expansão do vídeo
+          // Video expand functionality - Optimized version
           const videoContainer = document.getElementById('videoExpand');
+          const videoOverlay = document.getElementById('videoOverlay');
+          const video = videoContainer ? videoContainer.querySelector('video') : null;
           
-          if (videoContainer) {
+          if (videoContainer && videoOverlay) {
+            let isExpanded = false;
+            let isScrolling = false;
+            let scrollTimeout;
+            
+            // Touch event handlers for better mobile interaction
+            videoOverlay.addEventListener('click', function(e) {
+              if (isScrolling) return;
+              
+              isExpanded = !isExpanded;
+              
+              if (isExpanded) {
+                videoContainer.classList.remove('small');
+                videoContainer.classList.add('expanded');
+                video.play();
+              } else {
+                videoContainer.classList.remove('expanded');
+                videoContainer.classList.add('small');
+                video.pause();
+              }
+              
+              // Prevent click event from propagating to parent elements
+              e.stopPropagation();
+            });
+            
+            // Handle scroll events to prevent expansion during scrolling
+            window.addEventListener('scroll', function() {
+              isScrolling = true;
+              
+              clearTimeout(scrollTimeout);
+              scrollTimeout = setTimeout(function() {
+                isScrolling = false;
+              }, 100);
+            }, { passive: true });
+            
+            // Intersection Observer for video
             const videoObserver = new IntersectionObserver((entries) => {
               entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  // Quando o vídeo está visível na tela
-                  entry.target.classList.remove('small');
-                  entry.target.classList.add('expanded');
-                  
-                  // Adiciona um pequeno delay para a animação ser mais perceptível
-                  setTimeout(() => {
-                    // Aqui você pode adicionar lógica para tocar o vídeo se quiser
-                    // Ex: entry.target.querySelector('video').play();
-                  }, 300);
-                } else {
-                  // Quando o vídeo sai da tela
-                  entry.target.classList.remove('expanded');
-                  entry.target.classList.add('small');
+                if (!entry.isIntersecting && isExpanded) {
+                  // Collapse video if it's expanded and goes out of view
+                  videoContainer.classList.remove('expanded');
+                  videoContainer.classList.add('small');
+                  video.pause();
+                  isExpanded = false;
                 }
               });
             }, {
-              threshold: 0.5, // Dispara quando 50% do elemento está visível
-              rootMargin: '0px 0px -100px 0px' // Ajuste para ativar um pouco antes
+              threshold: 0.1,
+              rootMargin: '0px 0px -100px 0px'
             });
             
-            // Observa o container do vídeo
             videoObserver.observe(videoContainer);
-            
-            // Adiciona interação de clique para mobile
-            videoContainer.addEventListener('click', function() {
-              this.classList.toggle('expanded');
-              this.classList.toggle('small');
-              
-              // Aqui você pode adicionar lógica para tocar/pausar o vídeo
-              // Ex: const video = this.querySelector('video');
-              // if (this.classList.contains('expanded')) {
-              //   video.play();
-              // } else {
-              //   video.pause();
-              // }
-            });
           }
         }
       });
