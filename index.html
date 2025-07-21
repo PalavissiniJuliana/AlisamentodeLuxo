@@ -5,7 +5,7 @@
     <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" />
     <title>JULIANA PALAVISSINI | Alisamento Capilar</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
       /* Custom Animations */
@@ -50,9 +50,8 @@
         border-radius: 3px;
       }
       
-      /* Hero Image Parallax Effect */
-      .hero-parallax {
-        background-attachment: fixed;
+      /* Hero Image - Removido parallax */
+      .hero-section {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -98,30 +97,24 @@
 
       /* Mobile Styles */
       @media (max-width: 480px) {
-        /* Animação de subida com desfoque */
+        /* Animação simplificada */
         @keyframes scrollUp {
           0% {
             opacity: 0;
-            transform: translateY(30px);
-            filter: blur(5px);
+            transform: translateY(20px);
           }
           100% {
             opacity: 1;
             transform: translateY(0);
-            filter: blur(0);
           }
         }
         
         .scroll-animate {
           opacity: 0;
-          animation: scrollUp 1s ease-out forwards;
+          animation: scrollUp 0.8s ease-out forwards;
+          backface-visibility: hidden;
+          perspective: 1000px;
         }
-        
-        .scroll-animate:nth-child(1) { animation-delay: 0.1s; }
-        .scroll-animate:nth-child(2) { animation-delay: 0.2s; }
-        .scroll-animate:nth-child(3) { animation-delay: 0.3s; }
-        .scroll-animate:nth-child(4) { animation-delay: 0.4s; }
-        .scroll-animate:nth-child(5) { animation-delay: 0.5s; }
         
         .header-title {
           font-size: 1.1rem;
@@ -163,7 +156,7 @@
           width: 100%;
           border-radius: 0.75rem;
           overflow: hidden;
-          min-height: 240px; /* Increased vertical size */
+          min-height: 240px;
           margin-top: 0.5rem;
         }
         
@@ -183,23 +176,11 @@
           min-width: 85vw;
         }
         
-        .footer-contact {
-          font-size: 0.9rem;
-        }
-        
-        .footer-title {
-          font-size: 1.1rem;
-        }
-        
-        .footer-copyright {
-          font-size: 0.8rem;
-        }
-        
-        /* Carrossel mobile */
+        /* Carrossel mobile otimizado */
         .courses-carousel {
           display: flex;
           overflow-x: auto;
-          scroll-snap-type: x mandatory;
+          scroll-snap-type: x proximity;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
           padding-bottom: 1rem;
@@ -253,7 +234,7 @@
         <!-- Hero Section -->
         <div class="@container scroll-animate">
           <div class="@[480px]:p-4">
-            <div class="hero-parallax flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 animate-section opacity-0" style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("FOTO001.png");'>
+            <div class="hero-section flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 animate-section opacity-0" style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("FOTO001.png");'>
               <div class="flex flex-col gap-2 text-center">
                 <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] drop-shadow-lg">
                  JULIANA PALAVISSINI
@@ -423,20 +404,7 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const sections = document.querySelectorAll('.animate-section');
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-            }
-          });
-        }, { threshold: 0.1 });
-        
-        sections.forEach(section => {
-          observer.observe(section);
-        });
-        
+        // Otimização para carregamento de imagens
         const images = document.querySelectorAll('.img-loading');
         images.forEach(img => {
           setTimeout(() => {
@@ -444,26 +412,38 @@
           }, 1000);
         });
 
-        if (window.innerWidth <= 480) {
-          const scrollElements = document.querySelectorAll('.scroll-animate');
-          
-          const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.animationPlayState = 'running';
-              }
-            });
-          }, { 
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-          });
+        // Intersection Observer simplificado
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px'
+        };
 
-          scrollElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.willChange = 'opacity, transform, filter';
-            el.style.animation = 'scrollUp 1s ease-out forwards paused';
-            scrollObserver.observe(el);
+        const animateOnScroll = (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+        
+        document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
+          section.style.opacity = '0';
+          section.style.backfaceVisibility = 'hidden';
+          section.style.perspective = '1000px';
+          observer.observe(section);
+        });
+
+        // Melhoria de performance para scroll em mobile
+        if (window.innerWidth <= 480) {
+          document.body.addEventListener('touchstart', function() {}, { 
+            passive: true 
+          });
+          
+          // Remover hover em dispositivos touch
+          document.querySelectorAll('.hover-grow').forEach(el => {
+            el.style.transform = 'none';
           });
         }
       });
