@@ -199,6 +199,53 @@
         .course-slide:last-child {
           margin-right: 0;
         }
+        
+        /* Efeito de expansão do vídeo */
+        .video-expand-container {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border-radius: 12px;
+          margin: 10px 0;
+        }
+        
+        .video-expand-container.small {
+          height: 180px;
+        }
+        
+        .video-expand-container.expanded {
+          height: 300px;
+        }
+        
+        .video-expand {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        
+        .video-placeholder {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          background-color: #f3f1f2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #7f6c6f;
+          font-weight: 500;
+        }
+        
+        .play-icon {
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          background-color: rgba(245, 230, 200, 0.8);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
       
       @media (min-width: 481px) {
@@ -206,6 +253,10 @@
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1rem;
+        }
+        
+        .video-expand-container {
+          height: 300px !important;
         }
       }
     </style>
@@ -284,7 +335,7 @@
             </div>
           </div>
 
-          <!-- Mentoria em Grupo (padrão) -->
+          <!-- Mentoria em Grupo (padrão) - Modificada para incluir o vídeo -->
           <div class="p-4">
             <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
               <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
@@ -299,10 +350,18 @@
                   <span class="truncate">Saiba Mais</span>
                 </button>
               </div>
-              <div
-                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
-                style='background-image: url("FOTO002.png");'
-              ></div>
+              
+                  Vídeo Demonstrativo
+                </div>
+               <div class="video-expand-container small" id="videoExpand">
+                <video class="video-expand" autoplay muted loop playsinline preload="auto" poster="VIDEO001.mp4">
+                 <source src="VIDEO001.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        </div>
+         </div>
+              </div>
             </div>
           </div>
         </section>
@@ -467,6 +526,51 @@
             // Start observing
             scrollObserver.observe(el);
           });
+          
+          // Efeito de expansão do vídeo
+          const videoContainer = document.getElementById('videoExpand');
+          
+          if (videoContainer) {
+            const videoObserver = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  // Quando o vídeo está visível na tela
+                  entry.target.classList.remove('small');
+                  entry.target.classList.add('expanded');
+                  
+                  // Adiciona um pequeno delay para a animação ser mais perceptível
+                  setTimeout(() => {
+                    // Aqui você pode adicionar lógica para tocar o vídeo se quiser
+                    // Ex: entry.target.querySelector('video').play();
+                  }, 300);
+                } else {
+                  // Quando o vídeo sai da tela
+                  entry.target.classList.remove('expanded');
+                  entry.target.classList.add('small');
+                }
+              });
+            }, {
+              threshold: 0.5, // Dispara quando 50% do elemento está visível
+              rootMargin: '0px 0px -100px 0px' // Ajuste para ativar um pouco antes
+            });
+            
+            // Observa o container do vídeo
+            videoObserver.observe(videoContainer);
+            
+            // Adiciona interação de clique para mobile
+            videoContainer.addEventListener('click', function() {
+              this.classList.toggle('expanded');
+              this.classList.toggle('small');
+              
+              // Aqui você pode adicionar lógica para tocar/pausar o vídeo
+              // Ex: const video = this.querySelector('video');
+              // if (this.classList.contains('expanded')) {
+              //   video.play();
+              // } else {
+              //   video.pause();
+              // }
+            });
+          }
         }
       });
     </script>
