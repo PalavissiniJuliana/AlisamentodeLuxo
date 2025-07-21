@@ -198,6 +198,31 @@
         .course-slide:last-child {
           margin-right: 0;
         }
+
+        /* Estilos para o vídeo na seção de Técnicas Exclusivas */
+        .video-container {
+          width: 100%;
+          aspect-ratio: 16/9;
+          margin-top: 1rem;
+        }
+        
+        .video-container iframe {
+          width: 100%;
+          height: 100%;
+          border-radius: 0.75rem;
+        }
+
+        /* Remove a imagem da seção Técnicas Exclusivas em mobile */
+        .techniques-section .mentorship-image {
+          display: none;
+        }
+
+        /* Aumenta o container do vídeo */
+        .video-wrapper {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0.5rem;
+        }
       }
       
       @media (min-width: 481px) {
@@ -205,6 +230,16 @@
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1rem;
+        }
+
+        /* Estilos para desktop - mantém a imagem */
+        .techniques-section .mentorship-image {
+          display: block;
+        }
+
+        /* Esconde o vídeo em desktop */
+        .video-container {
+          display: none;
         }
       }
     </style>
@@ -283,13 +318,13 @@
             </div>
           </div>
 
-          <!-- Mentoria em Grupo (padrão) -->
-          <div class="p-4">
+          <!-- Mentoria em Grupo (padrão) - Adicionada classe techniques-section -->
+          <div class="p-4 techniques-section">
             <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
               <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
                 <div class="flex flex-col gap-1">
                   <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
-                  <p class="text-[#161313] text-base font-bold leading-tight">Técnica Exclusiva</p>
+                  <p class="text-[#161313] text-base font-bold leading-tight">Técnicas Exclusivas</p>
                   <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.</p>
                 </div>
                 <button
@@ -302,6 +337,14 @@
                 class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
                 style='background-image: url("FOTO002.png");'
               ></div>
+            </div>
+            
+            <!-- Container do vídeo (visível apenas em mobile) -->
+            <div class="video-wrapper">
+              <div class="video-container">
+                <!-- Substitua o src pelo seu vídeo do YouTube ou outra plataforma -->
+                <iframe src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
           </div>
         </section>
