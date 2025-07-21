@@ -527,33 +527,6 @@
             scrollObserver.observe(el);
           });
           
-          // Efeito de expansão do vídeo
-          const videoContainer = document.getElementById('videoExpand');
-          
-          if (videoContainer) {
-            const videoObserver = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  // Quando o vídeo está visível na tela
-                  entry.target.classList.remove('small');
-                  entry.target.classList.add('expanded');
-                  
-                  // Adiciona um pequeno delay para a animação ser mais perceptível
-                  setTimeout(() => {
-                    // Aqui você pode adicionar lógica para tocar o vídeo se quiser
-                    // Ex: entry.target.querySelector('video').play();
-                  }, 300);
-                } else {
-                  // Quando o vídeo sai da tela
-                  entry.target.classList.remove('expanded');
-                  entry.target.classList.add('small');
-                }
-              });
-            }, {
-              threshold: 0.5, // Dispara quando 50% do elemento está visível
-              rootMargin: '0px 0px -100px 0px' // Ajuste para ativar um pouco antes
-            });
-          
           }
         }
       });
