@@ -210,6 +210,11 @@
           margin: 0.5rem auto;
         }
 
+          .techniques-section .mentorship-card {
+          padding-bottom: 1rem; /* Espaço interno para o vídeo */
+       }
+
+
           .flex.justify-center.px-4 {
            padding-top: 0.5rem;
            padding-bottom: 0.25rem; /* Espaço mínimo abaixo */
@@ -225,9 +230,11 @@
         }
 
           .mobile-video-container {
-          padding: 0.5rem 1rem 0; /* Top: 0.5rem | Lados: 1rem | Bottom: 0 */
-          margin-bottom: 0.25rem; /* Espaço controlado abaixo do vídeo */
-       }
+            width: calc(100% + 2rem); /* Compensa o padding do card */
+            margin-left: -1rem;
+            margin-right: -1rem;
+            margin-bottom: -1rem;
+        }
 
 
         /* Remove a imagem da seção Técnicas Exclusivas em mobile */
@@ -351,23 +358,15 @@
                 </div>
                 <button
                   class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors"
-                >
-                  <span class="truncate">Saiba Mais</span>
-                </button>
-              </div>
-              <div
-                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
-                style='background-image: url("FOTO002.png");'
-              ></div>
-            </div>
+                </div>
             
-            <!-- Container do vídeo (visível apenas em mobile) -->
-           <div class="flex justify-center px-4">
-             <div class="w-full max-w-[500px] rounded-xl overflow-hidden">
-                <video autoplay loop muted playsinline webkit-playsinline class="w-full">
-               <source src="VIDEO001.mp4" type="video/mp4">
-              </div>
-            </div>
+  <!-- Container do vídeo (visível apenas em mobile) -->
+<div class="mobile-video-container mt-3 rounded-xl overflow-hidden">
+           <video autoplay loop muted playsinline class="w-full">
+        <source src="VIDEO001.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
           </div>
         </section>
 
