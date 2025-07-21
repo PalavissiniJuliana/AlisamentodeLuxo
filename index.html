@@ -100,61 +100,6 @@
         100% { background-position: -200% 0; }
       }
 
-      /* Video Expansion Effect */
-      .video-card-container {
-        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: transform, height;
-      }
-      
-      .video-container {
-        position: relative;
-        width: 100%;
-        height: 0;
-        padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        overflow: hidden;
-        border-radius: 0.75rem;
-        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-        margin-bottom: 1rem;
-      }
-      
-      .video-container iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-      }
-      
-      .video-card {
-        display: flex;
-        flex-direction: column;
-        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      }
-      
-      .video-card.expanded {
-        transform: scale(1);
-      }
-      
-      .video-card.expanded .video-container {
-        padding-bottom: 70%; /* Expanded aspect ratio */
-      }
-      
-      .video-card.expanded .video-title {
-        font-size: 1.25rem;
-        line-height: 1.3;
-      }
-      
-      .video-card.expanded .video-description {
-        font-size: 0.95rem;
-        line-height: 1.4;
-      }
-      
-      .video-card.expanded .video-button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
-      }
-
       /* Efeitos de scroll para mobile */
       @media (max-width: 480px) {
         /* Animação de subida com desfoque */
@@ -254,19 +199,6 @@
         .course-slide:last-child {
           margin-right: 0;
         }
-        
-        /* Video adjustment for mobile */
-        .video-card.expanded .video-container {
-          padding-bottom: 65%; /* Slightly less expansion on mobile */
-        }
-        
-        .video-card.expanded .video-title {
-          font-size: 1.15rem;
-        }
-        
-        .video-card.expanded .video-description {
-          font-size: 0.9rem;
-        }
       }
       
       @media (min-width: 481px) {
@@ -352,26 +284,25 @@
             </div>
           </div>
 
-          <!-- Mentoria em Grupo (padrão) - Modificada para incluir vídeo -->
+          <!-- Mentoria em Grupo (padrão) -->
           <div class="p-4">
-            <div class="video-card-container hover-grow rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md">
-              <div class="video-card">
+            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
+              <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
                 <div class="flex flex-col gap-1">
-                  <p class="video-subtitle text-[#7f6c6f] text-sm font-normal leading-normal transition-all duration-500">Alisamento de Luxo</p>
-                  <p class="video-title text-[#161313] text-lg font-bold leading-tight transition-all duration-500">Técnica Exclusiva</p>
-                  <p class="video-description text-[#7f6c6f] text-sm font-normal leading-normal mb-4 transition-all duration-500">Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.</p>
-                  
-                  <!-- Container do vídeo -->
-                  <div class="video-container">
-                    <iframe src="VIDEO001.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  </div>
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
+                  <p class="text-[#161313] text-base font-bold leading-tight">Técnica Exclusiva</p>
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.</p>
                 </div>
                 <button
-                  class="video-button flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-all duration-500"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors"
                 >
                   <span class="truncate">Saiba Mais</span>
                 </button>
               </div>
+              <div
+                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
+                style='background-image: url("FOTO002.png");'
+              ></div>
             </div>
           </div>
         </section>
@@ -535,102 +466,6 @@
             
             // Start observing
             scrollObserver.observe(el);
-          });
-        }
-        
-        // Video expansion on scroll - Enhanced version
-        const videoCardContainer = document.querySelector('.video-card-container');
-        const videoCard = document.querySelector('.video-card');
-        const videoContainer = document.querySelector('.video-container');
-        
-        if (videoCard && videoContainer) {
-          let ticking = false;
-          
-          const handleScroll = () => {
-            if (!ticking) {
-              window.requestAnimationFrame(() => {
-                const videoRect = videoCardContainer.getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
-                const videoMiddle = videoRect.top + (videoRect.height / 2);
-                
-                // Calculate visibility ratio (0 when at top, 1 when centered, 0 when at bottom)
-                const distanceFromCenter = Math.abs(viewportHeight / 2 - videoMiddle);
-                const maxDistance = viewportHeight / 2;
-                let ratio = 1 - Math.min(distanceFromCenter / maxDistance, 1);
-                
-                // Apply smooth expansion based on scroll position
-                if (ratio > 0.3) {
-                  const expansionRatio = Math.min(1, (ratio - 0.3) / 0.7); // Normalize to 0-1 range
-                  
-                  // Calculate expanded height (between original and expanded)
-                  const baseHeight = 56.25;
-                  const expandedHeight = window.innerWidth <= 480 ? 65 : 70;
-                  const currentHeight = baseHeight + (expansionRatio * (expandedHeight - baseHeight));
-                  
-                  // Apply dynamic scaling
-                  videoContainer.style.paddingBottom = `${currentHeight}%`;
-                  
-                  // Scale text proportionally
-                  const textScale = 1 + (expansionRatio * 0.15);
-                  const titleElements = document.querySelectorAll('.video-title');
-                  const descElements = document.querySelectorAll('.video-description');
-                  const buttonElements = document.querySelectorAll('.video-button');
-                  
-                  titleElements.forEach(el => {
-                    el.style.fontSize = `${1 + (expansionRatio * 0.25)}rem`;
-                    el.style.lineHeight = `${1.3 + (expansionRatio * 0.1)}`;
-                  });
-                  
-                  descElements.forEach(el => {
-                    el.style.fontSize = `${0.875 + (expansionRatio * 0.075)}rem`;
-                    el.style.lineHeight = `${1.4 + (expansionRatio * 0.1)}`;
-                  });
-                  
-                  buttonElements.forEach(el => {
-                    el.style.padding = `${0.5 + (expansionRatio * 0.25)}rem ${1 + (expansionRatio * 0.5)}rem`;
-                    el.style.fontSize = `${0.875 + (expansionRatio * 0.075)}rem`;
-                  });
-                  
-                  videoCardContainer.style.transform = `scale(${1 + (expansionRatio * 0.02)})`;
-                } else {
-                  // Reset to original size when not in focus
-                  videoContainer.style.paddingBottom = '56.25%';
-                  
-                  const titleElements = document.querySelectorAll('.video-title');
-                  const descElements = document.querySelectorAll('.video-description');
-                  const buttonElements = document.querySelectorAll('.video-button');
-                  
-                  titleElements.forEach(el => {
-                    el.style.fontSize = '';
-                    el.style.lineHeight = '';
-                  });
-                  
-                  descElements.forEach(el => {
-                    el.style.fontSize = '';
-                    el.style.lineHeight = '';
-                  });
-                  
-                  buttonElements.forEach(el => {
-                    el.style.padding = '';
-                    el.style.fontSize = '';
-                  });
-                  
-                  videoCardContainer.style.transform = '';
-                }
-                
-                ticking = false;
-              });
-              
-              ticking = true;
-            }
-          };
-          
-          // Add scroll listener with passive true for better performance
-          window.addEventListener('scroll', handleScroll, { passive: true });
-          
-          // Cleanup listener when component unmounts
-          window.addEventListener('beforeunload', () => {
-            window.removeEventListener('scroll', handleScroll);
           });
         }
       });
