@@ -199,52 +199,27 @@
           margin-right: 0;
         }
         
-        /* Estilos para a seção técnica exclusiva */
+        /* Estilos para o vídeo na seção técnica exclusiva */
         .exclusive-video-container {
           width: 100%;
-          margin: 0 auto;
           padding: 1rem;
         }
         
         .exclusive-video-card {
           width: 100%;
-          background: white;
-          border-radius: 1rem;
+          border-radius: 0.75rem;
           overflow: hidden;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .video-wrapper {
-          position: relative;
-          padding-bottom: 177.78%; /* 16:9 Aspect Ratio */
-          height: 0;
-          overflow: hidden;
+          width: 100%;
+          aspect-ratio: 16/9;
         }
         
         .video-wrapper iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
           width: 100%;
           height: 100%;
-          border: none;
-        }
-        
-        .exclusive-content {
-          padding: 1.5rem;
-        }
-        
-        .exclusive-content h3 {
-          font-size: 1.2rem;
-          font-weight: bold;
-          margin-bottom: 0.5rem;
-          color: #161313;
-        }
-        
-        .exclusive-content p {
-          font-size: 0.9rem;
-          color: #7f6c6f;
-          margin-bottom: 1rem;
+          min-height: 250px;
         }
       }
       
@@ -263,10 +238,7 @@
         }
         
         .video-wrapper {
-          position: relative;
-          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-          height: 0;
-          overflow: hidden;
+          aspect-ratio: 16/9;
         }
       }
     </style>
@@ -372,25 +344,31 @@
         <section class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.35s;">
           <h2 class="exclusive-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Técnica Exclusiva</h2>
           
-          <div class="exclusive-video-container">
-            <div class="exclusive-video-card hover-grow">
-              <div class="video-wrapper">
-                <!-- Substitua o src pelo seu vídeo real -->
-                <iframe 
-                  src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-                </iframe>
-              </div>
-              <div class="exclusive-content">
-                <h3>Método Palavissini de Alisamento</h3>
-                <p>Assista ao vídeo e conheça nossa técnica exclusiva que está revolucionando o mercado de alisamentos capilares, proporcionando resultados duradouros sem danificar os fios.</p>
+          <div class="p-4">
+            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md">
+              <div class="flex flex-[2_2_0px] flex-col gap-4">
+                <div class="flex flex-col gap-1">
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Demonstração</p>
+                  <p class="text-[#161313] text-base font-bold leading-tight">Método Palavissini</p>
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                    Assista ao vídeo e conheça nossa técnica exclusiva que está revolucionando o mercado de alisamentos.
+                  </p>
+                </div>
                 <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#F5E6C8] text-[#161313] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#D4B483] transition-colors w-full"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#F5E6C8] text-white text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] transition-colors"
                 >
-                  <span class="truncate">Quero Aprender Esta Técnica</span>
+                  <span class="truncate">Quero Aprender</span>
                 </button>
+              </div>
+              <div class="exclusive-video-container w-full flex-1">
+                <div class="video-wrapper">
+                  <iframe 
+                    src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                  </iframe>
+                </div>
               </div>
             </div>
           </div>
