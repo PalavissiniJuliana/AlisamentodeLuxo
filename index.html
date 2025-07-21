@@ -553,23 +553,7 @@
               threshold: 0.5, // Dispara quando 50% do elemento está visível
               rootMargin: '0px 0px -100px 0px' // Ajuste para ativar um pouco antes
             });
-            
-            // Observa o container do vídeo
-            videoObserver.observe(videoContainer);
-            
-            // Adiciona interação de clique para mobile
-            videoContainer.addEventListener('click', function() {
-              this.classList.toggle('expanded');
-              this.classList.toggle('small');
-              
-              // Aqui você pode adicionar lógica para tocar/pausar o vídeo
-              // Ex: const video = this.querySelector('video');
-              // if (this.classList.contains('expanded')) {
-              //   video.play();
-              // } else {
-              //   video.pause();
-              // }
-            });
+          
           }
         }
       });
