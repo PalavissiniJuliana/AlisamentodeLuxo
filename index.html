@@ -1,5 +1,4 @@
-<html>
-  <head>
+<head>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
       rel="stylesheet"
@@ -17,54 +16,6 @@
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
-
-      /* Efeito de expansão automática do vídeo */
-  .video-container {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    overflow: hidden;
-    border-radius: 0.75rem;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    margin-bottom: 1rem;
-  }
-  
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-  
-  .video-expand-card {
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
-  .video-expand-card.active {
-    transform: scale(1.02);
-  }
-  
-  .video-expand-card.active .video-container {
-    padding-bottom: 70%; /* Expanded aspect ratio */
-  }
-  
-  .video-expand-card.active .video-title {
-    font-size: 1.25rem;
-    line-height: 1.3;
-  }
-  
-  .video-expand-card.active .video-description {
-    font-size: 0.95rem;
-    line-height: 1.4;
-  }
-  
-  .video-expand-card.active .video-button {
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
-  }
       
       @keyframes pulse {
         0% { transform: scale(1); }
@@ -169,18 +120,6 @@
           opacity: 0;
           animation: scrollUp 1s ease-out forwards;
         }
-
-        .video-expand-card.active .video-container {
-      padding-bottom: 65%; /* Slightly less expansion on mobile */
-    }
-    
-    .video-expand-card.active .video-title {
-      font-size: 1.15rem;
-    }
-    
-    .video-expand-card.active .video-description {
-      font-size: 0.9rem;
-    }
         
         /* Atrasos diferentes para cada elemento */
         .scroll-animate:nth-child(1) { animation-delay: 0.1s; }
@@ -199,7 +138,7 @@
           display: block;
         }
         
-        .mentorship-title, .courses-title {
+        .mentorship-title, .courses-title, .exclusive-title {
           font-size: 1.3rem;
           padding-top: 0.8rem;
           padding-bottom: 0.5rem;
@@ -259,6 +198,54 @@
         .course-slide:last-child {
           margin-right: 0;
         }
+        
+        /* Estilos para a seção técnica exclusiva */
+        .exclusive-video-container {
+          width: 100%;
+          margin: 0 auto;
+          padding: 1rem;
+        }
+        
+        .exclusive-video-card {
+          width: 100%;
+          background: white;
+          border-radius: 1rem;
+          overflow: hidden;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-wrapper {
+          position: relative;
+          padding-bottom: 177.78%; /* 16:9 Aspect Ratio */
+          height: 0;
+          overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+        
+        .exclusive-content {
+          padding: 1.5rem;
+        }
+        
+        .exclusive-content h3 {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+          color: #161313;
+        }
+        
+        .exclusive-content p {
+          font-size: 0.9rem;
+          color: #7f6c6f;
+          margin-bottom: 1rem;
+        }
       }
       
       @media (min-width: 481px) {
@@ -266,6 +253,20 @@
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1rem;
+        }
+        
+        /* Estilos para desktop da seção técnica exclusiva */
+        .exclusive-video-container {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+        }
+        
+        .video-wrapper {
+          position: relative;
+          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+          height: 0;
+          overflow: hidden;
         }
       }
     </style>
@@ -345,27 +346,54 @@
           </div>
 
           <!-- Mentoria em Grupo (padrão) -->
-      <div class="p-4">
-  <div class="video-expand-card hover-grow flex flex-col items-stretch gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md">
-    <div class="flex flex-col gap-1">
-      <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
-      <p class="video-title text-[#161313] text-lg font-bold leading-tight transition-all duration-500">Técnica Exclusiva</p>
-      <p class="video-description text-[#7f6c6f] text-sm font-normal leading-normal mb-4 transition-all duration-500">
-        Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.
-      </p>
-      
-      <!-- Container do vídeo -->
-      <div class="video-container">
-        <iframe src="VIDEO001.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-    <button
-      class="video-button flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-all duration-500"
-    >
-      <span class="truncate">Saiba Mais</span>
-    </button>
-  </div>
-</div>
+          <div class="p-4">
+            <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
+              <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
+                <div class="flex flex-col gap-1">
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
+                  <p class="text-[#161313] text-base font-bold leading-tight">Técnica Exclusiva</p>
+                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.</p>
+                </div>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors"
+                >
+                  <span class="truncate">Saiba Mais</span>
+                </button>
+              </div>
+              <div
+                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
+                style='background-image: url("FOTO002.png");'
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção Técnica Exclusiva com Vídeo -->
+        <section class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.35s;">
+          <h2 class="exclusive-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Técnica Exclusiva</h2>
+          
+          <div class="exclusive-video-container">
+            <div class="exclusive-video-card hover-grow">
+              <div class="video-wrapper">
+                <!-- Substitua o src pelo seu vídeo real -->
+                <iframe 
+                  src="https://www.youtube.com/embed/SEU_VIDEO_ID" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              </div>
+              <div class="exclusive-content">
+                <h3>Método Palavissini de Alisamento</h3>
+                <p>Assista ao vídeo e conheça nossa técnica exclusiva que está revolucionando o mercado de alisamentos capilares, proporcionando resultados duradouros sem danificar os fios.</p>
+                <button
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#F5E6C8] text-[#161313] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-[#D4B483] transition-colors w-full"
+                >
+                  <span class="truncate">Quero Aprender Esta Técnica</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Courses Section - Modificada para ter carrossel mobile -->
@@ -518,47 +546,6 @@
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
           });
-
-          // Video expansion on scroll
-  document.addEventListener('DOMContentLoaded', () => {
-    const videoCard = document.querySelector('.video-expand-card');
-    const videoContainer = document.querySelector('.video-container');
-    
-    if (videoCard && videoContainer) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              // Quando a seção está visível
-              const videoRect = entry.boundingClientRect;
-              const viewportHeight = window.innerHeight;
-              
-              // Calcula quanto da seção está visível (0 a 1)
-              const visibleRatio = Math.min(
-                1,
-                (viewportHeight - Math.max(0, -videoRect.top)) / 
-                Math.min(viewportHeight, videoRect.height)
-              );
-              
-              // Ativa o efeito quando pelo menos 50% está visível
-              if (visibleRatio > 0.5) {
-                videoCard.classList.add('active');
-              } else {
-                videoCard.classList.remove('active');
-              }
-            } else {
-              videoCard.classList.remove('active');
-            }
-          });
-        },
-        {
-          threshold: 0.1,
-          rootMargin: '0px 0px -100px 0px'
-        }
-      );
-      
-      observer.observe(videoCard);
-    }
 
           scrollElements.forEach(el => {
             // Set initial styles for mobile
