@@ -223,7 +223,7 @@
         .video-wrapper {
           width: 100%;
           margin: 0 auto;
-          padding: 0.5rem;
+          padding: 0;
         }
       }
       
@@ -344,8 +344,9 @@
             <!-- Container do vídeo (visível apenas em mobile) -->
             <div class="video-wrapper">
               <div class="video-container">
+                  <video autoplay loop muted playsinline webkit-playsinline>
                 <!-- Substitua o src pelo seu vídeo do YouTube ou outra plataforma -->
-                <iframe src="VIDEO001.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               <source src="VIDEO001.mp4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
             </div>
           </div>
