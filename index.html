@@ -199,68 +199,6 @@
         .course-slide:last-child {
           margin-right: 0;
         }
-        
-        /* Efeito de expansão do vídeo - Versão otimizada */
-        .video-expand-container {
-          position: relative;
-          width: 100%;
-          overflow: hidden;
-          transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-          border-radius: 12px;
-          margin: 10px 0;
-          will-change: height;
-          touch-action: pan-y; /* Permite scroll vertical */
-        }
-        
-        .video-expand-container.small {
-          height: 180px;
-        }
-        
-        .video-expand-container.expanded {
-          height: 300px;
-        }
-        
-        .video-expand {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        
-        .video-placeholder {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          background-color: #f3f1f2;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #7f6c6f;
-          font-weight: 500;
-        }
-        
-        .play-icon {
-          position: absolute;
-          width: 50px;
-          height: 50px;
-          background-color: rgba(245, 230, 200, 0.8);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 2;
-          pointer-events: none;
-        }
-        
-        /* Overlay para melhorar a interação em mobile */
-        .video-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          z-index: 1;
-          background: transparent;
-        }
       }
       
       @media (min-width: 481px) {
@@ -268,10 +206,6 @@
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1rem;
-        }
-        
-        .video-expand-container {
-          height: 300px !important;
         }
       }
     </style>
@@ -286,10 +220,10 @@
         <header class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.1s;">
           <div class="flex items-center bg-white p-4 pb-2 justify-between">
             <h2 class="header-title text-[#161313] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Alisamento de Luxo</h2>
-          </div>
+          
         </header>
 
-        <!-- Hero Section with Parallax Effect -->
+        <!-- Hero Section with Parallax Effect (mantido como está) -->
         <div class="@container scroll-animate">
           <div class="@[480px]:p-4">
             <div
@@ -350,7 +284,7 @@
             </div>
           </div>
 
-          <!-- Mentoria em Grupo (padrão) - Modificada para incluir o vídeo -->
+          <!-- Mentoria em Grupo (padrão) -->
           <div class="p-4">
             <div class="hover-grow flex items-stretch justify-between gap-4 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md mentorship-card">
               <div class="flex flex-[2_2_0px] flex-col gap-4 mentorship-content">
@@ -365,24 +299,15 @@
                   <span class="truncate">Saiba Mais</span>
                 </button>
               </div>
-              
-              <!-- Container do vídeo otimizado -->
-              <div class="video-expand-container small" id="videoExpand">
-                <div class="video-overlay" id="videoOverlay"></div>
-                <div class="play-icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#161313" viewBox="0 0 256 256">
-                    <path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path>
-                  </svg>
-                </div>
-                <video class="video-expand" controls preload="metadata" poster="VIDEO001.mp4">
-                  <source src="VIDEO001.mp4" type="video/mp4">
-                </video>
-              </div>
+              <div
+                class="img-loading w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl flex-1 hover-grow mentorship-image"
+                style='background-image: url("FOTO002.png");'
+              ></div>
             </div>
           </div>
         </section>
 
-        <!-- Courses Section -->
+        <!-- Courses Section - Modificada para ter carrossel mobile -->
         <section class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.4s;">
           <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Cursos</h2>
           <div class="px-4">
@@ -492,9 +417,10 @@
     </div>
 
     <script>
+      // Simple intersection observer for animations
       document.addEventListener('DOMContentLoaded', () => {
-        // Animations for all devices
         const sections = document.querySelectorAll('.animate-section');
+        
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -510,15 +436,16 @@
         // Image loading simulation
         const images = document.querySelectorAll('.img-loading');
         images.forEach(img => {
+          // In a real scenario, you'd wait for the image to load
           setTimeout(() => {
             img.classList.remove('img-loading');
           }, 1000);
         });
 
-        // Mobile specific optimizations
+        // Mobile scroll animations
         if (window.innerWidth <= 480) {
-          // Mobile scroll animations
           const scrollElements = document.querySelectorAll('.scroll-animate');
+          
           const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (entry.isIntersecting) {
@@ -528,74 +455,18 @@
             });
           }, { 
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
           });
 
           scrollElements.forEach(el => {
+            // Set initial styles for mobile
             el.style.opacity = '0';
             el.style.willChange = 'opacity, transform, filter';
             el.style.animation = 'scrollUp 1s ease-out forwards paused';
+            
+            // Start observing
             scrollObserver.observe(el);
           });
-          
-          // Video expand functionality - Optimized version
-          const videoContainer = document.getElementById('videoExpand');
-          const videoOverlay = document.getElementById('videoOverlay');
-          const video = videoContainer ? videoContainer.querySelector('video') : null;
-          
-          if (videoContainer && videoOverlay) {
-            let isExpanded = false;
-            let isScrolling = false;
-            let scrollTimeout;
-            
-            // Touch event handlers for better mobile interaction
-            videoOverlay.addEventListener('click', function(e) {
-              if (isScrolling) return;
-              
-              isExpanded = !isExpanded;
-              
-              if (isExpanded) {
-                videoContainer.classList.remove('small');
-                videoContainer.classList.add('expanded');
-                video.play();
-              } else {
-                videoContainer.classList.remove('expanded');
-                videoContainer.classList.add('small');
-                video.pause();
-              }
-              
-              // Prevent click event from propagating to parent elements
-              e.stopPropagation();
-            });
-            
-            // Handle scroll events to prevent expansion during scrolling
-            window.addEventListener('scroll', function() {
-              isScrolling = true;
-              
-              clearTimeout(scrollTimeout);
-              scrollTimeout = setTimeout(function() {
-                isScrolling = false;
-              }, 100);
-            }, { passive: true });
-            
-            // Intersection Observer for video
-            const videoObserver = new IntersectionObserver((entries) => {
-              entries.forEach(entry => {
-                if (!entry.isIntersecting && isExpanded) {
-                  // Collapse video if it's expanded and goes out of view
-                  videoContainer.classList.remove('expanded');
-                  videoContainer.classList.add('small');
-                  video.pause();
-                  isExpanded = false;
-                }
-              });
-            }, {
-              threshold: 0.1,
-              rootMargin: '0px 0px -100px 0px'
-            });
-            
-            videoObserver.observe(videoContainer);
-          }
         }
       });
     </script>
