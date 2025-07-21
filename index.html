@@ -69,11 +69,11 @@
         position: relative;
         background: white;
         border-radius: 0.75rem;
-        padding: 1rem;
+        padding: 1.5rem;
         display: flex;
         flex-direction: row;
         align-items: stretch;
-        gap: 1rem;
+        gap: 1.5rem;
       }
 
       .border-gold-gradient::before {
@@ -96,7 +96,7 @@
         100% { background-position: -200% 0; }
       }
 
-      /* Efeitos de scroll para mobile */
+      /* Mobile Styles */
       @media (max-width: 480px) {
         /* Animação de subida com desfoque */
         @keyframes scrollUp {
@@ -112,13 +112,11 @@
           }
         }
         
-        /* Aplica a animação aos elementos que devem animar */
         .scroll-animate {
           opacity: 0;
           animation: scrollUp 1s ease-out forwards;
         }
         
-        /* Atrasos diferentes para cada elemento */
         .scroll-animate:nth-child(1) { animation-delay: 0.1s; }
         .scroll-animate:nth-child(2) { animation-delay: 0.2s; }
         .scroll-animate:nth-child(3) { animation-delay: 0.3s; }
@@ -141,9 +139,11 @@
           padding-bottom: 0.2rem;
         }
         
+        /* Mentorship Card Styles */
         .mentorship-card {
           flex-direction: column;
-          gap: 1rem;
+          padding: 1.5rem;
+          gap: 1.5rem;
         }
         
         .mentorship-content {
@@ -151,44 +151,32 @@
           width: 100%;
         }
         
-        /* Card de Técnicas Exclusivas - Mobile */
-        .techniques-section .mentorship-card {
+        /* Techniques Section - Video Card */
+        .techniques-card {
           display: flex;
           flex-direction: column;
-          padding: 0;
+          padding: 1.5rem;
+          gap: 1.5rem;
         }
-
-        /* Container do vídeo dentro do card */
-        .video-in-card {
+        
+        .video-container {
           width: 100%;
-          margin-top: 0;
-          border-radius: 0 0 0.75rem 0.75rem;
+          border-radius: 0.75rem;
           overflow: hidden;
-          aspect-ratio: 16/9;
+          min-height: 240px; /* Increased vertical size */
+          margin-top: 0.5rem;
         }
-
-        /* Vídeo em si */
-        .video-in-card video {
+        
+        .video-container video {
           width: 100%;
           height: 100%;
-          display: block;
           object-fit: cover;
+          display: block;
         }
-
-        /* Conteúdo textual */
-        .techniques-content {
-          padding: 1.5rem;
-          padding-bottom: 1rem;
-        }
-
-        /* Remove a imagem em mobile */
+        
+        /* Hide image on mobile */
         .techniques-section .mentorship-image {
           display: none;
-        }
-
-        /* Ajuste fino no título dos cursos */
-        .courses-title {
-          padding-top: 1.5rem !important;
         }
         
         .course-card {
@@ -232,19 +220,20 @@
         }
       }
       
+      /* Desktop Styles */
       @media (min-width: 481px) {
         .courses-carousel {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 1rem;
+          gap: 1.5rem;
         }
 
-        /* Esconde o vídeo em desktop */
-        .video-in-card {
+        /* Hide video on desktop */
+        .video-container {
           display: none;
         }
 
-        /* Mantém a imagem em desktop */
+        /* Show image on desktop */
         .techniques-section .mentorship-image {
           display: block;
         }
@@ -254,14 +243,14 @@
 <body>
     <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Noto Serif", "Noto Sans", sans-serif;'>
       <div>
-        <!-- Header with subtle slide-in animation -->
+        <!-- Header -->
         <header class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.1s;">
           <div class="flex items-center bg-white p-4 pb-2 justify-between">
             <h2 class="header-title text-[#161313] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Alisamento de Luxo</h2>
           </div>
         </header>
 
-        <!-- Hero Section with Parallax Effect -->
+        <!-- Hero Section -->
         <div class="@container scroll-animate">
           <div class="@[480px]:p-4">
             <div class="hero-parallax flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 animate-section opacity-0" style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("FOTO001.png");'>
@@ -282,9 +271,8 @@
         <section class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.3s;">
           <h2 class="mentorship-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Mentoria</h2>
           
-          <!-- Mentoria VIP com destaque -->
+          <!-- Mentoria VIP -->
           <div class="p-4 relative">
-            <!-- Tag "EM ALTA" -->
             <div class="absolute -top-2 -right-2 z-10 bg-[#F5E6C8] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
               EM ALTA!
             </div>
@@ -310,25 +298,22 @@
             </div>
           </div>
 
-          <!-- Mentoria em Grupo (Técnicas Exclusivas) -->
+          <!-- Técnicas Exclusivas -->
           <div class="p-4 techniques-section">
-            <div class="hover-grow rounded-xl bg-white shadow-sm transition-all hover:shadow-md mentorship-card">
-              <!-- Conteúdo Superior (Texto + Botão) -->
-              <div class="techniques-content">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
-                  <p class="text-[#161313] text-base font-bold leading-tight">Técnicas Exclusivas</p>
-                  <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
-                    Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.
-                  </p>
-                </div>
-                <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-4 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
-                  <span class="truncate">Saiba Mais</span>
-                </button>
+            <div class="hover-grow rounded-xl bg-white shadow-sm transition-all hover:shadow-md techniques-card">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
+                <p class="text-[#161313] text-base font-bold leading-tight">Técnicas Exclusivas</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.
+                </p>
               </div>
+              <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-2 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Saiba Mais</span>
+              </button>
               
-              <!-- Vídeo Integrado (Mobile Only) -->
-              <div class="video-in-card">
+              <!-- Video Container -->
+              <div class="video-container">
                 <video autoplay loop muted playsinline webkit-playsinline class="w-full">
                   <source src="VIDEO001.mp4" type="video/mp4">
                 </video>
@@ -388,7 +373,7 @@
         </section>
       </div>
 
-      <!-- Footer with Contact -->
+      <!-- Footer -->
       <footer class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.5s;">
         <div class="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#f9f9f9]">
           <h3 class="footer-title text-[#161313] text-xl font-bold">Contato</h3>
@@ -426,7 +411,7 @@
         </div>
       </footer>
       
-      <!-- Floating WhatsApp Button -->
+      <!-- WhatsApp Button -->
       <a href="https://wa.me/554185274188" class="fixed bottom-6 right-6 z-50 animate-bounce">
         <div class="flex items-center justify-center w-14 h-14 rounded-full bg-[#D4B483] shadow-lg hover:scale-110 transition-transform">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 256 256">
@@ -437,7 +422,6 @@
     </div>
 
     <script>
-      // Simple intersection observer for animations
       document.addEventListener('DOMContentLoaded', () => {
         const sections = document.querySelectorAll('.animate-section');
         
@@ -453,16 +437,13 @@
           observer.observe(section);
         });
         
-        // Image loading simulation
         const images = document.querySelectorAll('.img-loading');
         images.forEach(img => {
-          // In a real scenario, you'd wait for the image to load
           setTimeout(() => {
             img.classList.remove('img-loading');
           }, 1000);
         });
 
-        // Mobile scroll animations
         if (window.innerWidth <= 480) {
           const scrollElements = document.querySelectorAll('.scroll-animate');
           
@@ -475,16 +456,13 @@
             });
           }, { 
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px' // Trigger when 50px from bottom of viewport
+            rootMargin: '0px 0px -50px 0px'
           });
 
           scrollElements.forEach(el => {
-            // Set initial styles for mobile
             el.style.opacity = '0';
             el.style.willChange = 'opacity, transform, filter';
             el.style.animation = 'scrollUp 1s ease-out forwards paused';
-            
-            // Start observing
             scrollObserver.observe(el);
           });
         }
