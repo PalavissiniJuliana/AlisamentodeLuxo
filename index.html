@@ -211,6 +211,13 @@
           flex: none;
           width: 100%;
         }
+
+        .faq-item {
+          -webkit-tap-highlight-color: transparent;
+       }
+        .faq-question {
+           padding: 12px 0;
+       }
         
         /* Techniques Section - Video Card */
         .techniques-card {
@@ -697,27 +704,21 @@
         });
 
         // FAQ Accordion Functionality
-        const faqQuestions = document.querySelectorAll('.faq-question');
-          faqQuestions.forEach(question => {
-          question.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const icon = this.querySelector('svg');
+         document.querySelectorAll('.faq-question').forEach(question => {
+         question.addEventListener('click', () => {
+         const answer = question.nextElementSibling;
+        const icon = question.querySelector('svg');;
             
-           // Fecha todas as outras respostas
-         document.querySelectorAll('.faq-answer').forEach(ans => {
-          if (ans !== answer) {
-            ans.style.display = 'none';
-            ans.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
-         }
-        });
-            
-            // Abre a resposta atual se estava fechada
-        if (!isOpen) {
-          answer.style.display = 'block';
-          icon.style.transform = 'rotate(180deg)';
-            }
-          });
-        });
+            // Alterna a visibilidade da resposta
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            icon.style.transform = 'rotate(0deg)';
+         }  else {
+            answer.style.display = 'block';
+           icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
 
         // Melhoria de performance para scroll em mobile
         if (window.innerWidth <= 480) {
