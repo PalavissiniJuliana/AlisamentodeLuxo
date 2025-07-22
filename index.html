@@ -211,13 +211,6 @@
           flex: none;
           width: 100%;
         }
-
-        .faq-item {
-          -webkit-tap-highlight-color: transparent;
-       }
-        .faq-question {
-           padding: 12px 0;
-       }
         
         /* Techniques Section - Video Card */
         .techniques-card {
@@ -672,13 +665,25 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        // Otimização para carregamento de imagens
-        const images = document.querySelectorAll('.img-loading');
-        images.forEach(img => {
-          setTimeout(() => {
-            img.classList.remove('img-loading');
-          }, 1000);
-        });
+    // Seção FAQ - Nova implementação garantida
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      const icon = question.querySelector('svg');
+      
+      // Fecha todas as respostas inicialmente
+      answer.style.display = 'none';
+      
+      question.addEventListener('click', () => {
+        // Fecha todas as outras respostas
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.querySelector('.faq-answer').style.display = 'none';
+            otherItem.querySelector('svg').style.transform = 'rotate(0deg)';
+               }
+             });
 
         // Intersection Observer simplificado
         const observerOptions = {
@@ -709,13 +714,13 @@
          const answer = question.nextElementSibling;
         const icon = question.querySelector('svg');;
             
-            // Alterna a visibilidade da resposta
-        if (answer.style.display === 'block') {
-            answer.style.display = 'none';
-            icon.style.transform = 'rotate(0deg)';
-         }  else {
-            answer.style.display = 'block';
-           icon.style.transform = 'rotate(180deg)';
+           // Alterna a resposta atual
+        if (answer.style.display === 'none') {
+          answer.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          answer.style.display = 'none';
+          icon.style.transform = 'rotate(0deg)';
         }
       });
     });
