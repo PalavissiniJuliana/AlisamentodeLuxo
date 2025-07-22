@@ -698,26 +698,23 @@
 
         // FAQ Accordion Functionality
         const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-          question.addEventListener('click', (e) => {
-             // Previne comportamentos indesejados em mobile
-            e.preventDefault();
-            e.stopPropagation();
+          faqQuestions.forEach(question => {
+          question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('svg');
             
-            const answer = question.nextElementSibling;
-            const isOpen = answer.style.display === 'block';
-            const icon = question.querySelector('svg');
+           // Fecha todas as outras respostas
+         document.querySelectorAll('.faq-answer').forEach(ans => {
+          if (ans !== answer) {
+            ans.style.display = 'none';
+            ans.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
+         }
+        });
             
-            // Close all answers first
-            document.querySelectorAll('.faq-answer').forEach(ans => {
-              ans.style.display = 'none';
-              ans.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
-            });
-            
-            // Open current if it was closed
-            if (!isOpen) {
-              answer.style.display = 'block';
-              question.querySelector('svg').style.transform = 'rotate(180deg)';
+            // Abre a resposta atual se estava fechada
+        if (!isOpen) {
+          answer.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
             }
           });
         });
@@ -732,8 +729,8 @@
           document.querySelectorAll('.hover-grow').forEach(el => {
             el.style.transform = 'none';
           
-          document.addEventListener('DOMContentLoaded', () => {
-  const video = document.getElementById('hero-video');
+          
+       const video = document.getElementById('hero-video');
   
   // 1. Tenta autoplay normalmente
   const playPromise = video.play();
