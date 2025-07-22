@@ -325,8 +325,8 @@
                 <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal drop-shadow-md">Da técnica à prática</h2>
               </div>
               <button 
-                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio%20para%20o%20alisamento%20de%20luxo.')"
-              <button class="btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#A05E2C] text-[#f3f1f2] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#D4B483] transition-colors">
+                      onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio%20para%20o%20alisamento%20de%20luxo.')"
+                     class="btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#A05E2C] text-[#f3f1f2] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#D4B483] transition-colors">
                 <span class="truncate">Agendar Agora</span>
               </button>
             </div>
@@ -699,9 +699,14 @@
         // FAQ Accordion Functionality
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
-          question.addEventListener('click', () => {
+          question.addEventListener('click', (e) => {
+             // Previne comportamentos indesejados em mobile
+            e.preventDefault();
+            e.stopPropagation();
+            
             const answer = question.nextElementSibling;
             const isOpen = answer.style.display === 'block';
+            const icon = question.querySelector('svg');
             
             // Close all answers first
             document.querySelectorAll('.faq-answer').forEach(ans => {
