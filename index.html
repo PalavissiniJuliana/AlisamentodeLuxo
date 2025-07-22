@@ -19,6 +19,22 @@
         50% { transform: scale(1.03); }
         100% { transform: scale(1); }
       }
+
+      /* Adicione no final da seção de estilos */
+        .faq-question {
+         cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+       .faq-answer {
+        display: none;
+        padding-top: 8px;
+      }
+
+        .faq-question svg {
+        transition: transform 0.3s ease;
+      }
       
       .animate-section {
         animation: fadeIn 0.6s ease-out forwards;
@@ -664,72 +680,60 @@
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-    // Seção FAQ - Nova implementação garantida
-    const faqItems = document.querySelectorAll('.faq-item');
+    document.addEventListener('DOMContentLoaded', () => {
+    // Otimização para carregamento de imagens
+    const images = document.querySelectorAll('.img-loading');
+    images.forEach(img => {
+      setTimeout(() => {
+        img.classList.remove('img-loading');
+      }, 1000);
+    });
+         // Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px'
+    };
+
+       const animateOnScroll = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+        }
+      });
+    };
+
+         const observer = new IntersectionObserver(animateOnScroll, observerOptions);
     
-    faqItems.forEach(item => {
-      const question = item.querySelector('.faq-question');
-      const answer = item.querySelector('.faq-answer');
-      const icon = question.querySelector('svg');
-      
+    document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
+      section.style.opacity = '0';
+      observer.observe(section);
+    });
+
+        // FAQ Accordion - Código corrigido e testado
+    document.querySelectorAll('.faq-question').forEach(question => {
       // Fecha todas as respostas inicialmente
-      answer.style.display = 'none';
+      question.nextElementSibling.style.display = 'none';
       
-      question.addEventListener('click', () => {
-        // Fecha todas as outras respostas
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.querySelector('.faq-answer').style.display = 'none';
-            otherItem.querySelector('svg').style.transform = 'rotate(0deg)';
-               }
-             });
-
-        // Intersection Observer simplificado
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px'
-        };
-
-        const animateOnScroll = (entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-            }
-          });
-        };
-
-        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+      question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const icon = this.querySelector('svg');
         
-        document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
-          section.style.opacity = '0';
-          section.style.backfaceVisibility = 'hidden';
-          section.style.perspective = '1000px';
-          observer.observe(section);
-        });
-
-        // FAQ Accordion Functionality
-         document.querySelectorAll('.faq-question').forEach(question => {
-         question.addEventListener('click', () => {
-         const answer = question.nextElementSibling;
-        const icon = question.querySelector('svg');;
-            
-           // Alterna a resposta atual
-        if (answer.style.display === 'none') {
-          answer.style.display = 'block';
-          icon.style.transform = 'rotate(180deg)';
-        } else {
+        // Alterna entre mostrar e esconder
+        if (answer.style.display === 'block') {
           answer.style.display = 'none';
           icon.style.transform = 'rotate(0deg)';
+        } else {
+          answer.style.display = 'block';
+          icon.style.transform = 'rotate(180deg)';
         }
       });
     });
 
-        // Melhoria de performance para scroll em mobile
-        if (window.innerWidth <= 480) {
-          document.body.addEventListener('touchstart', function() {}, { 
-            passive: true 
-          });
+        // Melhoria para mobile
+    if (window.innerWidth <= 480) {
+      document.body.addEventListener('touchstart', function() {}, { 
+        passive: true 
+      });
           
           // Remover hover em dispositivos touch
           document.querySelectorAll('.hover-grow').forEach(el => {
