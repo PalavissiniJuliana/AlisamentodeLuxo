@@ -19,22 +19,6 @@
         50% { transform: scale(1.03); }
         100% { transform: scale(1); }
       }
-
-      /* Adicione no final da seção de estilos */
-        .faq-question {
-         cursor: pointer;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-       .faq-answer {
-        display: none;
-        padding-top: 8px;
-      }
-
-        .faq-question svg {
-        transition: transform 0.3s ease;
-      }
       
       .animate-section {
         animation: fadeIn 0.6s ease-out forwards;
@@ -150,12 +134,31 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
+        padding: 12px 0;
+        -webkit-tap-highlight-color: transparent;
       }
       
       .faq-answer {
-        margin-top: 0.5rem;
         color: #7f6c6f;
-        display: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding-top 0.3s ease;
+        padding-top: 0;
+      }
+      
+      .faq-answer.active {
+        max-height: 500px;
+        padding-top: 12px;
+      }
+      
+      .faq-question svg {
+        transition: transform 0.3s ease;
+        min-width: 16px;
+        margin-left: 8px;
+      }
+      
+      .faq-question.active svg {
+        transform: rotate(180deg);
       }
       
       .course-badge {
@@ -632,7 +635,7 @@
         <div class="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#f9f9f9]">
           <h3 class="footer-title text-[#161313] text-xl font-bold">Contato</h3>
           <div class="flex flex-col gap-4">
-            <a href="tel:+554199999999" class="flex items-center justify-center gap-2 text-[#7f6c6f] hover:text-[#E8D8C0] transition-colors footer-contact">
+            <a href="tel:+554185274188" class="flex items-center justify-center gap-2 text-[#7f6c6f] hover:text-[#E8D8C0] transition-colors footer-contact">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
                 <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.13L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46Z"></path>
               </svg>
@@ -680,84 +683,67 @@
     </div>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // Otimização para carregamento de imagens
-    const images = document.querySelectorAll('.img-loading');
-    images.forEach(img => {
-      setTimeout(() => {
-        img.classList.remove('img-loading');
-      }, 1000);
-    });
-         // Intersection Observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px'
-    };
+      document.addEventListener('DOMContentLoaded', () => {
+        // Otimização para carregamento de imagens
+        const images = document.querySelectorAll('.img-loading');
+        images.forEach(img => {
+          setTimeout(() => {
+            img.classList.remove('img-loading');
+          }, 1000);
+        });
 
-       const animateOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-        }
-      });
-    };
+        // Intersection Observer
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px'
+        };
 
-         const observer = new IntersectionObserver(animateOnScroll, observerOptions);
-    
-    document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
-      section.style.opacity = '0';
-      observer.observe(section);
-    });
+        const animateOnScroll = (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+            }
+          });
+        };
 
-        // FAQ Accordion - Código corrigido e testado
-    document.querySelectorAll('.faq-question').forEach(question => {
-      // Fecha todas as respostas inicialmente
-      question.nextElementSibling.style.display = 'none';
-      
-      question.addEventListener('click', function() {
-        const answer = this.nextElementSibling;
-        const icon = this.querySelector('svg');
+        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
         
-        // Alterna entre mostrar e esconder
-        if (answer.style.display === 'block') {
-          answer.style.display = 'none';
-          icon.style.transform = 'rotate(0deg)';
-        } else {
-          answer.style.display = 'block';
-          icon.style.transform = 'rotate(180deg)';
-        }
-      });
-    });
+        document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
+          section.style.opacity = '0';
+          observer.observe(section);
+        });
 
-        // Melhoria para mobile
-    if (window.innerWidth <= 480) {
-      document.body.addEventListener('touchstart', function() {}, { 
-        passive: true 
-      });
-          
-          // Remover hover em dispositivos touch
-          document.querySelectorAll('.hover-grow').forEach(el => {
-            el.style.transform = 'none';
-          
-          
-       const video = document.getElementById('hero-video');
-  
-  // 1. Tenta autoplay normalmente
-  const playPromise = video.play();
-  
-  // 2. Se falhar (em alguns navegadores/mobile)
-  if (playPromise !== undefined) {
-    playPromise.catch(error => {
-      // 3. Mostra um botão de fallback (opcional)
-      const playButton = document.createElement('button');
-      playButton.innerHTML = '▶ Reproduzir Vídeo';
-      playButton.className = 'fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-[#D4B483] text-white px-4 py-2 rounded-full z-50';
-      playButton.onclick = () => {
-        video.play();
-        playButton.remove();
-      };
-         document.body.appendChild(playButton);
-          
+        // FAQ Accordion - Nova implementação garantida
+        document.querySelectorAll('.faq-question').forEach(question => {
+          question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector('svg');
+            
+            // Fecha todas as outras respostas
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+              if (ans !== answer) {
+                ans.classList.remove('active');
+                ans.previousElementSibling.classList.remove('active');
+              }
+            });
+            
+            // Alterna a resposta atual
+            this.classList.toggle('active');
+            answer.classList.toggle('active');
+            
+            // Atualiza o ícone
+            if (this.classList.contains('active')) {
+              icon.style.transform = 'rotate(180deg)';
+            } else {
+              icon.style.transform = 'rotate(0deg)';
+            }
+          });
+        });
+
+        // Melhoria de performance para mobile
+        if (window.innerWidth <= 480) {
+          document.body.addEventListener('touchstart', function() {}, { 
+            passive: true 
           });
         }
       });
