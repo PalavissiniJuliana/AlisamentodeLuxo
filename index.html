@@ -182,6 +182,76 @@
         color: white;
       }
 
+      /* Estilos para o novo carrossel de diferenciais */
+      .features-stack-container {
+        position: relative;
+        height: 220px; /* Altura fixa para o container */
+        perspective: 1000px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .features-stack {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+      }
+      
+      .feature-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        transition: transform 0.8s ease, opacity 0.8s ease, z-index 0.8s ease;
+      }
+      
+      .feature-slide.active {
+        transform: translateZ(0);
+        z-index: 3;
+        opacity: 1;
+      }
+      
+      .feature-slide.next {
+        transform: translateZ(-100px) translateY(20px) scale(0.9);
+        z-index: 2;
+        opacity: 0.8;
+      }
+      
+      .feature-slide.prev {
+        transform: translateZ(-200px) translateY(40px) scale(0.8);
+        z-index: 1;
+        opacity: 0.6;
+      }
+      
+      .feature-slide.hidden {
+        opacity: 0;
+        z-index: 0;
+      }
+      
+      .features-nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      
+      .features-nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #D4B483;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      
+      .features-nav-dot.active {
+        background: #A05E2C;
+      }
+
       /* Mobile Styles */
       @media (max-width: 480px) {
         /* Animação simplificada */
@@ -212,7 +282,7 @@
           margin: 0 auto;
           display: block;
         }
-        
+
         .mentorship-title, .courses-title, .testimonials-title, .features-title, .faq-title {
           font-size: 1.3rem;
           padding-top: 0.25rem !important;
@@ -264,7 +334,7 @@
         }
         
         /* Carrossel mobile otimizado */
-        .courses-carousel, .testimonials-carousel, .features-carousel {
+        .courses-carousel, .testimonials-carousel {
           display: flex;
           overflow-x: auto;
           scroll-snap-type: x proximity;
@@ -275,34 +345,58 @@
         }
         
         .courses-carousel::-webkit-scrollbar,
-        .testimonials-carousel::-webkit-scrollbar,
-        .features-carousel::-webkit-scrollbar {
+        .testimonials-carousel::-webkit-scrollbar {
           display: none;
         }
         
-        .course-slide, .testimonial-slide, .feature-slide {
+        .course-slide, .testimonial-slide {
           scroll-snap-align: start;
           flex: 0 0 85%;
           margin-right: 1rem;
         }
         
         .course-slide:last-child,
-        .testimonial-slide:last-child,
-        .feature-slide:last-child {
+        .testimonial-slide:last-child {
           margin-right: 0;
         }
         
+        /* Ajustes para o novo carrossel de diferenciais */
+        .features-stack-container {
+          height: 200px;
+        }
+        
         .feature-card {
-          min-width: 70vw;
+          min-height: 180px;
+          padding: 1rem;
+        }
+        
+        .feature-number {
+          font-size: 2rem;
+        }
+
+        /* Novo estilo para cards de atendimento */
+        .service-cards-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          padding: 0 1rem;
+        }
+
+        .service-card {
+          background: white;
+          border-radius: 0.75rem;
+          padding: 1.5rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
       }
       
       /* Desktop Styles */
       @media (min-width: 481px) {
-        .courses-carousel, .features-carousel {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
+        .courses-carousel {
+           display: flex;
+           overflow-x: hidden;
+           width: 100%;
+           scroll-snap-type: x mandatory;
         }
         
         .testimonials-carousel {
@@ -319,6 +413,26 @@
         /* Show image on desktop */
         .techniques-section .mentorship-image {
           display: block;
+        }
+        
+        /* Ajustes para o novo carrossel de diferenciais */
+        .features-stack-container {
+          height: 240px;
+          max-width: 350px;
+        }
+        
+        .feature-card {
+          min-height: 200px;
+        }
+
+        /* Estilo para desktop dos cards de atendimento */
+        .service-cards-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+          padding: 0 1.5rem;
+          max-width: 1200px;
+          margin: 0 auto;
         }
       }
     </style>
@@ -354,36 +468,84 @@
 
         <!-- Diferenciais Section -->
         <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.3s;">
-          <h2 class="features-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Nossos Diferenciais</h2>
+          <h2 class="features-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Diferenciais</h2>
           
           <div class="px-4">
-            <div class="features-carousel">
-              <!-- Diferencial 1 -->
-              <div class="feature-slide">
-                <div class="feature-card hover-grow">
-                  <div class="feature-number">+500</div>
-                  <p class="text-[#161313] text-base font-medium">Alunas Formadas</p>
-                  <p class="text-[#7f6c6f] text-sm mt-1">Com metodologia comprovada</p>
+            <div class="features-stack-container">
+              <div class="features-stack">
+                <!-- Diferencial 1 -->
+                <div class="feature-slide active">
+                  <div class="feature-card hover-grow">
+                    <div class="feature-number">+500</div>
+                    <p class="text-[#161313] text-base font-medium">Alunas Formadas</p>
+                    <p class="text-[#7f6c6f] text-sm mt-1">Com metodologia comprovada</p>
+                  </div>
+                </div>
+                
+                <!-- Diferencial 2 -->
+                <div class="feature-slide next">
+                  <div class="feature-card hover-grow">
+                    <div class="feature-number">100%</div>
+                    <p class="text-[#161313] text-base font-medium">Satisfação</p>
+                    <p class="text-[#7f6c6f] text-sm mt-1">Das clientes e alunas</p>
+                  </div>
+                </div>
+                
+                <!-- Diferencial 3 -->
+                <div class="feature-slide prev">
+                  <div class="feature-card hover-grow">
+                    <div class="feature-number">1° Dia</div>
+                    <p class="text-[#161313] text-base font-medium">Resultados</p>
+                    <p class="text-[#7f6c6f] text-sm mt-1">Visíveis na primeira lavagem</p>
+                  </div>
+                </div>
+
+                <!-- Diferencial 4 -->
+               <div class="feature-slide">
+                  <div class="feature-card hover-grow">
+                   <div class="feature-number">Mestre</div>
+                  <p class="text-[#161313] text-base font-medium">Federada</p>
+                   <p class="text-[#7f6c6f] text-sm mt-1">Certificação como Mestre na área</p>
+                  </div>
+                </div>
+
+                <!-- Diferencial 5 -->
+               <div class="feature-slide">
+                 <div class="feature-card hover-grow">
+                  <div class="feature-number">FEPECS</div>
+                  <p class="text-[#161313] text-base font-medium">Internacional</p>
+                  <p class="text-[#7f6c6f] text-sm mt-1">Certificação internacional reconhecida</p>
+                 </div>
+               </div>
+
+               <!-- Diferencial 6 -->
+                <div class="feature-slide">
+                  <div class="feature-card hover-grow">
+                   <div class="feature-number">25+</div>
+                  <p class="text-[#161313] text-base font-medium">Anos Atuando</p>
+                 <p class="text-[#7f6c6f] text-sm mt-1">Experiência comprovada no mercado</p>
+               </div>
+             </div>
+
+             <!-- Diferencial 7 -->
+                <div class="feature-slide">
+                  <div class="feature-card hover-grow">
+                   <div class="feature-number">130</div>
+                    <p class="text-[#161313] text-base font-medium">Países</p>
+                    <p class="text-[#7f6c6f] text-sm mt-1">Diplomas válidos internacionalmente</p>
+                  </div>
                 </div>
               </div>
-              
-              <!-- Diferencial 2 -->
-              <div class="feature-slide">
-                <div class="feature-card hover-grow">
-                  <div class="feature-number">95%</div>
-                  <p class="text-[#161313] text-base font-medium">Satisfação</p>
-                  <p class="text-[#7f6c6f] text-sm mt-1">Das clientes e alunas</p>
-                </div>
-              </div>
-              
-              <!-- Diferencial 3 -->
-              <div class="feature-slide">
-                <div class="feature-card hover-grow">
-                  <div class="feature-number">7 dias</div>
-                  <p class="text-[#161313] text-base font-medium">Resultados</p>
-                  <p class="text-[#7f6c6f] text-sm mt-1">Visíveis em até 1 semana</p>
-                </div>
-              </div>
+            </div>
+            
+            <div class="features-nav">
+              <div class="features-nav-dot active" data-index="0"></div>
+              <div class="features-nav-dot" data-index="1"></div>
+              <div class="features-nav-dot" data-index="2"></div>
+              <div class="features-nav-dot" data-index="3"></div>
+              <div class="features-nav-dot" data-index="4"></div>
+              <div class="features-nav-dot" data-index="5"></div>
+              <div class="features-nav-dot" data-index="6"></div>
             </div>
           </div>
         </section>
@@ -423,26 +585,51 @@
           </div>
 
           <!-- Técnicas Exclusivas -->
-          <div class="p-4 techniques-section">
-            <div class="hover-grow rounded-xl bg-white shadow-sm transition-all hover:shadow-md techniques-card overflow-hidden">
+          <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
+       <h2 class="mentorship-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 text-left">Atendimentos</h2>
+   
+          <div class="service-cards-container">
+            <!-- Card 1 - Alisamento Definitiva -->
+            <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">Alisamento de Luxo</p>
-                <p class="text-[#161313] text-base font-bold leading-tight">Técnicas Exclusivas</p>
+                <p class="text-[#7f6c6f] text-sm font-bold leading-normal">Alisamento de Luxo - Definitiva</p>
                 <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
-                  Descubra o segredo do alisamento perfeito que preserva a saúde dos fios e proporciona brilho intenso por até 6 meses.
+                  Resultados que duram até 6 meses, com proteção e nutrição intensiva dos fios. Técnica exclusiva que preserva a saúde capilar.
                 </p>
               </div>
               <button 
-               onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20as%20t%C3%A9cnicas%20exclusivas%20de%20alisamento%20capilar.%20Pode%20me%20explicar%3F')"
-              <button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-2 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
-                <span class="truncate">Saiba Mais</span>
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20agendar%20o%20Alisamento%20de%20Luxo%20Definitivo.%20Pode%20me%20informar%20mais%20detalhes%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Agendar Agora</span>
               </button>
               
               <!-- Video Container -->
-              <div class="video-container">
+              <div class="video-container mt-3">
                 <video autoplay loop muted playsinline webkit-playsinline class="w-full">
                   <source src="VIDEO001.mp4" type="video/mp4">
                 </video>
+              </div>
+            </div>
+
+            <!-- Card 2 - Alisamento semiDefinitiva (NOVO) -->
+            <div class="service-card hover-grow">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#7f6c6f] text-sm font-bold leading-normal">Alisamento de Luxo - semiDefinitiva</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Efeito alisado por até 3 meses, ideal para quem busca um resultado mais natural. Tratamento reconstrutor incluso.
+                </p>
+              </div>
+              <button 
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Alisamento%20semiDefinitivo.%20Pode%20me%20explicar%20como%20funciona%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Agendar Agora</span>
+              </button>
+              
+              <!-- Video Container para o segundo serviço -->
+                <div class="video-container mt-3">
+                  <video autoplay loop muted playsinline webkit-playsinline class="w-full">
+                    <source src="VIDEO002.mp4" type="video/mp4">
+                    </video>
               </div>
             </div>
           </div>
@@ -450,7 +637,7 @@
 
         <!-- Courses Section -->
         <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
-          <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Cursos</h2>
+          <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-5">Cursos</h2>
           <div class="px-4">
             <div class="courses-carousel">
               <!-- Curso 1 -->
@@ -459,7 +646,7 @@
                 <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
                   <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("FOTO004.jpeg");'></div>
                   <div>
-                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento Capilar</p>
+                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Basico</p>
                     <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
                   </div>
                   
@@ -477,7 +664,7 @@
                 <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
                   <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("FOTO005.png");'></div>
                   <div>
-                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento Capilar Avançado</p>
+                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
                     <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
                   </div>
                   
@@ -494,7 +681,7 @@
                 <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
                   <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("FOTO006.png");'></div>
                   <div>
-                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento Capilar Master</p>
+                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
                     <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
                   </div>
                   <button 
@@ -596,7 +783,7 @@
                   </svg>
                 </div>
                 <div class="faq-answer">
-                  <p>O alisamento dura em média 4-6 meses, dependendo do tipo de cabelo e dos cuidados pós-procedimento.</p>
+                  <p>O alisamento dura em média 9-12 meses, dependendo do tipo de cabelo e dos cuidados pós-procedimento.</p>
                 </div>
               </div>
               
@@ -683,70 +870,147 @@
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Otimização para carregamento de imagens
-        const images = document.querySelectorAll('.img-loading');
-        images.forEach(img => {
-          setTimeout(() => {
-            img.classList.remove('img-loading');
-          }, 1000);
-        });
+         document.addEventListener('DOMContentLoaded', () => {
+  // Otimização para carregamento de imagens
+  const images = document.querySelectorAll('.img-loading');
+  images.forEach(img => {
+    setTimeout(() => {
+      img.classList.remove('img-loading');
+    }, 1000);
+  });
 
-        // Intersection Observer
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px'
-        };
+  // Intersection Observer
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
 
-        const animateOnScroll = (entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-            }
-          });
-        };
+  const animateOnScroll = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+      }
+    });
+  };
 
-        const observer = new IntersectionObserver(animateOnScroll, observerOptions);
-        
-        document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
-          section.style.opacity = '0';
-          observer.observe(section);
-        });
+  const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+  
+  document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
+    section.style.opacity = '0';
+    observer.observe(section);
+  });
 
-        // FAQ Accordion - Nova implementação garantida
-        document.querySelectorAll('.faq-question').forEach(question => {
-          question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const icon = this.querySelector('svg');
-            
-            // Fecha todas as outras respostas
-            document.querySelectorAll('.faq-answer').forEach(ans => {
-              if (ans !== answer) {
-                ans.classList.remove('active');
-                ans.previousElementSibling.classList.remove('active');
-              }
-            });
-            
-            // Alterna a resposta atual
-            this.classList.toggle('active');
-            answer.classList.toggle('active');
-            
-            // Atualiza o ícone
-            if (this.classList.contains('active')) {
-              icon.style.transform = 'rotate(180deg)';
-            } else {
-              icon.style.transform = 'rotate(0deg)';
-            }
-          });
-        });
-
-        // Melhoria de performance para mobile
-        if (window.innerWidth <= 480) {
-          document.body.addEventListener('touchstart', function() {}, { 
-            passive: true 
-          });
+  // FAQ Accordion
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+      const answer = this.nextElementSibling;
+      const icon = this.querySelector('svg');
+      
+      // Fecha todas as outras respostas
+      document.querySelectorAll('.faq-answer').forEach(ans => {
+        if (ans !== answer) {
+          ans.classList.remove('active');
+          ans.previousElementSibling.classList.remove('active');
         }
       });
-    </script>
+      
+      // Alterna a resposta atual
+      this.classList.toggle('active');
+      answer.classList.toggle('active');
+      
+      // Atualiza o ícone
+      if (this.classList.contains('active')) {
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        icon.style.transform = 'rotate(0deg)';
+      }
+    });
+  });
+
+  // Carrossel de Diferenciais (Efeito de Carta de Baralho)
+  const featureSlides = document.querySelectorAll('.feature-slide');
+  const featureDots = document.querySelectorAll('.features-nav-dot');
+  let currentFeatureIndex = 0;
+  const featureCount = featureSlides.length;
+  let featureInterval;
+
+  function updateFeatureCarousel() {
+    featureSlides.forEach((slide, index) => {
+      // Remove todas as classes primeiro
+      slide.classList.remove('active', 'next', 'prev', 'hidden');
+      
+      // Calcula os índices relativos
+      let diff = (index - currentFeatureIndex + featureCount) % featureCount;
+      
+      // Aplica as classes com base na posição relativa
+      if (diff === 0) {
+        slide.classList.add('active');
+      } else if (diff === 1) {
+        slide.classList.add('next');
+      } else if (diff === 2) {
+         slide.classList.add('prev');
+      } else if (diff === 3 || diff === featureCount - 1) {
+        slide.classList.add('hidden');
+      } else {
+        slide.classList.add('hidden');
+      }
+    });
+    
+    // Atualiza os dots de navegação
+    featureDots.forEach((dot, index) => {
+      if (index === currentFeatureIndex) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function nextFeature() {
+    currentFeatureIndex = (currentFeatureIndex + 1) % featureCount;
+    updateFeatureCarousel();
+  }
+
+  // Inicia o carrossel automático
+  function startFeatureInterval() {
+    featureInterval = setInterval(nextFeature, 3000);
+  }
+  
+  startFeatureInterval();
+
+  // Pausa ao passar o mouse
+  const featuresContainer = document.querySelector('.features-stack-container');
+  if (featuresContainer) {
+    featuresContainer.addEventListener('mouseenter', () => {
+      clearInterval(featureInterval);
+    });
+    
+    featuresContainer.addEventListener('mouseleave', startFeatureInterval);
+  }
+
+  // Navegação pelos dots
+  featureDots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      const index = parseInt(this.getAttribute('data-index'));
+      currentFeatureIndex = index;
+      updateFeatureCarousel();
+      
+      // Reinicia o intervalo
+      clearInterval(featureInterval);
+      startFeatureInterval();
+    });
+  });
+
+  // Inicializa o carrossel
+  updateFeatureCarousel();
+
+  // Melhoria de performance para mobile
+  if (window.innerWidth <= 480) {
+    document.body.addEventListener('touchstart', function() {}, { 
+      passive: true 
+    });
+  }
+});
+</script>
 </body>
 </html>
