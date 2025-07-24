@@ -50,7 +50,7 @@
         border-radius: 3px;
       }
       
-      /* Hero Image - Removido parallax */
+      /* Hero Image */
       .hero-section {
         background-position: center;
         background-repeat: no-repeat;
@@ -265,6 +265,17 @@
             transform: translateY(0);
           }
         }
+
+        body, html {
+         margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+         scroll-behavior: smooth;
+        }
+
+         header {
+          position: static !important;
+       }
         
         .scroll-animate {
           opacity: 0;
@@ -272,56 +283,192 @@
           backface-visibility: hidden;
           perspective: 1000px;
         }
-        
-        .header-title {
-          font-size: 1.1rem;
-          padding-left: 0 !important;
-          padding: 1rem 0;
-          text-align: center;
-          width: fit-content;
-          margin: 0 auto;
-          display: block;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
   
   /* Hero section mobile */
         .hero-section {
-          min-height: 385px !important;
-          margin-top: -60px;
-          padding-top: 80px; /* Compensação */
-          background-size: cover;
-          background-position: center 30%; /* Ajusta o enquadramento */
+          margin-top: 0 !important;
+         padding-top: 0 !important;
+         min-height: 100vh;
+         position: relative;
+         top: -60px;
         }
 
-        header {
-            position: relative;
-            z-index: 20;
+        .hero-section button {
+          margin-top: -40px !important;
+          position: relative !important;
+          top: -65px !important;
+        }
+
+            .burger-floating {
+            position: fixed !important;
+            top: 15px !important;
+            right: 15px !important;
+            z-index: 1001 !important;
+            width: 30px !important;
+            height: 50px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+            .burger {
+                width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            }
+            
+            .burger-line {
+                width: 22px;
+            height: 2px;
+            background: #f3f1f2;
+            margin: 4px 0;
+            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transform-origin: center;
+            box-shadow: 0 0 3px rgba(163, 143, 54, 0.418);
+            }
+            
+            .burger.active .burger-line:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+                background: #fff;
+            }
+            
+            .burger.active .burger-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .burger.active .burger-line:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+                background: #fff;
+            }
+            
+            .menu-popup {
+               position: fixed;
+            top: 80px;
+            right: 20px;
+            left: auto;
+            background: #f3f1f2;
+            border-radius: 22px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform-origin: top right;
+            transform: scale(0.8) translateY(-20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            min-width: 220px;
+            z-index: 1001;
+            padding: 8px 0;
+            pointer-events: auto;
+            }
+            
+            .menu-popup.active {
+                transform: scale(1) translateY(0);
+            opacity: 1;
+            }
+
+            .menu-popup.closing {
+            transform: scale(0.8) translateY(-20px);
+            opacity: 0;
+        }
+            
+            .menu-popup a {
+                display: flex;
+            align-items: center;
+            padding: 1.1rem 1.5rem;
+            text-decoration: none;
+            color: #161313;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            }
+
+           /* Efeito de clique no texto */
+          .menu-popup a span {
+           display: inline-block;
+           position: relative;
+           transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }  
+
+          @keyframes textPop {
+    0% {
+        transform: scale(1);
+        text-shadow: none;
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(212, 180, 131, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 15px rgba(212, 180, 131, 0);
+    }
+  }
+
+          .menu-popup a:active span {
+           transform: translateY(-2px);
+            color: #D4B483; /* Cor dourada ao clicar */
+            text-shadow: 0 0 8px rgba(212, 180, 131, 0.4);
+         }
+
+       /* Efeito de onda saindo do texto */
+          .menu-popup a span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #D4B483;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+          }
+
+          .menu-popup a:active span::after {
+           transform: scaleX(1);
+           transform-origin: left;
+          }
+
+            .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-            position: relative;
-        }
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            z-index: 999;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                pointer-events: all;
+            }
 
-        .navbar-gradient-line {
-  height: 1px;
-  background: linear-gradient(90deg, 
-              rgba(255, 255, 255, 0.397) 0%, 
-              rgba(0,0,0,0.8) 50%, 
-              rgba(255, 255, 255, 0.404) 100%);
-  opacity: 0.3;
-        }
-  
-  /* Melhora a legibilidade do título na navbar */
-        .header-title {
-          font-size: 1rem;
-          padding: 0.5rem 0;
-          text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-        }
+            /* Ajuste para o conteúdo não ficar atrás do menu */
+            .hero-section {
+                margin-top: 60px !important;
+            }
 
         .mentorship-title, .courses-title, .testimonials-title, .features-title, .faq-title {
           font-size: 1.3rem;
-          padding-top: 0.25rem !important;
-          padding-bottom: 0.2rem;
+          padding-top: 2rem !important;
+          padding-bottom: 1.5rem;
         }
+        
+        .features-stack-container {
+    margin-top: 30px !important;
+  }
         
         /* Mentorship Card Styles */
         .mentorship-card {
@@ -361,6 +508,11 @@
         /* Hide image on mobile */
         .techniques-section .mentorship-image {
           display: none;
+        }
+
+        .container, .scroll-animate, .group\/design-root {
+          margin-top: 0 !important;
+          padding-top: 0 !important;
         }
         
         .course-card {
@@ -472,28 +624,44 @@
     </style>
 </head>
 <body>
+  
+  <div class="burger-floating">
+    <div class="burger" id="burger">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+    
+    <div class="menu-popup" id="menuPopup">
+        <a href="#inicio">Início</span></a>
+        <a href="#mentoria">Mentoria VIP</span></a>
+        <a href="#cursos">Cursos</span></a>
+        <a href="#atendimentos">Atendimentos</span></a>
+        <a href="#depoimentos">Depoimentos</span></a>
+        <a href="#contato">Contato</span></a>
+    </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
     <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Noto Serif", "Noto Sans", sans-serif;'>
       <div>
-        <!-- Header -->
-        <header class="animate-section opacity-0 scroll-animate bg-transparent">
-          <div class="flex items-center p-4 pb-3 justify-between">
-            <h2 class="header-title text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Alisamento de Luxo</h2>
-          </div>
-           <div class="navbar-gradient-line absolute bottom-0 left-0 right-0"></div>
-        </header>
 
         <!-- Hero Section -->
-        <div class="@container scroll-animate -mt-16">
-          <div class="@[480px]:p-4">
-            <div class="hero-section flex min-h-[400px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-20 animate-section opacity-0" style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("FOTO001.png");'>
+       <section id="inicio"></section>
+        <div class="@container scroll-animate" style="margin: 0; padding: 0;">
+           <div style="margin: 0; padding: 0;">   
+           <div class="hero-section flex flex-col items-center justify-center min-h-[100vh] w-full bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url('FOTO001.png');margin: 0;
+                                                                                                                                                                                                                                        padding: 0;
+                                                                                                                                                                                                                                        min-height: 100vh;">
               <div class="hero-section flex flex-col items-center justify-center min-h-[600px] text-center">
-                <div class="max-w-2xl mx-auto px-4"></div>
-               <h1 class="text-4xl text-white md:text-5xl font-black mb-2">JULIANA PALAVISSINI</h1>
-               <h2 class="text-sm text-white md:text-base mb-6">Transformando Iniciantes em Profissionais</h2>
+                <div class="mt-[-50px]"></div>
+               <h1 class="text-4xl text-white md:text-5xl font-black mb-0">JULIANA PALAVISSINI</h1>
+               <h2 class="text-sm text-white md:text-base mb-0">Transformando Iniciantes em Profissionais</h2>
               </div>
               <button 
                       onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio%20para%20o%20alisamento%20de%20luxo.')"
-                     class="btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#A05E2C] text-[#f3f1f2] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#D4B483] transition-colors">
+                     class="relative -top-8 btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#A05E2C] text-[#f3f1f2] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#D4B483] transition-colors">
                 <span class="truncate">Agendar Agora</span>
               </button>
             </div>
@@ -501,8 +669,9 @@
         </div>
 
         <!-- Diferenciais Section -->
-        <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.3s;">
-          <h2 class="features-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Diferenciais</h2>
+        <section class="animate-section opacity-0 scroll-animate !mt-0" style="animation-delay: 0.3s;">
+  <h2 class="features-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 !pb-1 !pt-0 !-mt-3">Diferenciais</h2>
+  <div class="b-2 !pt-0 !-mt-2">
           
           <div class="px-4">
             <div class="features-stack-container">
@@ -585,7 +754,7 @@
         </section>
 
         <!-- Mentorship Section -->
-        <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.4s;">
+        <section id="mentoria" class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.4s;">
           <h2 class="mentorship-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Mentoria</h2>
           
           <!-- Mentoria VIP -->
@@ -619,8 +788,8 @@
           </div>
 
           <!-- Técnicas Exclusivas -->
-          <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
-       <h2 class="mentorship-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 text-left">Atendimentos</h2>
+          <section id="atendimentos" class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
+       <h2 class="mentorship-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-8 text-left">Atendimentos</h2>
    
           <div class="service-cards-container">
             <!-- Card 1 - Alisamento Definitiva -->
@@ -670,8 +839,8 @@
         </section>
 
         <!-- Courses Section -->
-        <section class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
-          <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-5">Cursos</h2>
+        <section id="cursos" class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
+          <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-8">Cursos</h2>
           <div class="px-4">
             <div class="courses-carousel">
               <!-- Curso 1 -->
@@ -730,7 +899,7 @@
         </section>
 
         <!-- Testimonials Section -->
-        <section class="animate-section opacity-0 scroll-animate mt-7" style="animation-delay: 0.6s;">
+        <section id="depoimentos" class="animate-section opacity-0 scroll-animate mt-7" style="animation-delay: 0.6s;">
           <h2 class="testimonials-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Depoimentos</h2>
           
           <div class="px-4">
@@ -852,7 +1021,7 @@
       </div>
 
       <!-- Footer -->
-      <footer class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.8s;">
+      <footer id="contato" class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.8s;">
         <div class="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#f9f9f9]">
           <h3 class="footer-title text-[#161313] text-xl font-bold">Contato</h3>
           <div class="flex flex-col gap-4">
@@ -1034,6 +1203,45 @@
       startFeatureInterval();
     });
 });
+
+ // Script do menu
+const burger = document.getElementById('burger');
+const menuPopup = document.getElementById('menuPopup');
+const overlay = document.getElementById('overlay');
+
+// Fechar menu e rolar para seção
+document.querySelectorAll('#menuPopup a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        
+        // Fecha o menu
+        burger.classList.remove('active');
+        menuPopup.classList.remove('active');
+        overlay.classList.remove('active');
+        
+        // Rolagem suave
+        if(targetId !== '#') {
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Abrir/fechar menu ao clicar no ícone burger
+burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    menuPopup.classList.toggle('active');
+    overlay.classList.toggle('active');
+});
+
+// Fechar menu ao clicar no overlay
+overlay.addEventListener('click', () => {
+    burger.classList.remove('active');
+    menuPopup.classList.remove('active');
+    overlay.classList.remove('active');
+}); 
 
   // Inicializa o carrossel
   updateFeatureCarousel();
