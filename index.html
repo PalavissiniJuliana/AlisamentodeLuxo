@@ -281,6 +281,40 @@
           width: fit-content;
           margin: 0 auto;
           display: block;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+  
+  /* Hero section mobile */
+        .hero-section {
+          min-height: 400px; 
+          margin-top: -60px;
+          padding-top: 80px; /* Compensação */
+          background-size: cover;
+          background-position: center 30%; /* Ajusta o enquadramento */
+        }
+
+        header {
+            position: relative;
+            z-index: 20;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            position: relative;
+        }
+
+        .navbar-gradient-line {
+  height: 1px;
+  background: linear-gradient(90deg, 
+              rgba(255, 255, 255, 0.397) 0%, 
+              rgba(0,0,0,0.8) 50%, 
+              rgba(255, 255, 255, 0.404) 100%);
+  opacity: 0.3;
+        }
+  
+  /* Melhora a legibilidade do título na navbar */
+        .header-title {
+          font-size: 1rem;
+          padding: 0.5rem 0;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.8);
         }
 
         .mentorship-title, .courses-title, .testimonials-title, .features-title, .faq-title {
@@ -441,21 +475,21 @@
     <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Noto Serif", "Noto Sans", sans-serif;'>
       <div>
         <!-- Header -->
-        <header class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.1s;">
-          <div class="flex items-center bg-white p-4 pb-2 justify-between">
-            <h2 class="header-title text-[#161313] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Alisamento de Luxo</h2>
+        <header class="animate-section opacity-0 scroll-animate bg-transparent">
+          <div class="flex items-center p-4 pb-3 justify-between">
+            <h2 class="header-title text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Alisamento de Luxo</h2>
           </div>
+           <div class="navbar-gradient-line absolute bottom-0 left-0 right-0"></div>
         </header>
 
         <!-- Hero Section -->
-        <div class="@container scroll-animate">
+        <div class="@container scroll-animate -mt-16">
           <div class="@[480px]:p-4">
-            <div class="hero-section flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-4 animate-section opacity-0" style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("FOTO001.png");'>
-              <div class="flex flex-col gap-2 text-center">
-                <h1 class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] drop-shadow-lg">
-                 JULIANA PALAVISSINI
-                </h1>
-                <h2 class="text-white text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal drop-shadow-md">Transformando iniciantes em profissionais</h2>
+            <div class="hero-section flex min-h-[600px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-center justify-center p-20 animate-section opacity-0" style='animation-delay: 0.2s; background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("FOTO001.png");'>
+              <div class="hero-section flex flex-col items-center justify-center min-h-[600px] text-center">
+                <div class="max-w-2xl mx-auto px-4"></div>
+               <h1 class="text-4xl text-white md:text-5xl font-black mb-2">JULIANA PALAVISSINI</h1>
+               <h2 class="text-sm text-white md:text-base mb-6">Da técnica à prática</h2>
               </div>
               <button 
                       onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio%20para%20o%20alisamento%20de%20luxo.')"
@@ -999,7 +1033,7 @@
       clearInterval(featureInterval);
       startFeatureInterval();
     });
-  });
+});
 
   // Inicializa o carrossel
   updateFeatureCarousel();
