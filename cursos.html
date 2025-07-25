@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link rel="stylesheet" as="style" onload="this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Serif%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" />
+    <title>JULIANA PALAVISSINI | Cursos de Alisamento</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      /* Custom Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.03); }
+        100% { transform: scale(1); }
+      }
+      
+      .animate-section {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+      
+      .hover-grow {
+        transition: transform 0.3s ease;
+      }
+      
+      .hover-grow:hover {
+        transform: scale(1.02);
+      }
+      
+      .btn-pulse:hover {
+        animation: pulse 1.5s infinite;
+      }
+      
+      /* Custom Scrollbar for Courses */
+      .course-scroll::-webkit-scrollbar {
+        height: 6px;
+      }
+      
+      .course-scroll::-webkit-scrollbar-track {
+        background: #f3f1f2;
+      }
+      
+      .course-scroll::-webkit-scrollbar-thumb {
+        background: #D4B483;
+        border-radius: 3px;
+      }
+      
+      /* Hero Image */
+      .hero-section {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      
+      /* Loading Animation for Images */
+      .img-loading {
+        background: linear-gradient(90deg, #f3f1f2 25%, #D4B483 50%, #f3f1f2 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite linear;
+      }
+
+      .border-gold-gradient {
+        position: relative;
+        background: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 1.5rem;
+      }
+
+      .border-gold-gradient::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 0.75rem; 
+          padding: 2px;
+          background: linear-gradient(45deg, #f3f1f2, #161313);
+          -webkit-mask: 
+           linear-gradient(#fff 0 0) content-box, 
+           linear-gradient(#fff 0 0);
+         -webkit-mask-composite: xor;
+         mask-composite: exclude;
+         pointer-events: none;
+      }
+      
+      @keyframes shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+
+      /* Novos estilos adicionados */
+      .testimonial-card {
+        background: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      
+      .feature-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1rem;
+        background: #161313;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      
+      .feature-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #A05E2C;
+        margin-bottom: 0.5rem;
+      }
+      
+      .faq-item {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #f3f1f2;
+        padding-bottom: 1rem;
+      }
+      
+      .faq-question {
+        font-weight: 600;
+        color: #161313;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 12px 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      .faq-answer {
+        color: #7f6c6f;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding-top 0.3s ease;
+        padding-top: 0;
+      }
+      
+      .faq-answer.active {
+        max-height: 500px;
+        padding-top: 12px;
+      }
+      
+      .faq-question svg {
+        transition: transform 0.3s ease;
+        min-width: 16px;
+        margin-left: 8px;
+      }
+      
+      .faq-question.active svg {
+        transform: rotate(180deg);
+      }
+      
+      .course-badge {
+        position: absolute;
+        top: -0.5rem;
+        right: -0.5rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+        border-radius: 9999px;
+        z-index: 10;
+      }
+      
+      .badge-new {
+        background: #D4B483;
+        color: white;
+      }
+      
+      .badge-popular {
+        background: #A05E2C;
+        color: white;
+      }
+
+      /* Estilos para o novo carrossel de diferenciais */
+      .features-stack-container {
+        position: relative;
+        height: 220px; /* Altura fixa para o container */
+        perspective: 1000px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .features-stack {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+      }
+      
+      .feature-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        transition: transform 0.8s ease, opacity 0.8s ease, z-index 0.8s ease;
+      }
+      
+      .feature-slide.active {
+        transform: translateZ(0);
+        z-index: 3;
+        opacity: 1;
+      }
+      
+      .feature-slide.next {
+        transform: translateZ(-100px) translateY(20px) scale(0.9);
+        z-index: 2;
+        opacity: 0.8;
+      }
+      
+      .feature-slide.prev {
+        transform: translateZ(-200px) translateY(40px) scale(0.8);
+        z-index: 1;
+        opacity: 0.6;
+      }
+      
+      .feature-slide.hidden {
+        opacity: 0;
+        z-index: 0;
+      }
+      
+      .features-nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      
+      .features-nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #D4B483;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      
+      .features-nav-dot.active {
+        background: #A05E2C;
+      }
+
+      .dark-theme {
+  background-color: #161313;
+  color: #f3f1f2;
+}
+
+/* Ajustes adicionais para outros elementos */
+.dark-theme .service-card,
+.dark-theme .testimonial-card {
+    background: #1e1b1b; /* Fundo mais claro que o body */
+    color: #f3f1f2; /* Texto claro */
+}
+
+.dark-theme .text-\[\#161313\] {
+    color: #f3f1f2 !important; /* Força texto claro */
+}
+
+.group\/design-root {
+  background-color: transparent !important;
+}
+
+      /* Mobile Styles */
+      @media (max-width: 480px) {
+        /* Animação simplificada */
+        @keyframes scrollUp {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        body, html {
+         margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+         scroll-behavior: smooth;
+        }
+
+       .video-darken {
+           filter: brightness(0.4) contrast(1.2);
+        }  
+
+       
+
+         header {
+          position: static !important;
+       }
+        
+        .scroll-animate {
+          opacity: 0;
+          animation: scrollUp 0.8s ease-out forwards;
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+  
+  /* Hero section mobile */
+        .hero-section {
+          margin-top: 0 !important;
+         padding-top: 0 !important;
+         min-height: 100vh;
+         position: relative;
+         top: -60px;
+        }
+
+        .hero-section button {
+          margin-top: -40px !important;
+          position: relative !important;
+          top: -65px !important;
+        }
+
+            .burger-floating {
+            position: fixed !important;
+            top: 15px !important;
+            right: 15px !important;
+            z-index: 1001 !important;
+            width: 30px !important;
+            height: 50px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.3s ease !important;
+        }
+
+            .burger {
+                width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 100;
+            }
+            
+            .burger-line {
+                width: 22px;
+            height: 2px;
+            background: #f3f1f2;
+            margin: 4px 0;
+            transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            transform-origin: center;
+            box-shadow: 0 0 3px rgba(163, 143, 54, 0.418);
+            }
+            
+            .burger.active .burger-line:nth-child(1) {
+                transform: translateY(6px) rotate(45deg);
+                background: #fff;
+            }
+            
+            .burger.active .burger-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .burger.active .burger-line:nth-child(3) {
+                transform: translateY(-6px) rotate(-45deg);
+                background: #fff;
+            }
+            
+            .menu-popup {
+               position: fixed;
+            top: 80px;
+            right: 20px;
+            left: auto;
+            background: #f3f1f2;
+            border-radius: 22px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform-origin: top right;
+            transform: scale(0.8) translateY(-20px);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            min-width: 220px;
+            z-index: 1001;
+            padding: 8px 0;
+            pointer-events: auto;
+            }
+            
+            .menu-popup.active {
+                transform: scale(1) translateY(0);
+            opacity: 1;
+            }
+
+            .menu-popup.closing {
+            transform: scale(0.8) translateY(-20px);
+            opacity: 0;
+        }
+            
+            .menu-popup a {
+                display: flex;
+            align-items: center;
+            padding: 1.1rem 1.5rem;
+            text-decoration: none;
+            color: #A05E2C;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            }
+
+           /* Efeito de clique no texto */
+          .menu-popup a span {
+           display: inline-block;
+           position: relative;
+           transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }  
+
+          @keyframes textPop {
+    0% {
+        transform: scale(1);
+        text-shadow: none;
+    }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 10px rgba(212, 180, 131, 0.7);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 15px rgba(212, 180, 131, 0);
+    }
+  }
+
+          .menu-popup a:active span {
+           transform: translateY(-2px);
+            color: #D4B483; /* Cor dourada ao clicar */
+            text-shadow: 0 0 8px rgba(212, 180, 131, 0.4);
+         }
+
+       /* Efeito de onda saindo do texto */
+          .menu-popup a span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #D4B483;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+          }
+
+          .menu-popup a:active span::after {
+           transform: scaleX(1);
+           transform-origin: left;
+          }
+
+            .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            z-index: 999;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            /* Ajuste para o conteúdo não ficar atrás do menu */
+            .hero-section {
+                margin-top: 60px !important;
+            }
+
+        .mentorship-title, .courses-title, .testimonials-title, .features-title, .faq-title {
+          font-size: 1.3rem;
+          padding-top: 2rem !important;
+          padding-bottom: 1.5rem;
+        }
+        
+        .features-stack-container {
+    margin-top: 30px !important;
+  }
+        
+        /* Mentorship Card Styles */
+        .mentorship-card {
+          flex-direction: column;
+          padding: 1.5rem;
+          gap: 1.5rem;
+        }
+        
+        .mentorship-content {
+          flex: none;
+          width: 100%;
+        }
+        
+        /* Techniques Section - Video Card */
+        .techniques-card {
+          display: flex;
+          flex-direction: column;
+          padding: 1.5rem;
+          gap: 1.5rem;
+        }
+
+        .image-container {
+           width: 100%;
+           border-radius: 0.75rem;
+           overflow: hidden;
+            min-height: 240px;
+           margin-top: 0.5rem;
+        }
+
+        .image-container img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .image-container:hover img {
+          transform: scale(1.03);
+       }
+        
+        /* Hide image on mobile */
+        .techniques-section .mentorship-image {
+          display: none;
+        }
+
+        .container, .scroll-animate, .group\/design-root {
+          margin-top: 0 !important;
+          padding-top: 0 !important;
+        }
+        
+        .course-card {
+          min-width: 85vw;
+        }
+        
+        /* Carrossel mobile otimizado */
+        .courses-carousel, .testimonials-carousel {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x proximity;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding-bottom: 1rem;
+          gap: 1rem;
+        }
+        
+        .courses-carousel::-webkit-scrollbar,
+        .testimonials-carousel::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .course-slide, .testimonial-slide {
+          scroll-snap-align: start;
+          flex: 0 0 85%;
+          margin-right: 1rem;
+        }
+        
+        .course-slide:last-child,
+        .testimonial-slide:last-child {
+          margin-right: 0;
+        }
+        
+        /* Ajustes para o novo carrossel de diferenciais */
+        .features-stack-container {
+          height: 200px;
+        }
+        
+        .feature-card {
+          min-height: 180px;
+          padding: 1rem;
+        }
+        
+        .feature-number {
+          font-size: 2rem;
+        }
+
+        /* Novo estilo para cards de atendimento */
+        .service-cards-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          padding: 0 1rem;
+        }
+
+        .service-card {
+          background: white;
+          border-radius: 0.75rem;
+          padding: 1.5rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+      }
+      
+      /* Desktop Styles */
+      @media (min-width: 481px) {
+        .courses-carousel {
+           display: flex;
+           overflow-x: hidden;
+           width: 100%;
+           scroll-snap-type: x mandatory;
+        }
+        
+        .testimonials-carousel {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+
+        /* Hide video on desktop */
+        .video-container {
+          display: none;
+        }
+
+        /* Show image on desktop */
+        .techniques-section .mentorship-image {
+          display: block;
+        }
+        
+        /* Ajustes para o novo carrossel de diferenciais */
+        .features-stack-container {
+          height: 240px;
+          max-width: 350px;
+        }
+        
+        .feature-card {
+          min-height: 200px;
+        }
+
+        /* Estilo para desktop dos cards de atendimento */
+        .service-cards-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+          padding: 0 1.5rem;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+</head>
+<body class="dark-theme"></body>
+  
+  <div class="burger-floating">
+    <div class="burger" id="burger">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </div>
+    
+   <div class="menu-popup" id="menuPopup">
+    <a href="index.html" class="menu-link">Início</a>
+    <a href="index.html#mentoria" class="menu-link">Mentoria VIP</a>
+    <a href="cursos.html" class="menu-link active">Cursos</a>
+    <a href="index.html#atendimentos" class="menu-link">Atendimentos</a>
+    <a href="index.html#depoimentos" class="menu-link">Depoimentos</a>
+    <a href="index.html#contato" class="menu-link">Contato</a>
+</div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+    <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Noto Serif", "Noto Sans", sans-serif;'>
+      <div>
+
+        <!-- Hero Section -->
+        <div class="@container scroll-animate" style="margin: 0; padding: 0;">
+           <div style="margin: 0; padding: 0;">   
+           <video autoplay loop muted playsinline webkit-playsinline class="absolute w-full h-full object-cover z-0"
+      style="top: 0; left: 0;">
+      <source src="CURSO01/HEROVIDEO1.mp4" type="video/mp4">
+          </video>
+    
+     <!-- Overlay com gradiente personalizado -->
+    <div class="absolute inset-0 z-1" 
+         style="background: linear-gradient(to top, #161313 8%, rgba(0, 0, 0, 0.473) 83%);"></div>
+                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                        
+               <div class="relative z-10 flex flex-col items-center justify-center min-h-[100vh] w-full text-center text-white px-4 pb-20">
+                 <div class="flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
+               <h1 class="text-4xl text-[#161313] md:text-5xl font-black mb-2">CURSOS</h1>
+               <h2 class="text-sm text-[#161313] md:text-base mb-12">ALISAMENTO DE LUXO</h2>
+              </div>
+              <button 
+                      onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20saber%20mais%20sobre%20os%20cursos%20de%20alisamento%20de%20luxo.')"
+                     class="relative -top-8 btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5  text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] transition-colors">
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cursos Section -->
+        <section class="animate-section opacity-0 scroll-animate !mt-0" style="animation-delay: 0.3s;">
+           <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-2">Todos os Cursos</h2>
+            <div class="service-cards-container">
+            <!-- Card 1 - Curso Básico -->
+            <div class="service-card hover-grow">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Básico de Alisamento</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Aprenda as técnicas fundamentais do alisamento de luxo, desde a preparação dos fios até a finalização profissional.
+                </p>
+                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                  <li>Duração: 8 horas</li>
+                  <li>Certificado inclusivo</li>
+                  <li>Material didático completo</li>
+                  <li>Acesso a grupo exclusivo</li>
+                </ul>
+              </div>
+              <button 
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20me%20inscrever%20no%20Curso%20B%C3%A1sico%20de%20Alisamento.%20Pode%20me%20informar%20mais%20detalhes%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Quero me Inscrever</span>
+              </button>
+              
+              <!-- imagem Container -->
+              <div class="image-container mt-3">
+                <img src="PRINCIPAL/FOTO004.png" alt="Demonstração do Curso Básico" class="w-full rounded-lg">
+             </div>
+            </div>
+
+            <!-- Card 2 - Curso Avançado -->
+            <div class="service-card hover-grow relative">
+             <div class="absolute top-0 right-0 bg-[#D4B483] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg animate-[pulse_2s_infinite] transform translate-x-1 -translate-y-1 z-10">
+             EM ALTA
+            </div>
+
+              <div class="flex flex-col gap-1">
+                <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Avançado</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Domine técnicas profissionais para diferentes tipos de cabelo e aprenda a corrigir problemas comuns no alisamento.
+                </p>
+                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                  <li>Duração: 12 horas</li>
+                  <li>Certificado internacional</li>
+                  <li>Kit profissional inclusivo</li>
+                  <li>Mentoria pós-curso</li>
+                </ul>
+              </div>
+              <button 
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20Avan%C3%A7ado%20de%20Alisamento.%20Pode%20me%20explicar%20como%20funciona%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Quero me Inscrever</span>
+              </button>
+              
+              <!-- imagem Container para o segundo serviço -->
+                <div class="image-container mt-3">
+                <img src="PRINCIPAL/FOTO005.png" alt="Demonstração do Curso Básico" class="w-full rounded-lg">
+             </div>
+            </div>
+
+            <!-- Card 3 - Curso Master -->
+            <div class="service-card hover-grow">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Master</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Torne-se um especialista em alisamento de luxo com técnicas exclusivas e aprenda a criar sua própria linha de produtos.
+                </p>
+                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                  <li>Duração: 20 horas</li>
+                  <li>Certificado Master internacional</li>
+                  <li>Kit profissional completo</li>
+                  <li>Mentoria individual</li>
+                </ul>
+              </div>
+              <button 
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20Master%20de%20Alisamento.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Quero me Inscrever</span>
+              </button>
+              
+              <!-- imagem Container -->
+              <div class="image-container mt-3">
+                <img src="PRINCIPAL/FOTO006.png" alt="Demonstração do Curso Básico" class="w-full rounded-lg">
+              </div>
+            </div>
+
+            <!-- Card 4 - Curso Online -->
+            <div class="service-card hover-grow">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Online Completo</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Aprenda alisamento de luxo no seu ritmo com nosso curso online completo, com acesso vitalício a todas as aulas.
+                </p>
+                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                  <li>Acesso imediato</li>
+                  <li>Mais de 15 horas de vídeo</li>
+                  <li>Certificado digital</li>
+                  <li>Suporte exclusivo</li>
+                </ul>
+              </div>
+              <button 
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20Online%20de%20Alisamento.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Quero me Inscrever</span>
+              </button>
+              
+              <!-- imagem Container para o segundo serviço -->
+               <div class="image-container mt-3">
+                <img src="curso-basico.jpg" alt="Demonstração do Curso Básico" class="w-full rounded-lg">
+              </div>
+            </div>
+
+            <!-- Card 5 - Workshop Intensivo -->
+            <div class="service-card hover-grow">
+              <div class="flex flex-col gap-1">
+                <p class="text-[#ffffff] text-sm font-bold leading-normal">Workshop Intensivo</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                  Workshop presencial de um dia com técnicas avançadas e segredos profissionais do alisamento de luxo.
+                </p>
+                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                  <li>Duração: 6 horas</li>
+                  <li>Aulas práticas</li>
+                  <li>Material incluso</li>
+                  <li>Certificado de participação</li>
+                </ul>
+              </div>
+              <button 
+                onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20participar%20do%20Workshop%20Intensivo%20de%20Alisamento.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                <span class="truncate">Quero me Inscrever</span>
+              </button>
+              
+              <!-- imagem Container -->
+              <div class="image-container mt-3">
+             <img src="IMAGEM001.jpg" alt="Curso Básico de Alisamento" class="w-full rounded-lg">
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="animate-section opacity-0 scroll-animate mt-8 mb-10 bg-[#161313] py-8 px-4" style="animation-delay: 0.7s;">
+          <h2 class="faq-title text-[#f3f1f2] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3">Perguntas Frequentes</h2>
+          
+          <div>
+            <div class="bg-[#161313] rounded-xl">
+              <!-- FAQ Item 1 -->
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="text-[#f3f1f2]">Quanto tempo dura cada curso?</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                </div>
+                <div class="faq-answer">
+                  <p class="text-[#D4B483]">O curso básico tem 8 horas, o avançado 12 horas e o master 20 horas de duração. O curso online tem mais de 15 horas de conteúdo.</p>
+                </div>
+              </div>
+              
+              <!-- FAQ Item 2 -->
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="text-[#f3f1f2]">Os cursos emitem certificado?</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                </div>
+                <div class="faq-answer">
+                  <p class="text-[#D4B483]">Sim, todos nossos cursos emitem certificado digital reconhecido nacional e internacionalmente.</p>
+                </div>
+              </div>
+              
+              <!-- FAQ Item 3 -->
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="text-[#f3f1f2]">Posso fazer o curso sem experiência?</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                </div>
+                <div class="faq-answer">
+                  <p class="text-[#D4B483]">Com certeza! Temos módulos desde o básico até o avançado, perfeito para iniciantes e profissionais que querem se especializar.</p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="text-[#f3f1f2]">O material está incluso no valor do curso?</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                </div>
+                <div class="faq-answer">
+                  <p class="text-[#D4B483]">Sim, todos os cursos presenciais incluem material didático completo e kit profissional (nos cursos avançado e master).</p>
+                </div>
+              </div>
+
+              <!-- FAQ Item 5 -->
+              <div class="faq-item">
+                <div class="faq-question">
+                  <span class="text-[#f3f1f2]">Há algum suporte após o curso?</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
+                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
+                  </svg>
+                </div>
+                <div class="faq-answer">
+                  <p class="text-[#D4B483]">Sim, oferecemos suporte por 3 meses após o curso e acesso a grupo exclusivo de alunos no WhatsApp para tirar dúvidas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer id="contato" class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.8s;">
+        <div class="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#f9f9f9]">
+          <h3 class="footer-title text-[#161313] text-xl font-bold">Contato</h3>
+          <div class="flex flex-col gap-4">
+            <a href="tel:+554185274188" class="flex items-center justify-center gap-2 text-[#7f6c6f] hover:text-[#E8D8C0] transition-colors footer-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.13L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46Z"></path>
+              </svg>
+              (41) 8527-4188
+            </a>
+            <a href="mailto:contato@julianapalavissini.com" class="flex items-center justify-center gap-2 text-[#A05E2C] hover:text-[#E8D8C0] transition-colors footer-contact">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"></path>
+              </svg>
+              contato@julianapalavissini.com
+            </a>
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" class="hover:scale-110 transition-transform">
+              <div class="text-[#A05E2C] hover:text-[#A05E2C] transition-colors" data-icon="InstagramLogo" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+                </svg>
+              </div>
+            </a>
+            <a href="#" class="hover:scale-110 transition-transform">
+              <div class="text-[#A05E2C] hover:text-[#7f6c6f] transition-colors" data-icon="WhatsAppLogo" data-size="24px" data-weight="regular">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                  <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
+                </svg>
+              </div>
+            </a>
+          </div>
+          <p class="footer-copyright text-[#A05E2C] text-base font-normal leading-normal">© 2024 Juliana Palavissini. Todos os direitos reservados.</p>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-4">
+  Site desenvolvido por <a href="https://wa.me/5546991207326" target="_blank" class="underline hover:text-black font-semibold">(Luis Eduardo Dalla)</a> — Fale comigo pelo WhatsApp.
+</p>
+      </footer>
+      
+      <!-- WhatsApp Button -->
+      <a href="https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20saber%20mais%20sobre%20os%20cursos%20de%20alisamento%20de%20luxo."
+        class="fixed bottom-6 right-6 z-50 animate-bounce">
+        <div class="flex items-center justify-center w-14 h-14 rounded-full bg-[#A05E2C] shadow-lg hover:scale-110 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 256 256">
+            <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', () => {
+  // Otimização para carregamento de imagens
+  const images = document.querySelectorAll('.img-loading');
+  images.forEach(img => {
+    setTimeout(() => {
+      img.classList.remove('img-loading');
+    }, 1000);
+  });
+
+  // Intersection Observer
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px'
+  };
+
+  const animateOnScroll = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+  
+  document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
+    section.style.opacity = '0';
+    observer.observe(section);
+  });
+
+  // FAQ Accordion Corrigido
+document.querySelectorAll('.faq-question').forEach(question => {
+  question.addEventListener('click', function(e) {
+    e.preventDefault(); // Isso impede o comportamento padrão de links
+    e.stopPropagation(); // Isso impede a propagação do evento
+
+    const answer = this.nextElementSibling;
+    const icon = this.querySelector('svg');
+    
+    // Alterna a resposta atual
+    this.classList.toggle('active');
+    answer.classList.toggle('active');
+    
+    // Atualiza o ícone
+    icon.style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+});
+
+ // Menu Burger corrigido
+const burger = document.getElementById('burger');
+const menuPopup = document.getElementById('menuPopup');
+const overlay = document.getElementById('overlay');
+const menuLinks = document.querySelectorAll('.menu-link');
+
+// Função para fechar o menu
+const closeMenu = () => {
+  burger.classList.remove('active');
+  menuPopup.classList.remove('active');
+  overlay.classList.remove('active');
+};
+
+// Abrir/fechar menu
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  menuPopup.classList.toggle('active');
+  overlay.classList.toggle('active');
+});
+
+// Fechar ao clicar no overlay
+overlay.addEventListener('click', closeMenu);
+
+// Tratamento dos links do menu
+menuLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    // Fecha o menu
+    closeMenu();
+    
+    // Se for link para a página atual (cursos.html), não faz nada
+    if(this.href.includes('cursos.html')) return;
+    
+    // Se for link para outra página
+    if(!this.href.includes(window.location.href)) {
+      e.preventDefault();
+      window.location.href = this.href;
+    }
+  });
+});
+
+// Tratamento especial para links âncora
+if(window.location.hash) {
+  setTimeout(() => {
+    const target = document.querySelector(window.location.hash);
+    if(target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 300);
+}
+
+  // Melhoria de performance para mobile
+  if (window.innerWidth <= 480) {
+    document.body.addEventListener('touchstart', function() {}, { 
+      passive: true 
+    });
+  }
+});
+</script>
+</body>
+</html>
