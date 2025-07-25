@@ -1219,6 +1219,26 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
     </div>
 
     <script>
+
+    // Adiciona este código no início do seu script
+window.onload = function() {
+  // Rolagem suave para o topo ao carregar a página
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+  
+  // Força o scroll para o topo imediatamente (como fallback)
+  window.scrollTo(0, 0);
+  
+  // Adiciona um listener para o evento beforeunload
+  window.addEventListener('beforeunload', function() {
+    // Força o scroll para o topo antes de recarregar
+    window.scrollTo(0, 0);
+  });
+};
+
+
          document.addEventListener('DOMContentLoaded', () => {
   // Otimização para carregamento de imagens
   const images = document.querySelectorAll('.img-loading');
