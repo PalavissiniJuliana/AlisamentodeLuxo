@@ -162,15 +162,15 @@
       }
       
       .course-badge {
-        position: absolute;
-        top: -0.5rem;
-        right: -0.5rem;
-        font-size: 0.75rem;
-        font-weight: 700;
-        padding: 0.25rem 0.5rem;
-        border-radius: 9999px;
-        z-index: 10;
-      }
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
       
       .badge-new {
         background: #D4B483;
@@ -276,6 +276,25 @@
          header {
           position: static !important;
        }
+
+       .menu-link {
+           display: flex;
+           align-items: center;
+           padding: 1.1rem 1.5rem;
+           text-decoration: none;
+           color: #A05E2C;
+           font-weight: 500;
+          font-size: 0.95rem;
+          letter-spacing: 0.2px;
+          transition: all 0.3s ease;
+           cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+      }
+
+          .menu-link:hover {
+             color: #D4B483;
+             background-color: rgba(212, 180, 131, 0.1);
+        }
         
         .scroll-animate {
           opacity: 0;
@@ -574,7 +593,29 @@
           padding: 1.5rem;
           box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-      }
+
+        /* Estilo para o carrossel swipeable */
+      .no-scrollbar {
+       -ms-overflow-style: none;  /* IE and Edge */
+       scrollbar-width: none;  /* Firefox */
+    }
+      .no-scrollbar::-webkit-scrollbar {
+       display: none;  /* Chrome, Safari and Opera */
+    }
+
+      .courses-carousel {
+      display: none;  
+    }
+
+    .features-nav {
+    display: none;
+  }
+
+      .course-slide {
+        scroll-snap-align: start;
+        flex: 0 0 auto;
+    }
+ }
       
       /* Desktop Styles */
       @media (min-width: 481px) {
@@ -633,13 +674,13 @@
     </div>
     
     <div class="menu-popup" id="menuPopup">
-        <a href="#inicio">Início</span></a>
-        <a href="#mentoria">Mentoria VIP</span></a>
-        <a href="#cursos">Cursos</span></a>
-        <a href="#atendimentos">Atendimentos</span></a>
-        <a href="#depoimentos">Depoimentos</span></a>
-        <a href="#contato">Contato</span></a>
-    </div>
+    <a href="index.html" class="menu-link">Início</a>
+    <a href="index.html#mentoria" class="menu-link">Mentoria VIP</a>
+    <a href="cursos.html" class="menu-link">Cursos</a>
+    <a href="index.html#atendimentos" class="menu-link">Atendimentos</a>
+    <a href="index.html#depoimentos" class="menu-link">Depoimentos</a>
+    <a href="index.html#contato" class="menu-link">Contato</a>
+ </div>
 </div>
 
 <div class="overlay" id="overlay"></div>
@@ -651,7 +692,7 @@
        <section id="inicio"></section>
         <div class="@container scroll-animate" style="margin: 0; padding: 0;">
            <div style="margin: 0; padding: 0;">   
-           <div class="hero-section flex flex-col items-center justify-center min-h-[100vh] w-full bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url('FOTO001.png');margin: 0;
+           <div class="hero-section flex flex-col items-center justify-center min-h-[100vh] w-full bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url('PRINCIPAL/FOTO001.png');margin: 0;
                                                                                                                                                                                                                                         padding: 0;
                                                                                                                                                                                                                                         min-height: 100vh;">
               <div class="hero-section flex flex-col items-center justify-center min-h-[600px] text-center">
@@ -783,7 +824,7 @@
                 </button>
               </div>
              <div class="img-loading w-full @[480px]:w-auto @[480px]:flex-1 aspect-video bg-cover rounded-xl overflow-hidden min-w-0"> <!-- Adicionei min-w-0 -->
-                 <img src="FOTO003.png" alt="Mentoria VIP" class="w-full h-full object-cover">
+                 <img src="PRINCIPAL/FOTO003.png" alt="Mentoria VIP" class="w-full h-full object-cover">
            </div>
           </div>
 
@@ -809,7 +850,7 @@
               <!-- Video Container -->
               <div class="video-container mt-3">
                 <video autoplay loop muted playsinline webkit-playsinline class="w-full">
-                  <source src="VIDEO001.mp4" type="video/mp4">
+                  <source src="PRINCIPAL/VIDEO001.mp4" type="video/mp4">
                 </video>
               </div>
             </div>
@@ -831,7 +872,7 @@
               <!-- Video Container para o segundo serviço -->
                 <div class="video-container mt-3">
                   <video autoplay loop muted playsinline webkit-playsinline class="w-full">
-                    <source src="VIDEO002.mp4" type="video/mp4">
+                    <source src="PRINCIPAL/VIDEO002.mp4" type="video/mp4">
                     </video>
               </div>
             </div>
@@ -840,61 +881,137 @@
 
         <!-- Courses Section -->
         <section id="cursos" class="animate-section opacity-0 scroll-animate mt-8" style="animation-delay: 0.5s;">
-          <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-8">Cursos</h2>
-          <div class="px-4">
-            <div class="courses-carousel">
-              <!-- Curso 1 -->
-              <div class="course-slide relative">
-                <div class="course-badge badge-popular">POPULAR</div>
-                <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
-                  <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("FOTO004.png");'></div>
-                  <div>
-                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Basico</p>
-                    <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
-                  </div>
-                  
-                  <button 
-                   onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20de%20Alisamento%20Capilar.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
-                  <button class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
-                    Detalhes
-                  </button>
-                </div>
-              </div>
-              
-              <!-- Curso 2 -->
-              <div class="course-slide relative">
-                <div class="course-badge badge-new">NOVO</div>
-                <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
-                  <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("FOTO005.png");'></div>
-                  <div>
-                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
-                    <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
-                  </div>
-                  
-                  <button 
-                     onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20de%20Alisamento%20Capilar%20Avan%C3%A7ado.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F')"
-                      <button class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
-                    Detalhes
-                  </button>
-                </div>
-              </div>
-              
-              <!-- Curso 3 -->
-              <div class="course-slide">
-                <div class="hover-grow flex h-full flex-1 flex-col gap-4 rounded-lg transition-transform">
-                  <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("FOTO006.png");'></div>
-                  <div>
-                    <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
-                    <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
-                  </div>
-                  <button 
-                   onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Vi%20o%20Curso%20de%20Alisamento%20Capilar%20Master%20no%20site%20e%20quero%20saber%20como%20participar.')"
-                  <button class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
-                    Detalhes
-                  </button>
-                </div>
-              </div>
+  <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-8">Cursos</h2>
+  
+  <div class="px-4">
+    <!-- Link "Ver todos" -->
+    <div class="mb-4 px-4">
+      <a href="cursos.html" class="text-[#A05E2C] text-sm font-medium hover:text-[#D4B483] transition-colors border-b border-[#A05E2C] hover:border-[#D4B483] pb-1">
+        Ver todos os cursos →
+      </a>
+    </div>
+    
+    <!-- Container principal -->
+    <div class="relative">
+      <!-- Desktop: Grid com 3 colunas -->
+      <div class="hidden md:grid md:grid-cols-3 gap-6">
+        <!-- Curso 1 -->
+        <div class="relative">
+          <div class="absolute top-3 right-3 z-10 bg-[#A05E2C] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+            POPULAR
+          </div>
+          <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
+            <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO004.png");'></div>
+            <div>
+              <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Básico</p>
+              <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
             </div>
+            <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20de%20Alisamento%20Capilar.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')" 
+                    class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
+              Detalhes
+            </button>
+          </div>
+        </div>
+        
+        <!-- Curso 2 -->
+        <div class="relative">
+          <div class="absolute top-3 right-3 z-10 bg-[#D4B483] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+            NOVO
+          </div>
+          <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
+            <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO005.png");'></div>
+            <div>
+              <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
+              <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
+            </div>
+            <button onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20de%20Alisamento%20Capilar%20Avan%C3%A7ado.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F')" 
+                    class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
+              Detalhes
+            </button>
+          </div>
+        </div>
+        
+        <!-- Curso 3 -->
+        <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
+          <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO006.png");'></div>
+          <div>
+            <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
+            <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
+          </div>
+          <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Vi%20o%20Curso%20de%20Alisamento%20Capilar%20Master%20no%20site%20e%20quero%20saber%20como%20participar.')" 
+                  class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
+            Detalhes
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile: Carrossel swipeable -->
+      <div class="md:hidden">
+        <div class="courses-carousel flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 no-scrollbar" 
+             style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; cursor: grab;"
+             id="coursesCarousel">
+          <!-- Mesmos cards do desktop, mas em formato de carrossel -->
+          <!-- Curso 1 -->
+          <div class="course-slide snap-start flex-none w-[85vw] relative">
+            <div class="absolute top-3 right-3 z-10 bg-[#A05E2C] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+              POPULAR
+            </div>
+            <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
+              <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO004.png");'></div>
+              <div>
+                <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Básico</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
+              </div>
+              <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20de%20Alisamento%20Capilar.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')" 
+                      class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
+                Detalhes
+              </button>
+            </div>
+          </div>
+          
+          <!-- Curso 2 -->
+          <div class="course-slide snap-start flex-none w-[85vw] relative">
+            <div class="absolute top-3 right-3 z-10 bg-[#D4B483] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
+              NOVO
+            </div>
+            <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
+              <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO005.png");'></div>
+              <div>
+                <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
+              </div>
+              <button onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20de%20Alisamento%20Capilar%20Avan%C3%A7ado.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F')" 
+                      class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
+                Detalhes
+              </button>
+            </div>
+          </div>
+          
+          <!-- Curso 3 -->
+          <div class="course-slide snap-start flex-none w-[85vw]">
+            <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
+              <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO006.png");'></div>
+              <div>
+                <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
+              </div>
+              <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Vi%20o%20Curso%20de%20Alisamento%20Capilar%20Master%20no%20site%20e%20quero%20saber%20como%20participar.')" 
+                      class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
+                Detalhes
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Bolinhas de navegação (somente mobile) -->
+        <div class="features-nav flex justify-center gap-2 mt-4 md:hidden">
+          <div class="features-nav-dot w-2 h-2 rounded-full bg-[#D4B483] active" data-index="0"></div>
+          <div class="features-nav-dot w-2 h-2 rounded-full bg-[#D4B483]" data-index="1"></div>
+          <div class="features-nav-dot w-2 h-2 rounded-full bg-[#D4B483]" data-index="2"></div>
+        </div>
+      </div>
+    </div>
+
           </div>
         </section>
 
@@ -1206,19 +1323,28 @@
 
  // Script do menu
 const burger = document.getElementById('burger');
-const menuPopup = document.getElementById('menuPopup');
-const overlay = document.getElementById('overlay');
+  const menuPopup = document.getElementById('menuPopup');
+  const overlay = document.getElementById('overlay');
+  const menuLinks = document.querySelectorAll('.menu-link');
 
-// Fechar menu e rolar para seção
-document.querySelectorAll('#menuPopup a').forEach(link => {
+ menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
+      // Para links âncora (#) na mesma página
+      if(link.getAttribute('href').startsWith('#')) {
         e.preventDefault();
         const targetId = link.getAttribute('href');
+        document.querySelector(targetId).scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+      closeMenu();
         
         // Fecha o menu
-        burger.classList.remove('active');
-        menuPopup.classList.remove('active');
-        overlay.classList.remove('active');
+        const closeMenu = () => {
+    burger.classList.remove('active');
+    menuPopup.classList.remove('active');
+    overlay.classList.remove('active');
+  };
         
         // Rolagem suave
         if(targetId !== '#') {
@@ -1229,19 +1355,125 @@ document.querySelectorAll('#menuPopup a').forEach(link => {
     });
 });
 
+// Melhorar performance em mobile
+  if (window.innerWidth <= 480) {
+    document.body.addEventListener('touchstart', () => {}, { 
+      passive: true 
+  });
+
 // Abrir/fechar menu ao clicar no ícone burger
-burger.addEventListener('click', () => {
+ burger.addEventListener('click', () => {
     burger.classList.toggle('active');
     menuPopup.classList.toggle('active');
     overlay.classList.toggle('active');
-});
+  });
+}
 
 // Fechar menu ao clicar no overlay
-overlay.addEventListener('click', () => {
-    burger.classList.remove('active');
-    menuPopup.classList.remove('active');
-    overlay.classList.remove('active');
-}); 
+overlay.addEventListener('click', closeMenu);
+
+// Carrossel de Cursos (somente mobile)
+function initCoursesCarousel() {
+  // Só inicializa em mobile
+  if (window.innerWidth >= 768) return;
+  
+  const carousel = document.getElementById('coursesCarousel');
+  const dots = document.querySelectorAll('.features-nav-dot');
+  
+  if (!carousel || dots.length === 0) return;
+  
+  // Atualiza as bolinhas de navegação
+  function updateDots() {
+    const scrollPos = carousel.scrollLeft;
+    const slideWidth = carousel.querySelector('.course-slide').offsetWidth;
+    const currentIndex = Math.round(scrollPos / slideWidth);
+    
+    dots.forEach((dot, index) => {
+      if (index === currentIndex) {
+        dot.classList.add('bg-[#A05E2C]');
+        dot.classList.remove('bg-[#D4B483]');
+      } else {
+        dot.classList.remove('bg-[#A05E2C]');
+        dot.classList.add('bg-[#D4B483]');
+      }
+    });
+  }
+  
+  // Navegação ao clicar nas bolinhas
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      const slideWidth = carousel.querySelector('.course-slide').offsetWidth;
+      
+      carousel.scrollTo({
+        left: index * slideWidth,
+        behavior: 'smooth'
+      });
+    });
+  });
+  
+  // Atualiza ao rolar
+  carousel.addEventListener('scroll', updateDots);
+  
+  // Inicializa
+  updateDots();
+  
+  // Função para tornar arrastável
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  carousel.addEventListener('mousedown', (e) => {
+    isDown = true;
+    carousel.style.cursor = 'grabbing';
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    isDown = false;
+    carousel.style.cursor = 'grab';
+  });
+
+  carousel.addEventListener('mouseup', () => {
+    isDown = false;
+    carousel.style.cursor = 'grab';
+  });
+
+  carousel.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch events para mobile
+  carousel.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+
+  carousel.addEventListener('touchend', () => {
+    isDown = false;
+  });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const x = e.touches[0].pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+}
+
+// Adicione ao seu DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+  initCoursesCarousel();
+  
+  // Re-inicializa se a janela for redimensionada
+  window.addEventListener('resize', initCoursesCarousel);
+});
 
   // Inicializa o carrossel
   updateFeatureCarousel();
