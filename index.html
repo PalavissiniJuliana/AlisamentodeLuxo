@@ -129,26 +129,32 @@
       
       .faq-question {
         font-weight: 600;
-        color: #161313;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        padding: 12px 0;
-        -webkit-tap-highlight-color: transparent;
+          color: #161313;
+          display: flex;
+          justify-content: space-between;
+         align-items: center;
+          cursor: pointer;
+         padding: 12px 0;
+         -webkit-tap-highlight-color: transparent;
+         transition: color 0.3s ease;
+      }
+
+      .faq-question:hover {
+         color: #A05E2C;
       }
       
       .faq-answer {
         color: #7f6c6f;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease, padding-top 0.3s ease;
-        padding-top: 0;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0;
+        line-height: 1.5;
       }
       
       .faq-answer.active {
         max-height: 500px;
-        padding-top: 12px;
+        padding: 12px 0 0 0;
       }
       
       .faq-question svg {
@@ -836,10 +842,20 @@
             <!-- Card 1 - Alisamento Definitiva -->
             <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
-                <p class="text-[#7f6c6f] text-sm font-bold leading-normal">Alisamento de Luxo - Definitiva</p>
+                <p class="text-[#7f6c6f] text-sm font-bold leading-normal">Alisamento de Luxo - Grand Liss</p>
                 <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
-                  Resultados que duram até 6 meses, com proteção e nutrição intensiva dos fios. Técnica exclusiva que preserva a saúde capilar.
-                </p>
+                  Transforme seus fios com um alisamento permanente, onde você só precisará retocar a raiz conforme o cabelo crescer.
+              </p>
+             
+              <ul class="text-[#7f6c6f] text-sm space-y-2 pl-5 list-disc marker:text-[#D4B483]">
+               <li>Liso absoluto já na primeira aplicação</li>
+               <li> Adeus escova e prancha no dia a dia</li>
+               <li>Brilho intenso e sedosidade incomparável</li>
+               <li>Somente retoque de raiz nas manutenções</li>
+               <li>⚠ Não indicado para cabelos descoloridos</li>
+               <li>✔ Seguro para grávidas e lactantes</li>
+             </ul>
+
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20agendar%20o%20Alisamento%20de%20Luxo%20Definitivo.%20Pode%20me%20informar%20mais%20detalhes%3F')"
@@ -858,10 +874,23 @@
             <!-- Card 2 - Alisamento semiDefinitiva (NOVO) -->
             <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
-                <p class="text-[#7f6c6f] text-sm font-bold leading-normal">Alisamento de Luxo - semiDefinitiva</p>
+                <p class="text-[#7f6c6f] text-sm font-bold leading-normal">Alisamento de Luxo - Soft Liss</p>
                 <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
-                  Efeito alisado por até 3 meses, ideal para quem busca um resultado mais natural. Tratamento reconstrutor incluso.
+                  O equilíbrio perfeito entre naturalidade e praticidade!
+Duração incrível:
+1ª aplicação: até 9/10 meses
+A partir da 2ª aplicação: até 2 anos na área já alisada!
                 </p>
+                     
+                <ul class="text-[#7f6c6f] text-sm space-y-2 pl-5 list-disc marker:text-[#D4B483]">
+               <li>Liso intenso desde a primeira aplicação</li>
+               <li> Zero escova ou prancha no dia a dia</li>
+               <li>Não altera a cor dos fios</li>
+               <li> Não afina o cabelo</li>
+               <li>Indicado para cabelos coloridos ou descoloridos</li>
+               <li>✔ Seguro para grávidas e lactantes</li>
+             </ul>
+
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Alisamento%20semiDefinitivo.%20Pode%20me%20explicar%20como%20funciona%3F')"
@@ -1220,7 +1249,7 @@
     observer.observe(section);
   });
 
-  // FAQ Accordion
+    // FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(question => {
     question.addEventListener('click', function() {
       const answer = this.nextElementSibling;
@@ -1231,6 +1260,7 @@
         if (ans !== answer) {
           ans.classList.remove('active');
           ans.previousElementSibling.classList.remove('active');
+          ans.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
         }
       });
       
@@ -1239,13 +1269,20 @@
       answer.classList.toggle('active');
       
       // Atualiza o ícone
-      if (this.classList.contains('active')) {
+      if (answer.classList.contains('active')) {
         icon.style.transform = 'rotate(180deg)';
       } else {
         icon.style.transform = 'rotate(0deg)';
       }
     });
   });
+
+  // Função para fechar o menu - Mova para fora do forEach
+  const closeMenu = () => {
+    burger.classList.remove('active');
+    menuPopup.classList.remove('active');
+    overlay.classList.remove('active');
+  };
 
   // Carrossel de Diferenciais (Efeito de Carta de Baralho)
   const featureSlides = document.querySelectorAll('.feature-slide');
