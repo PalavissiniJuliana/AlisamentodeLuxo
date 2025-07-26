@@ -6,6 +6,7 @@
     <title>JULIANA PALAVISSINI | Cursos de Alisamento</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
       /* Custom Animations */
@@ -74,21 +75,6 @@
         align-items: stretch;
         gap: 1.5rem;
       }
-
-      .border-gold-gradient::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: 0.75rem; 
-          padding: 2px;
-          background: linear-gradient(45deg, #f3f1f2, #161313);
-          -webkit-mask: 
-           linear-gradient(#fff 0 0) content-box, 
-           linear-gradient(#fff 0 0);
-         -webkit-mask-composite: xor;
-         mask-composite: exclude;
-         pointer-events: none;
-      }
       
       @keyframes shimmer {
         0% { background-position: 200% 0; }
@@ -119,46 +105,6 @@
         font-weight: 700;
         color: #A05E2C;
         margin-bottom: 0.5rem;
-      }
-      
-      .faq-item {
-        margin-bottom: 1rem;
-        border-bottom: 1px solid #f3f1f2;
-        padding-bottom: 1rem;
-      }
-      
-      .faq-question {
-        font-weight: 600;
-        color: #161313;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        padding: 12px 0;
-        -webkit-tap-highlight-color: transparent;
-      }
-      
-      .faq-answer {
-        color: #7f6c6f;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease, padding-top 0.3s ease;
-        padding-top: 0;
-      }
-      
-      .faq-answer.active {
-        max-height: 500px;
-        padding-top: 12px;
-      }
-      
-      .faq-question svg {
-        transition: transform 0.3s ease;
-        min-width: 16px;
-        margin-left: 8px;
-      }
-      
-      .faq-question.active svg {
-        transform: rotate(180deg);
       }
       
       .course-badge {
@@ -260,20 +206,197 @@
 /* Ajustes adicionais para outros elementos */
 .dark-theme .service-card,
 .dark-theme .testimonial-card {
-    background: #1e1b1b; /* Fundo mais claro que o body */
-    color: #f3f1f2; /* Texto claro */
+    background: #1e1b1b; 
+    color: #f3f1f2; 
 }
 
 .dark-theme .text-\[\#161313\] {
-    color: #f3f1f2 !important; /* Força texto claro */
+    color: #f3f1f2 !important; 
 }
 
 .group\/design-root {
   background-color: transparent !important;
 }
 
-      /* Mobile Styles */
-      @media (max-width: 480px) {
+              /* Novas animações para o texto */
+@keyframes blurIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classes para as animações */
+.text-animate {
+  opacity: 0;
+}
+
+.text-animate.animate-word {
+  animation: blurIn 0.8s ease-out forwards;
+}
+
+.text-animate.animate-char {
+  display: inline-block;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* Estilo Apple para subtítulos */
+.subtitle-apple {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400; /* Regular (para textos secundários) */
+  letter-spacing: -0.01em; /* Ajuste fino de kerning */
+  color: #86868b; /* Cinza elegante (opcional) */
+  line-height: 1.5; /* Espaçamento confortável */
+}
+
+/* ===== TIMELINE PREMIUM MOBILE ===== */
+.timeline-center {
+  padding: 20px 0;
+  position: relative;
+}
+
+.timeline-line {
+  left: 20px !important;
+  height: 100% !important;
+  background: linear-gradient(to bottom, #D4B483, #D4B483) !important;
+  animation: none !important;
+  width: 2px !important;
+}
+
+.timeline-item {
+  margin-bottom: 30px !important;
+  padding-left: 40px !important;
+  padding-right: 15px !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: all 0.5s ease-out !important;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+.timeline-dot {
+  left: 20px !important;
+  transform: translateX(-50%) !important;
+  width: 12px !important;
+  height: 12px !important;
+  background: #D4B483 !important;
+  border: 2px solid #161313 !important;
+  animation: pulseMobile 2s infinite !important;
+  position: absolute;
+  top: 6px;
+  z-index: 2;
+}
+
+@keyframes pulseMobile {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+}
+
+.timeline-item h3 {
+  font-size: 1.1rem !important;
+  margin-bottom: 8px !important;
+  color: #D4B483 !important;
+}
+
+.timeline-item p {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  color: #f3f1f2 !important;
+}
+
+/* Efeitos da Timeline Premium */
+.timeline-glow-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  height: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #D4B483, #F8E3C1, #D4B483);
+  box-shadow: 0 0 15px rgba(212, 180, 131, 0.7);
+  transition: height 0.5s ease-out, top 0.3s ease-out;
+  z-index: 2;
+}
+
+#timeline-effects-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.timeline-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #F8E3C1;
+  border-radius: 50%;
+  left: 19px;
+  z-index: 3;
+  opacity: 0;
+  box-shadow: 0 0 6px 2px rgba(248, 227, 193, 0.8);
+}
+
+.timeline-content-glow::before {
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(212, 180, 131, 0.15), transparent);
+  transition: all 0.4s ease-out;
+}
+
+.timeline-item.active .timeline-content-glow::before {
+  background: linear-gradient(90deg, rgba(212, 180, 131, 0.3), transparent);
+}
+
+.timeline-item.active div {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(212, 180, 131, 0.2);
+}
+
+@keyframes particle-fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.7; }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
         /* Animação simplificada */
         @keyframes scrollUp {
           0% {
@@ -604,56 +727,121 @@
           padding: 1.5rem;
           box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
-      }
-      
-      /* Desktop Styles */
-      @media (min-width: 481px) {
-        .courses-carousel {
-           display: flex;
-           overflow-x: hidden;
-           width: 100%;
-           scroll-snap-type: x mandatory;
-        }
-        
-        .testimonials-carousel {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1.5rem;
+
+        /* Ajustes para timeline mobile */
+        .timeline-glow-line {
+          left: 20px !important;
+          width: 2px !important;
         }
 
-        /* Hide video on desktop */
-        .video-container {
-          display: none;
+        .timeline-particle {
+          width: 3px;
+          height: 3px;
+          left: 19.5px;
         }
 
-        /* Show image on desktop */
-        .techniques-section .mentorship-image {
-          display: block;
-        }
-        
-        /* Ajustes para o novo carrossel de diferenciais */
-        .features-stack-container {
-          height: 240px;
-          max-width: 350px;
-        }
-        
-        .feature-card {
-          min-height: 200px;
-        }
-
-        /* Estilo para desktop dos cards de atendimento */
-        .service-cards-container {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
-          padding: 0 1.5rem;
-          max-width: 1200px;
-          margin: 0 auto;
+        .timeline-item div::before {
+          display: none !important;
         }
       }
+
+ /* Timeline Central */
+.timeline-center {
+  min-height: auto;
+  padding-bottom: 2rem;
+}
+
+#center-line {
+  background: #D4B483;
+  height: 100%;
+  width: 2px;
+  left: 20px;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+}
+
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #D4B483;
+  border: 2px solid #161313;
+  left: 20px;
+  transform: translateX(-50%);
+  animation: pulseMobile 2s infinite;
+  position: absolute;
+  top: 6px;
+  z-index: 2;
+}
+
+.timeline-item {
+  padding-left: 40px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item h3 {
+  color: #D4B483 !important;
+  font-size: 1.1rem;
+}
+
+.timeline-item p {
+  font-size: 0.9rem;
+  color: #f3f1f2;
+}
+
+@keyframes pulseMobile {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+}
+
+/* Desktop Styles */
+@media (min-width: 481px) {
+  .timeline-center {
+    min-height: 100vh;
+    padding-bottom: 10rem;
+  }
+  
+  #center-line {
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, 
+      transparent 0%, 
+      #D4B483 20%, 
+      #D4B483 80%, 
+      transparent 100%);
+  }
+  
+  .timeline-dot {
+    left: 50%;
+  }
+  
+  .timeline-item {
+    padding-left: calc(50% + 28px);
+    width: 50%;
+  }
+  
+  .timeline-item:nth-child(even) {
+    padding-left: 0;
+    padding-right: calc(50% + 28px);
+    text-align: right;
+    margin-left: auto;
+  }
+  
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
     </style>
 </head>
-<body class="dark-theme"></body>
+<body class="dark-theme">
   
   <div class="burger-floating">
     <div class="burger" id="burger">
@@ -693,7 +881,7 @@
                <div class="relative z-10 flex flex-col items-center justify-center min-h-[100vh] w-full text-center text-white px-4 pb-20">
                  <div class="flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
                <h1 class="text-4xl text-[#161313] md:text-5xl font-black mb-2">CURSOS</h1>
-               <h2 class="text-sm text-[#161313] md:text-base mb-12">ALISAMENTO DE LUXO</h2>
+               <h2 class="subtitle-apple text-sm text-[#161313] md:text-base mb-12">ALISAMENTO DE LUXO</h2>
               </div>
               <button 
                       onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20saber%20mais%20sobre%20os%20cursos%20de%20alisamento%20de%20luxo.')"
@@ -703,6 +891,67 @@
           </div>
         </div>
 
+         <!-- Seção de Título e Subtítulo -->
+       <div class="w-full bg-[#161313] py-12 pb-20 px-4 text-center animate-section opacity-0 scroll-animate" style="animation-delay: 0.2s;">
+  <div class="max-w-4xl mx-auto">
+    <h1 id="animated-title" class="text-3xl md:text-4xl font-bold text-[#D4B483] mb-4 uppercase">
+      <span class="text-animate animate-word">A Técnica Certa Atrai os Clientes Certos</span>
+    </h1>
+    <p id="animated-subtitle" class="subtitle-apple text-lg md:text-xl text-[#f3f1f2]">
+      <span class="text-animate animate-word">Domine o alisamento de luxo com acabamento impecável e posicione sua marca no topo</span>
+    </p>
+  </div>
+</div>
+
+<!-- Timeline Premium Mobile-Optimized -->
+<section class="timeline-center relative pt-10 pb-10 overflow-hidden">
+    <div id="timeline-effects-container">
+        <div class="timeline-glow-line" id="timeline-glow"></div>
+    </div>
+    
+    <!-- Linha central -->
+    <div id="center-line"></div>
+
+    <!-- Mapa Mental -->
+    <div class="container mx-auto px-4 relative">
+        <!-- Item 1 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="bg-[#1e1b1b] p-4 rounded-xl ml-8 timeline-content-glow">
+                <h3>Início</h3>
+                <p>Domine os <span class="text-[#D4B483] font-medium">fundamentos essenciais</span> para construir sua base profissional.</p>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="bg-[#1e1b1b] p-4 rounded-xl ml-8 timeline-content-glow">
+                <h3>Técnicas</h3>
+                <p>Métodos <span class="text-[#D4B483] font-medium">exclusivos</span> que elevam seu trabalho a outro patamar.</p>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="bg-[#1e1b1b] p-4 rounded-xl ml-8 timeline-content-glow">
+                <h3>Acabamento</h3>
+                <p>Detalhes que fazem a <span class="text-[#D4B483] font-medium">diferença</span> no resultado final.</p>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="bg-[#1e1b1b] p-4 rounded-xl ml-8 timeline-content-glow">
+                <h3>Posicionamento</h3>
+                <p>Como se destacar no <span class="text-[#D4B483] font-medium">mercado premium</span>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
         <!-- Cursos Section -->
         <section class="animate-section opacity-0 scroll-animate !mt-0" style="animation-delay: 0.3s;">
            <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-2">Todos os Cursos</h2>
@@ -711,10 +960,10 @@
             <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
                 <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Básico de Alisamento</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
                   Aprenda as técnicas fundamentais do alisamento de luxo, desde a preparação dos fios até a finalização profissional.
                 </p>
-                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                <ul class="subtitle-apple  text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
                   <li>Duração: 8 horas</li>
                   <li>Certificado inclusivo</li>
                   <li>Material didático completo</li>
@@ -741,10 +990,10 @@
 
               <div class="flex flex-col gap-1">
                 <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Avançado</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
                   Domine técnicas profissionais para diferentes tipos de cabelo e aprenda a corrigir problemas comuns no alisamento.
                 </p>
-                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
                   <li>Duração: 12 horas</li>
                   <li>Certificado internacional</li>
                   <li>Kit profissional inclusivo</li>
@@ -767,10 +1016,10 @@
             <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
                 <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Master</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
                   Torne-se um especialista em alisamento de luxo com técnicas exclusivas e aprenda a criar sua própria linha de produtos.
                 </p>
-                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
                   <li>Duração: 20 horas</li>
                   <li>Certificado Master internacional</li>
                   <li>Kit profissional completo</li>
@@ -793,10 +1042,10 @@
             <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
                 <p class="text-[#ffffff] text-sm font-bold leading-normal">Curso Online Completo</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
                   Aprenda alisamento de luxo no seu ritmo com nosso curso online completo, com acesso vitalício a todas as aulas.
                 </p>
-                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
                   <li>Acesso imediato</li>
                   <li>Mais de 15 horas de vídeo</li>
                   <li>Certificado digital</li>
@@ -811,7 +1060,7 @@
               
               <!-- imagem Container para o segundo serviço -->
                <div class="image-container mt-3">
-                <img src="curso-basico.jpg" alt="Demonstração do Curso Básico" class="w-full rounded-lg">
+                <img src="CURSO01/FOTO1.png" alt="Demonstração do Curso Básico" class="w-full rounded-lg">
               </div>
             </div>
 
@@ -819,10 +1068,10 @@
             <div class="service-card hover-grow">
               <div class="flex flex-col gap-1">
                 <p class="text-[#ffffff] text-sm font-bold leading-normal">Workshop Intensivo</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">
+                <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
                   Workshop presencial de um dia com técnicas avançadas e segredos profissionais do alisamento de luxo.
                 </p>
-                <ul class="text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
                   <li>Duração: 6 horas</li>
                   <li>Aulas práticas</li>
                   <li>Material incluso</li>
@@ -844,83 +1093,8 @@
           </div>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="animate-section opacity-0 scroll-animate mt-8 mb-10 bg-[#161313] py-8 px-4" style="animation-delay: 0.7s;">
-          <h2 class="faq-title text-[#f3f1f2] text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3">Perguntas Frequentes</h2>
-          
-          <div>
-            <div class="bg-[#161313] rounded-xl">
-              <!-- FAQ Item 1 -->
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span class="text-[#f3f1f2]">Quanto tempo dura cada curso?</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-                <div class="faq-answer">
-                  <p class="text-[#D4B483]">O curso básico tem 8 horas, o avançado 12 horas e o master 20 horas de duração. O curso online tem mais de 15 horas de conteúdo.</p>
-                </div>
-              </div>
-              
-              <!-- FAQ Item 2 -->
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span class="text-[#f3f1f2]">Os cursos emitem certificado?</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-                <div class="faq-answer">
-                  <p class="text-[#D4B483]">Sim, todos nossos cursos emitem certificado digital reconhecido nacional e internacionalmente.</p>
-                </div>
-              </div>
-              
-              <!-- FAQ Item 3 -->
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span class="text-[#f3f1f2]">Posso fazer o curso sem experiência?</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-                <div class="faq-answer">
-                  <p class="text-[#D4B483]">Com certeza! Temos módulos desde o básico até o avançado, perfeito para iniciantes e profissionais que querem se especializar.</p>
-                </div>
-              </div>
-
-              <!-- FAQ Item 4 -->
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span class="text-[#f3f1f2]">O material está incluso no valor do curso?</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-                <div class="faq-answer">
-                  <p class="text-[#D4B483]">Sim, todos os cursos presenciais incluem material didático completo e kit profissional (nos cursos avançado e master).</p>
-                </div>
-              </div>
-
-              <!-- FAQ Item 5 -->
-              <div class="faq-item">
-                <div class="faq-question">
-                  <span class="text-[#f3f1f2]">Há algum suporte após o curso?</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#D4B483" viewBox="0 0 256 256">
-                    <path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"></path>
-                  </svg>
-                </div>
-                <div class="faq-answer">
-                  <p class="text-[#D4B483]">Sim, oferecemos suporte por 3 meses após o curso e acesso a grupo exclusivo de alunos no WhatsApp para tirar dúvidas.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-
       <!-- Footer -->
-      <footer id="contato" class="animate-section opacity-0 scroll-animate" style="animation-delay: 0.8s;">
+      <footer id="contato" class="animate-section opacity-0 scroll-animate !mt-12" style="animation-delay: 0.8s;">
         <div class="flex flex-col gap-6 px-5 py-10 text-center @container bg-[#f9f9f9]">
           <h3 class="footer-title text-[#161313] text-xl font-bold">Contato</h3>
           <div class="flex flex-col gap-4">
@@ -948,7 +1122,7 @@
             <a href="#" class="hover:scale-110 transition-transform">
               <div class="text-[#A05E2C] hover:text-[#7f6c6f] transition-colors" data-icon="WhatsAppLogo" data-size="24px" data-weight="regular">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
+                  <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51a56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40a88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
                 </svg>
               </div>
             </a>
@@ -965,117 +1139,239 @@
         class="fixed bottom-6 right-6 z-50 animate-bounce">
         <div class="flex items-center justify-center w-14 h-14 rounded-full bg-[#A05E2C] shadow-lg hover:scale-110 transition-transform">
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" viewBox="0 0 256 256">
-            <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
+            <path d="M152.58,145.23l23,11.48A24,24,0,0,1,152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51a56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155ZM232,128A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-40,24a8,8,0,0,0-4.42-7.15l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40a88.1,88.1,0,0,0,88,88A40,40,0,0,0,192,152Z"></path>
           </svg>
         </div>
       </a>
     </div>
 
     <script>
-         document.addEventListener('DOMContentLoaded', () => {
-  // Otimização para carregamento de imagens
-  const images = document.querySelectorAll('.img-loading');
-  images.forEach(img => {
-    setTimeout(() => {
-      img.classList.remove('img-loading');
-    }, 1000);
-  });
+// Timeline Effects - Versão otimizada para mobile
+document.addEventListener('DOMContentLoaded', function() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineGlow = document.getElementById('timeline-glow');
+    const centerLine = document.getElementById('center-line');
+    const effectsContainer = document.getElementById('timeline-effects-container');
+    
+    // Configurações
+    let lastActiveItem = null;
+    let centerLineTop = 0;
+    let centerLineHeight = 0;
+    
+    // Inicializa dimensões da linha
+    function initLineDimensions() {
+        const rect = centerLine.getBoundingClientRect();
+        centerLineTop = rect.top + window.scrollY;
+        centerLineHeight = rect.height;
+    }
+    
+    // Verifica itens ativos ao scrollar
+    function checkActiveItems() {
+        const viewportMiddle = window.innerHeight / 2;
+        let activeItemFound = false;
+        
+        timelineItems.forEach(item => {
+            const rect = item.getBoundingClientRect();
+            const itemMiddle = rect.top + (rect.height / 2);
+            
+            // Verifica se o item está próximo do centro da tela
+            if (Math.abs(itemMiddle - viewportMiddle) < 100) {
+                if (!item.classList.contains('active')) {
+                    item.classList.add('active');
+                    lastActiveItem = item;
+                    updateGlowPosition(item);
+                    
+                    // Adiciona partículas para efeito visual
+                    createParticles(item);
+                }
+                activeItemFound = true;
+            } else {
+                item.classList.remove('active');
+            }
+        });
+        
+        // Se nenhum item está ativo, mantém o último ativo visível
+        if (!activeItemFound && lastActiveItem) {
+            lastActiveItem.classList.add('active');
+            updateGlowPosition(lastActiveItem);
+        }
+    }
+    
+    // Atualiza a posição do glow na linha
+    function updateGlowPosition(activeItem) {
+        const itemRect = activeItem.getBoundingClientRect();
+        const lineRect = centerLine.getBoundingClientRect();
+        
+        // Calcula a posição do item em relação à linha
+        const itemTopRelative = itemRect.top - lineRect.top;
+        const itemBottomRelative = itemRect.bottom - lineRect.top;
+        
+        // Define a altura do glow para cobrir o item ativo
+        timelineGlow.style.top = `${itemTopRelative}px`;
+        timelineGlow.style.height = `${itemBottomRelative - itemTopRelative}px`;
+        
+        // Efeito de brilho mais intenso
+        timelineGlow.style.boxShadow = '0 0 20px rgba(212, 180, 131, 0.9)';
+        setTimeout(() => {
+            timelineGlow.style.boxShadow = '0 0 15px rgba(212, 180, 131, 0.7)';
+        }, 300);
+    }
+    
+    // Cria partículas para efeito visual
+    function createParticles(item) {
+        const particlesContainer = document.getElementById('timeline-effects-container');
+        const dot = item.querySelector('.timeline-dot');
+        
+        // Remove partículas antigas
+        const oldParticles = document.querySelectorAll('.timeline-particle');
+        oldParticles.forEach(p => p.remove());
+        
+        // Cria novas partículas (menos em mobile para performance)
+        if (window.innerWidth > 480) {
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'timeline-particle';
+                
+                // Posiciona as partículas ao redor do dot
+                const dotRect = dot.getBoundingClientRect();
+                const offsetX = (Math.random() - 0.5) * 20;
+                const offsetY = (Math.random() - 0.5) * 20;
+                
+                particle.style.left = `${dotRect.left + dotRect.width/2 - 2 + offsetX}px`;
+                particle.style.top = `${dotRect.top + dotRect.height/2 - 2 + offsetY}px`;
+                
+                // Animação
+                particle.style.animation = `particle-fall ${1 + Math.random()}s ease-out forwards`;
+                particle.style.opacity = '1';
+                
+                particlesContainer.appendChild(particle);
+                
+                // Remove a partícula após a animação
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }
+        }
+    }
+    
+    // Inicializa
+    initLineDimensions();
+    checkActiveItems();
+    
+    // Event listeners
+    window.addEventListener('scroll', () => {
+        checkActiveItems();
+    });
+    
+    // Redimensionamento
+    window.addEventListener('resize', () => {
+        initLineDimensions();
+        if (lastActiveItem) {
+            updateGlowPosition(lastActiveItem);
+        }
+    });
+    
+    // Adiciona animação de partículas
+    document.head.insertAdjacentHTML('beforeend', `
+        <style>
+            @keyframes particle-fall {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(${(Math.random() - 0.5) * 40}px, ${20 + Math.random() * 30}px) scale(0);
+                    opacity: 0;
+                }
+            }
+        </style>
+    `);
+});
 
-  // Intersection Observer
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px'
+// Menu Burger
+document.addEventListener('DOMContentLoaded', () => {
+  const burger = document.getElementById('burger');
+  const menuPopup = document.getElementById('menuPopup');
+  const overlay = document.getElementById('overlay');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  const closeMenu = () => {
+    burger.classList.remove('active');
+    menuPopup.classList.remove('active');
+    overlay.classList.remove('active');
   };
 
-  const animateOnScroll = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    menuPopup.classList.toggle('active');
+    overlay.classList.toggle('active');
+  });
+
+  overlay.addEventListener('click', closeMenu);
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      closeMenu();
+      if(this.href.includes('cursos.html')) return;
+      if(!this.href.includes(window.location.href)) {
+        e.preventDefault();
+        window.location.href = this.href;
       }
     });
-  };
+  });
+});
 
-  const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+// Otimização para mobile
+if (window.innerWidth <= 480) {
+  document.body.addEventListener('touchstart', function() {}, { 
+    passive: true 
+  });
   
-  document.querySelectorAll('.animate-section, .scroll-animate').forEach(section => {
-    section.style.opacity = '0';
-    observer.observe(section);
-  });
-
-  // FAQ Accordion Corrigido
-document.querySelectorAll('.faq-question').forEach(question => {
-  question.addEventListener('click', function(e) {
-    e.preventDefault(); // Isso impede o comportamento padrão de links
-    e.stopPropagation(); // Isso impede a propagação do evento
-
-    const answer = this.nextElementSibling;
-    const icon = this.querySelector('svg');
-    
-    // Alterna a resposta atual
-    this.classList.toggle('active');
-    answer.classList.toggle('active');
-    
-    // Atualiza o ícone
-    icon.style.transform = this.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
-  });
-});
-
- // Menu Burger corrigido
-const burger = document.getElementById('burger');
-const menuPopup = document.getElementById('menuPopup');
-const overlay = document.getElementById('overlay');
-const menuLinks = document.querySelectorAll('.menu-link');
-
-// Função para fechar o menu
-const closeMenu = () => {
-  burger.classList.remove('active');
-  menuPopup.classList.remove('active');
-  overlay.classList.remove('active');
-};
-
-// Abrir/fechar menu
-burger.addEventListener('click', () => {
-  burger.classList.toggle('active');
-  menuPopup.classList.toggle('active');
-  overlay.classList.toggle('active');
-});
-
-// Fechar ao clicar no overlay
-overlay.addEventListener('click', closeMenu);
-
-// Tratamento dos links do menu
-menuLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    // Fecha o menu
-    closeMenu();
-    
-    // Se for link para a página atual (cursos.html), não faz nada
-    if(this.href.includes('cursos.html')) return;
-    
-    // Se for link para outra página
-    if(!this.href.includes(window.location.href)) {
-      e.preventDefault();
-      window.location.href = this.href;
-    }
-  });
-});
-
-// Tratamento especial para links âncora
-if(window.location.hash) {
-  setTimeout(() => {
-    const target = document.querySelector(window.location.hash);
-    if(target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, 300);
-}
-
-  // Melhoria de performance para mobile
-  if (window.innerWidth <= 480) {
-    document.body.addEventListener('touchstart', function() {}, { 
-      passive: true 
+  // Desativa animações complexas em dispositivos móveis lentos
+  if (navigator.connection && (navigator.connection.saveData || navigator.connection.effectiveType.includes('2g'))) {
+    document.querySelectorAll('[class*="animate-"]').forEach(el => {
+      el.style.animation = 'none !important';
     });
   }
+}
+
+// Animação de texto
+function animateText(element, type = 'word', delay = 0.1) {
+  const text = element.textContent;
+  element.innerHTML = '';
+  
+  if (type === 'word') {
+    const words = text.split(' ');
+    words.forEach((word, i) => {
+      const span = document.createElement('span');
+      span.className = 'text-animate animate-word';
+      span.style.animationDelay = `${i * delay}s`;
+      span.textContent = word + (i < words.length - 1 ? ' ' : '');
+      element.appendChild(span);
+    });
+  }
+}
+
+// Observador para animações de texto
+const textObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const element = entry.target;
+      
+      if (element.id === 'animated-title') {
+        animateText(element, 'word', 0.1);
+      } else if (element.id === 'animated-subtitle') {
+        animateText(element, 'word', 0.08);
+      }
+      
+      textObserver.unobserve(element);
+    }
+  });
+}, { threshold: 0.1 });
+
+// Inicia observador para elementos de texto
+document.querySelectorAll('#animated-title, #animated-subtitle').forEach(el => {
+  el.setAttribute('data-original-text', el.textContent);
+  textObserver.observe(el);
 });
 </script>
 </body>
