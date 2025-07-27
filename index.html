@@ -86,29 +86,42 @@
 
       .border-gold-gradient {
         position: relative;
-        background: white;
-        border-radius: 0.75rem;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        gap: 1.5rem;
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.5rem;
+  overflow: hidden;
       }
 
       .border-gold-gradient::before {
           content: "";
-          position: absolute;
-          inset: 0;
-          border-radius: 0.75rem; 
-          padding: 2px;
-          background: linear-gradient(45deg, #f3f1f2, #161313);
-          -webkit-mask: 
-           linear-gradient(#fff 0 0) content-box, 
-           linear-gradient(#fff 0 0);
-         -webkit-mask-composite: xor;
-         mask-composite: exclude;
-         pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 2px;
+  background: linear-gradient(90deg, transparent, #D4B483, transparent);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderRun 3s linear infinite;
+  background-size: 200% 100%;
+  background-position: 150% 0;
       }
+
+     @keyframes borderRun {
+  0% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: -50% 0;
+  }
+}
       
       @keyframes shimmer {
         0% { background-position: 200% 0; }
@@ -826,7 +839,7 @@
           
           <!-- Mentoria VIP -->
           <div class="p-4 relative">
-            <div class="absolute -top-2 -right-2 z-10 bg-[#A05E2C] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
+            <div class="absolute top-6 right-6 z-10 bg-[#D4B483] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md animate-pulse">
               EM ALTA!
             </div>
              <div class="border-gold-gradient hover-grow flex items-stretch justify-between gap-4 p-4 mentorship-card">
