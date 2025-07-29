@@ -421,6 +421,31 @@
           margin-top: 0 !important;
           padding-top: 0 !important;
         }
+
+        .star-icon {
+    color: #D4B483; /* Cor dourada */
+    margin-left: 6px;
+    display: inline-block;
+    font-size: 14px;
+    animation: pulseStar 2s infinite;
+    transform-origin: center;
+}
+
+@keyframes pulseStar {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+        }
+
+        .menu-popup .star-icon {
+    font-size: 12px;
+    margin-left: 4px;
+    height: 12px;
+        }
+
+        .menu-popup a {
+        font-size: 0.95rem; /* Ajuste se necessário */
+    }
       }
     </style>
 </head>
@@ -437,8 +462,8 @@
     <div class="menu-popup" id="menuPopup">
       <a href="index.html" class="menu-link">Início</a>
       <a href="index.html#mentoria" class="menu-link">Mentoria VIP</a>
-      <a href="cursos.html" class="menu-link">Cursos</a>
-      <a href="alem-da-tecnica.html" class="menu-link active">Além da Técnica</a>
+      <a href="cursos.html" class="menu-link">Cursos <span class="star-icon">★</span></a>
+    <a href="alem-da-tecnica.html" class="menu-link">Além da Técnica <span class="star-icon">★</span></a>
       <a href="index.html#atendimentos" class="menu-link">Atendimentos</a>
       <a href="index.html#depoimentos" class="menu-link">Depoimentos</a>
       <a href="index.html#contato" class="menu-link">Contato</a>
@@ -485,7 +510,7 @@
         <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-2">Programas Exclusivos</h2>
         <div class="service-cards-container">
           
-          <!-- Card 1 - Posicionamento de Luxo -->
+          <!-- Card 1 - Checklist da Profissional -->
           <div class="service-card hover-grow">
             <div class="flex flex-col gap-1">
               <p class="text-[#ffffff] text-sm font-bold leading-normal">Checklist da Profissional</p>
@@ -508,7 +533,7 @@
             
             <!-- Imagem Container -->
             <div class="image-container mt-3">
-              <img src="PRINCIPAL/FOTO007.png" alt="Posicionamento de Luxo" class="w-full rounded-lg">
+              <img src="EBOOK01/IMAGEM1.png" alt="Posicionamento de Luxo" class="w-full rounded-lg">
             </div>
           </div>
 
@@ -519,16 +544,14 @@
             </div>
 
             <div class="flex flex-col gap-1">
-              <p class="text-[#ffffff] text-sm font-bold leading-normal">Atendimento Premium</p>
+              <p class="text-[#ffffff] text-sm font-bold leading-normal">7 Erros Que Estão Queimando a Sua Imagem Profissional</p>
               <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
-                Domine as técnicas de atendimento que transformam clientes em fãs e multiplicam suas indicações. Aprenda desde a recepção até o follow-up pós-serviço, criando uma experiência memorável.
+                Descubra os erros que sabotam sua valorização — mesmo sem você perceber — e aprenda como corrigi-los para construir uma imagem profissional forte, respeitada e desejada.
               </p>
               <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
-                <li>📍 Protocolos de atendimento de alto padrão</li>
-                <li>📌 Como criar uma experiência personalizada</li>
-                <li>📌 Técnicas de vendas consultivas</li>
-                <li>📌 Gestão de relacionamento com clientes</li>
-                <li>📌 Modelos de ficha de atendimento profissional</li>
+                <li>📍 Evite atitudes que desvalorizam seu trabalho</li>
+                <li>📌 Aprenda a se posicionar com mais autoridade</li>
+                <li>📌 Transforme sua imagem em um ativo que atrai clientes certos</li>
               </ul>
             </div>
             <button 
