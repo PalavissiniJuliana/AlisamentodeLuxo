@@ -654,6 +654,16 @@
         scroll-snap-align: start;
         flex: 0 0 auto;
     }
+
+    .menu-popup .star-icon {
+    font-size: 12px;
+    height: 12px;
+    margin-left: 4px;
+   }
+
+   .menu-popup a {
+        font-size: 0.95rem; /* Ajuste se necessário */
+    }
  }
       
       /* Desktop Styles */
@@ -700,7 +710,22 @@
           max-width: 1200px;
           margin: 0 auto;
         }
-      }
+
+        .star-icon {
+    color: #D4B483; /* Cor dourada */
+    margin-left: 6px;
+    display: inline-block;
+    font-size: 14px;
+    animation: pulseStar 2s infinite;
+    transform-origin: center;
+}
+
+@keyframes pulseStar {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+       }
+    }
     </style>
 </head>
 <body>
@@ -715,7 +740,8 @@
     <div class="menu-popup" id="menuPopup">
     <a href="index.html" class="menu-link">Início</a>
     <a href="index.html#mentoria" class="menu-link">Mentoria VIP</a>
-    <a href="cursos.html" class="menu-link">Cursos</a>
+    <a href="cursos.html" class="menu-link">Cursos <span class="star-icon">★</span></a>
+    <a href="alem-da-tecnica.html" class="menu-link">Além da Técnica <span class="star-icon">★</span></a>
     <a href="index.html#atendimentos" class="menu-link">Atendimentos</a>
     <a href="index.html#depoimentos" class="menu-link">Depoimentos</a>
     <a href="index.html#contato" class="menu-link">Contato</a>
@@ -741,7 +767,7 @@
               </div>
               <button 
                       onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Vi%20seu%20site%20e%20quero%20agendar%20um%20hor%C3%A1rio%20para%20o%20alisamento%20de%20luxo.')"
-                     class="relative -top-8 btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#A05E2C] text-[#f3f1f2] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#D4B483] transition-colors">
+                     class="relative -top-8 btn-pulse flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#D4B483] text-[#f3f1f2] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em] hover:bg-[#D4B483] transition-colors">
                 <span class="truncate">Agendar Agora</span>
               </button>
             </div>
@@ -892,7 +918,7 @@
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20agendar%20o%20Alisamento%20de%20Luxo%20Definitivo.%20Pode%20me%20informar%20mais%20detalhes%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Agendar Agora</span>
               </button>
               
@@ -927,7 +953,7 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Alisamento%20semiDefinitivo.%20Pode%20me%20explicar%20como%20funciona%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-[#161313] text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Agendar Agora</span>
               </button>
               
@@ -960,13 +986,13 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
         <!-- Curso 1 -->
         <div class="relative">
           <div class="absolute top-3 right-3 z-10 bg-[#A05E2C] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
-            POPULAR
+            
           </div>
           <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
             <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO004.png");'></div>
             <div>
-              <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Básico</p>
-              <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
+              <p class="subtitle-apple text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Básico</p>
+              <p class="text-[#7f6c6f] text-sm font-normal leading-normal"></p>
             </div>
             <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20de%20Alisamento%20Capilar.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')" 
                     class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
@@ -983,8 +1009,8 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
           <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
             <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO005.png");'></div>
             <div>
-              <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
-              <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
+              <p class="subtitle-apple text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
+              <p class="text-[#7f6c6f] text-sm font-normal leading-normal"></p>
             </div>
             <button onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20de%20Alisamento%20Capilar%20Avan%C3%A7ado.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F')" 
                     class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
@@ -997,8 +1023,8 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
         <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
           <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO006.png");'></div>
           <div>
-            <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
-            <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
+            <p class="subtitle-apple text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
+            <p class="text-[#7f6c6f] text-sm font-normal leading-normal"></p>
           </div>
           <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Vi%20o%20Curso%20de%20Alisamento%20Capilar%20Master%20no%20site%20e%20quero%20saber%20como%20participar.')" 
                   class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
@@ -1016,13 +1042,13 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
           <!-- Curso 1 -->
           <div class="course-slide snap-start flex-none w-[85vw] relative">
             <div class="absolute top-3 right-3 z-10 bg-[#A05E2C] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
-              POPULAR
+             POPULAR
             </div>
             <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
               <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO004.png");'></div>
               <div>
-                <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Básico</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 499</p>
+                <p class="subtitle-apple text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Básico</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal"></p>
               </div>
               <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20de%20Alisamento%20Capilar.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')" 
                       class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
@@ -1034,13 +1060,13 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
           <!-- Curso 2 -->
           <div class="course-slide snap-start flex-none w-[85vw] relative">
             <div class="absolute top-3 right-3 z-10 bg-[#D4B483] text-white text-xs font-bold px-2 py-1 rounded-full shadow-md">
-              NOVO
+              EM ALTA
             </div>
             <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
               <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO005.png");'></div>
               <div>
-                <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 799</p>
+                <p class="subtitle-apple text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Avançado</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal"></p>
               </div>
               <button onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20de%20Alisamento%20Capilar%20Avan%C3%A7ado.%20Pode%20me%20passar%20mais%20informa%C3%A7%C3%B5es%3F')" 
                       class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
@@ -1054,8 +1080,8 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
             <div class="hover-grow flex h-full flex-col gap-4 rounded-lg transition-transform">
               <div class="img-loading w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl flex flex-col shadow-sm" style='background-image: url("PRINCIPAL/FOTO006.png");'></div>
               <div>
-                <p class="text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
-                <p class="text-[#7f6c6f] text-sm font-normal leading-normal">R$ 999</p>
+                <p class="subtitle-apple text-[#161313] text-base font-medium leading-normal">Curso de Alisamento - Master</p>
+                <p class="text-[#7f6c6f] text-sm font-normal leading-normal"></p>
               </div>
               <button onclick="window.open('https://wa.me/554185274188?text=Oi%2C%20Juliana!%20Vi%20o%20Curso%20de%20Alisamento%20Capilar%20Master%20no%20site%20e%20quero%20saber%20como%20participar.')" 
                       class="mt-auto w-full py-2 bg-[#f3f1f2] rounded-lg text-sm font-medium hover:bg-[#D4B483] hover:text-white transition-colors">
