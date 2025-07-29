@@ -743,6 +743,12 @@
         .timeline-item div::before {
           display: none !important;
         }
+
+        .menu-popup .star-icon {
+    font-size: 12px;
+    margin-left: 4px;
+    height: 12px;
+        }
       }
 
  /* Timeline Central */
@@ -838,6 +844,21 @@
     right: 50%;
     transform: translateX(50%);
   }
+
+  .star-icon {
+    color: #D4B483; /* Cor dourada */
+    margin-left: 6px;
+    display: inline-block;
+    font-size: 14px;
+    animation: pulseStar 2s infinite;
+    transform-origin: center;
+}
+
+@keyframes pulseStar {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
 }
     </style>
 </head>
@@ -853,7 +874,8 @@
    <div class="menu-popup" id="menuPopup">
     <a href="index.html" class="menu-link">Início</a>
     <a href="index.html#mentoria" class="menu-link">Mentoria VIP</a>
-    <a href="cursos.html" class="menu-link active">Cursos</a>
+   <a href="cursos.html" class="menu-link">Cursos <span class="star-icon">★</span></a>
+    <a href="alem-da-tecnica.html" class="menu-link">Além da Técnica <span class="star-icon">★</span></a>
     <a href="index.html#atendimentos" class="menu-link">Atendimentos</a>
     <a href="index.html#depoimentos" class="menu-link">Depoimentos</a>
     <a href="index.html#contato" class="menu-link">Contato</a>
@@ -987,7 +1009,7 @@ Você vai aprender a preparar o cabelo corretamente, aplicar o produto com técn
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20me%20inscrever%20no%20Curso%20B%C3%A1sico%20de%20Alisamento.%20Pode%20me%20informar%20mais%20detalhes%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Quero me Inscrever</span>
               </button>
               
@@ -1020,7 +1042,7 @@ Neste curso, você vai aprofundar técnicas que geram mais durabilidade, brilho 
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20Curso%20Avan%C3%A7ado%20de%20Alisamento.%20Pode%20me%20explicar%20como%20funciona%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Quero me Inscrever</span>
               </button>
               
@@ -1050,7 +1072,7 @@ Neste curso, você vai aprofundar técnicas que geram mais durabilidade, brilho 
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20Master%20de%20Alisamento.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Quero me Inscrever</span>
               </button>
               
@@ -1080,7 +1102,7 @@ Neste curso, você vai aprender como utilizar — de forma técnica e estratégi
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20Curso%20Online%20de%20Alisamento.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Quero me Inscrever</span>
               </button>
               
@@ -1110,7 +1132,7 @@ Esse módulo é voltado para profissionais que querem dominar a química por tr�
               </div>
               <button 
                 onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20participar%20do%20Workshop%20Intensivo%20de%20Alisamento.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 mt-3 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
+                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-3 mt-6 mb-6 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
                 <span class="truncate">Quero me Inscrever</span>
               </button>
               
