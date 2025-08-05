@@ -1112,10 +1112,6 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
               method="POST"
               class="flex flex-col gap-3"
             >
-              <input 
-                type="hidden" 
-                name="_next" 
-                value="https://palavissinijuliana.github.io/AlisamentodeLuxo/index.html" <!-- 👈 Altere para seu domínio -->
               
               <input 
                 type="email" 
@@ -1133,6 +1129,11 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
             </form>
             <p class="text-[#7f6c6f] text-xs mt-3">Não compartilhamos seus dados.</p>
           </div>
+
+          <!-- Mensagem de sucesso (inicialmente oculta) -->
+<div id="mensagemSucesso" class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
+  ✅ Obrigado! Seu e-mail foi cadastrado com sucesso.
+</div>
         </section>
 
 
@@ -1547,6 +1548,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+ document.getElementById('meuFormulario').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede o recarregamento
+    const formData = new FormData(this);
+    
+    fetch(this.action, {
+      method: 'POST',
+      body: formData
+    })
+    .then(() => {
+      // Mostra a mensagem
+      document.getElementById('mensagemSucesso').classList.remove('hidden');
+      // Limpa o formulário
+      this.reset();
+    })
+    .catch(error => console.error('Erro:', error));
+  });
 </script>
 </body>
 </html>
