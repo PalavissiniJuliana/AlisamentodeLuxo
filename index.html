@@ -1108,32 +1108,31 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
             <h3 class="text-[#161313] text-lg font-bold mb-4">Receba todas as novidades</h3>
             
             <form 
-              action="https://formsubmit.co/Palavissinijuliana@gmail.com" 
-              method="POST"
-              class="flex flex-col gap-3"
-            >
-              
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Seu e-mail" 
-                class="w-full px-4 py-3 border border-[#f3f1f2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B483] focus:border-transparent"
-                required
-              >
-              <button 
-                type="submit"
-                class="w-full py-3 bg-[#D4B483] text-white font-medium rounded-lg hover:bg-[#A05E2C] transition-colors"
-              >
-                Enviar
-              </button>
-            </form>
-            <p class="text-[#7f6c6f] text-xs mt-3">Não compartilhamos seus dados.</p>
-          </div>
+  action="https://formsubmit.co/seuemail@gmail.com" 
+  method="POST"
+  id="emailForm" <!-- Adicione ID -->
+  class="flex flex-col gap-3"
+>
+  <!-- Bloqueia redirecionamento -->
+  <input type="hidden" name="_next" value="#">
+  
+  <input 
+    type="email" 
+    name="email" 
+    placeholder="Seu melhor e-mail" 
+    required
+    class="w-full px-4 py-3 border border-[#f3f1f2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B483] focus:border-transparent"
+  >
+  <button 
+    type="submit"
+    class="w-full py-3 bg-[#D4B483] text-white font-medium rounded-lg hover:bg-[#A05E2C] transition-colors"
+  >
+    Cadastrar
+  </button>
+</form>
 
-          <!-- Mensagem de sucesso (inicialmente oculta) -->
-<div id="mensagemSucesso" class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg">
-  ✅ Obrigado! Seu e-mail foi cadastrado com sucesso.
-</div>
+<!-- Mensagem de sucesso (oculta inicialmente) -->
+<div id="formFeedback" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center"></div>
         </section>
 
 
@@ -1549,21 +1548,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
- document.getElementById('meuFormulario').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede o recarregamento
-    const formData = new FormData(this);
+document.getElementById('emailForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Impede o redirecionamento
     
-    fetch(this.action, {
-      method: 'POST',
-      body: formData
-    })
-    .then(() => {
-      // Mostra a mensagem
-      document.getElementById('mensagemSucesso').classList.remove('hidden');
-      // Limpa o formulário
-      this.reset();
-    })
-    .catch(error => console.error('Erro:', error));
+    const form = e.target;
+    const feedback = document.getElementById('formFeedback');
+    
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form)
+      });
+      
+      if (response.ok) {
+        feedback.textContent = '✅ Obrigado! Seu e-mail foi cadastrado.';
+        feedback.classList.remove('hidden');
+        form.reset(); // Limpa o campo
+      }
+    } catch (error) {
+      feedback.textContent = '⚠️ Ocorreu um erro. Tente novamente.';
+      feedback.classList.remove('hidden');
+    }
   });
 </script>
 </body>
