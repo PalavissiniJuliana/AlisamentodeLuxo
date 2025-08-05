@@ -1104,35 +1104,43 @@ A partir da 2ª aplicação: até 2 anos na área já alisada!
 
                 <!-- Email Signup Section -->
        <section class="animate-section opacity-0 scroll-animate px-4 py-8">
-          <div class="bg-white rounded-xl p-6 shadow-sm">
-            <h3 class="text-[#161313] text-lg font-bold mb-4">Receba todas as novidades</h3>
-            
-            <form 
-              id="emailForm"
-              action="https://formsubmit.co/Palavissinijuliana@gmail.com" 
-              method="POST"
-              class="flex flex-col gap-3"
-            >
-              <input type="hidden" name="_next" value="#">
-              <input 
-                type="email" 
-                name="email" 
-                placeholder="Seu melhor e-mail" 
-                required
-                class="w-full px-4 py-3 border border-[#f3f1f2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B483] focus:border-transparent"
-              >
-              <button 
-                type="submit"
-                class="w-full py-3 bg-[#D4B483] text-white font-medium rounded-lg hover:bg-[#A05E2C] transition-colors"
-              >
-                Cadastrar
-              </button>
-            </form>
-            
-            <!-- Mensagem de sucesso (oculta inicialmente) -->
-            <div id="formFeedback" class="hidden mt-4 p-4 bg-green-100 text-green-700 rounded-lg text-center"></div>
-          </div>
-        </section>
+  <div class="bg-white rounded-xl p-6 shadow-sm">
+    <h3 class="text-[#161313] text-lg font-bold mb-4">Receba novidades exclusivas</h3>
+    
+    <form 
+      id="newsletterForm"
+      action="https://formsubmit.co/palavissinijuliana@gmail.com" 
+      method="POST"
+      class="flex flex-col gap-3"
+    >
+      <!-- Configurações do FormSubmit -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="Novo inscrito do site!">
+      <input type="hidden" name="_next" value="#">
+      
+      <!-- Campo de E-mail -->
+      <input 
+        type="email" 
+        name="email" 
+        placeholder="Seu melhor e-mail" 
+        required
+        class="w-full px-4 py-3 border border-[#f3f1f2] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4B483] focus:border-transparent"
+      >
+      
+      <!-- Botão -->
+      <button 
+        type="submit"
+        class="w-full py-3 bg-[#D4B483] text-white font-medium rounded-lg hover:bg-[#A05E2C] transition-colors"
+      >
+        Quero receber novidades
+      </button>
+    </form>
+    
+    <!-- Mensagem de feedback -->
+    <div id="formFeedback" class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm text-center"></div>
+  </div>
+</section>
 
 
 
@@ -1549,33 +1557,35 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
   // Função para o formulário de e-mail
-  document.getElementById('emailForm').addEventListener('submit', async (e) => {
+ document.getElementById('newsletterForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-    
     const form = e.target;
     const feedback = document.getElementById('formFeedback');
     
     try {
       const response = await fetch(form.action, {
         method: 'POST',
-        body: new FormData(form)
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
       });
       
       if (response.ok) {
-        feedback.textContent = '✅ Obrigado! Seu e-mail foi cadastrado.';
+        feedback.textContent = '✅ Cadastro realizado! Verifique seu e-mail.';
         feedback.classList.remove('hidden');
         form.reset();
         
-        // Oculta a mensagem após 5 segundos
         setTimeout(() => {
           feedback.classList.add('hidden');
         }, 5000);
+      } else {
+        throw new Error('Erro no servidor');
       }
     } catch (error) {
-      feedback.textContent = '⚠️ Ocorreu um erro. Tente novamente.';
+      feedback.textContent = '⚠️ Erro ao enviar. Tente novamente ou contate-nos.';
       feedback.classList.remove('hidden');
     }
   });
 </script>
 </body>
 </html>
+
