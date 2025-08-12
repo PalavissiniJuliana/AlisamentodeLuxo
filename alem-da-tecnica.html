@@ -476,16 +476,16 @@
   <div class="relative flex size-full min-h-screen flex-col bg-white justify-between group/design-root overflow-x-hidden" style='font-family: "Noto Serif", "Noto Sans", sans-serif;'>
     <div>
       <!-- Hero Section -->
-      <div class="@container scroll-animate" style="margin: 0; padding: 0;">
-        <div style="margin: 0; padding: 0;">   
-          <video autoplay loop muted playsinline webkit-playsinline class="absolute w-full h-full object-cover z-0" style="top: 0; left: 0;">
+      <div class="@container scroll-animate relative" style="margin: 0; padding: 0; height: 100vh; overflow: hidden;">
+        <div style="margin: 0; padding: 0; height: 100%;">   
+          <video autoplay loop muted playsinline webkit-playsinline class="absolute w-full h-full object-cover z-0 pointer-events-none" style="top: 0; left: 0;">
             <source src="EBOOK01/VIDEO0001.mp4" type="video/mp4">
           </video>
     
           <!-- Overlay com gradiente personalizado -->
-          <div class="absolute inset-0 z-1" style="background: linear-gradient(to top, #161313 8%, rgba(0, 0, 0, 0.473) 83%);"></div>
+           <div class="absolute inset-0 z-1 pointer-events-none" style="background: linear-gradient(to top, #161313 8%, rgba(0, 0, 0, 0.473) 83%);"></div>
                                                                                                                                                                                                                          
-          <div class="relative z-10 flex flex-col items-center justify-center min-h-[100vh] w-full text-center text-white px-4 pb-20">
+          <div class="hero-content flex flex-col items-center justify-center w-full text-center text-white px-4 pb-20">
             <div class="flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
               <h1 class="text-4xl text-[#161313] md:text-5xl font-black mb-2">ALÉM DA TÉCNICA</h1>
               <h2 class="subtitle-apple text-sm text-[#161313] md:text-base mb-12">POSICIONAMENTO E VALORIZAÇÃO PROFISSIONAL</h2>
@@ -511,28 +511,28 @@
         <h2 class="courses-title text-[#161313] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8 pt-2">Programas Exclusivos</h2>
         <div class="service-cards-container">
           
-          <!-- Card 1 - Checklist da Profissional -->
+<!-- Card 1 - Checklist da Profissional -->
           <div class="service-card hover-grow">
             <div class="flex flex-col gap-1">
               <p class="text-[#ffffff] text-sm font-bold leading-normal">Checklist da Profissional</p>
               <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
                5 Verdades que Diferenciam Quem Cobra Pouco de Quem É Valorizada             </p>
-              <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
-                <li>🔹 Crie uma identidade visual forte e alinhada</li>
-                <li>🔹 Aprenda técnicas de comunicação estratégica</li>
-                <li>🔹 Eleve seu ticket médio com posicionamento certo</li>
-                <li>🔹 Desenvolva mentalidade de crescimento e autoridade</li>
-                <li>🔹 Torne-se uma profissional valorizada no seu nicho</li>
+             
+               <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
+                <li> Crie uma identidade visual forte e alinhada</li>
+                <li> Aprenda técnicas de comunicação estratégica</li>
+                <li> Eleve seu ticket médio com posicionamento certo</li>
+                <li> Desenvolva mentalidade de crescimento e autoridade</li>
+                <li> Torne-se uma profissional valorizada no seu nicho</li>
                 <li>📥 Material prático e direto para aplicar hoje mesmo</li>
                 <li>📌 Indicado para: profissionais que querem ser reconhecidas e bem pagas</li>
-                <li></li>
               </ul>
 
               <!-- Adição do preço -->
               <div class="mt-4 mb-3">
-                <span class="text-[#D4B483] text-xl font-bold">R$ 75,30</span>
-                <span class="text-[#7f6c6f] text-sm line-through ml-2">R$ 150,60</span>
-                <span class="text-[#A05E2C] text-xs ml-2">(50% OFF)</span>
+                <span class="text-[#7f6c6f] text-sm line-through">R$ 150,60</span>
+                <span class="text-[#D4B483] text-base font-bold ml-2">R$ 75,30</span>
+                <div class="text-[#7f6c6f] text-xs">3x de R$27,10</div>
               </div>
 
             </div>
@@ -558,25 +558,26 @@
               <p class="text-[#ffffff] text-sm font-bold leading-normal">7 Erros Que Estão Queimando a Sua Imagem Profissional</p>
               <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
               Você pode estar se sabotando sem perceber. Descubra os erros que impedem sua valorização e como corrigi-los agora mesmo.              </p>
+              
               <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
-                <li>🔹 Evite atitudes que desvalorizam o seu trabalho</li>
-                <li>🔹 Aprenda a se posicionar com mais autoridade</li>
-                <li>🔹 Transforme sua imagem em um ativo que atrai clientes certos</li>
-                <li>🔹 Fortaleça sua presença no digital e no atendimento presencial</li>
+                <li> Evite atitudes que desvalorizam o seu trabalho</li>
+                <li> Aprenda a se posicionar com mais autoridade</li>
+                <li> Transforme sua imagem em um ativo que atrai clientes certos</li>
+                <li> Fortaleça sua presença no digital e no atendimento presencial</li>
                 <li>📥 Material direto e aplicável – ideal para correção rápida de postura profissional</li>
                 <li>📌 Indicado para: quem já tem técnica, mas sente que ainda não é reconhecida como deveria</li>
               </ul>
 
               <!-- Adição do preço -->
               <div class="mt-4 mb-3">
-                <span class="text-[#D4B483] text-xl font-bold">R$ 64,50</span>
-                <span class="text-[#7f6c6f] text-sm line-through ml-2">R$ 129,00</span>
-                <span class="text-[#A05E2C] text-xs ml-2">(50% OFF)</span>
+                <span class="text-[#7f6c6f] text-sm line-through">R$ 129,00</span>
+                <span class="text-[#D4B483] text-base font-bold ml-2">R$ 64,50</span>
+                <div class="text-[#7f6c6f] text-xs">3x de R$23,50</div>
               </div>
 
             </div>
             <button 
-              onclick="window.open('https://mpago.li/2A4t2qj')"
+              onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Tenho%20interesse%20no%20programa%20Atendimento%20Premium.%20Pode%20me%20explicar%20como%20funciona%3F')"
               class="subscribe-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl px-4 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
               <span class="truncate">Obter Agora</span>
             </button>
@@ -587,42 +588,6 @@
             </div>
           </div>
 
-          <!-- Card 3 - Gestão para Profissionais -->
-          <div class="service-card hover-grow">
-            <div class="flex flex-col gap-1">
-              <p class="text-[#ffffff] text-sm font-bold leading-normal">Gestão para Profissionais</p>
-              <p class="subtitle-apple text-[#7f6c6f] text-sm font-normal leading-normal">
-                Aprenda a organizar seu fluxo de trabalho, administrar seus horários e precificar seus serviços com confiança. Ideal para quem quer transformar seu talento em um negócio rentável e sustentável.
-              </p>
-              <ul class="subtitle-apple text-[#7f6c6f] text-sm mt-2 list-disc pl-5">
-                <li>📍 Métodos de organização e produtividade</li>
-                <li>📌 Como calcular seu preço com base no valor agregado</li>
-                <li>📌 Estratégias para otimizar seu tempo e energia</li>
-                <li>📌 Modelos de agenda e controle financeiro</li>
-                <li>📌 Técnicas para equilibrar vida pessoal e profissional</li>
-              </ul>
-
-              <!-- Adição do preço -->
-              <div class="mt-4 mb-3">
-                <span class="text-[#D4B483] text-xl font-bold">R$ 47,90</span>
-                <span class="text-[#7f6c6f] text-sm line-through ml-2">R$ 95,80</span>
-                <span class="text-[#A05E2C] text-xs ml-2">(50% OFF)</span>
-              </div>
-            
-            </div>
-            <button 
-              onclick="window.open('https://wa.me/554185274188?text=Ol%C3%A1%2C%20Juliana!%20Quero%20saber%20mais%20sobre%20o%20programa%20Gest%C3%A3o%20para%20Profissionais.%20Como%20fa%C3%A7o%20para%20me%20inscrever%3F')"
-              class="subscribe-btn flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl px-4 flex-row-reverse bg-[#f3f1f2] text-black text-sm font-medium leading-normal w-fit hover:bg-[#D4B483] hover:text-white transition-colors">
-              <span class="truncate">Obter Agora</span>
-            </button>
-            
-            <!-- Imagem Container -->
-            <div class="image-container mt-3">
-              <img src="PRINCIPAL/FOTO009.png" alt="Gestão para Profissionais" class="w-full rounded-lg">
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- Footer -->
       <footer id="contato" class="animate-section opacity-0 scroll-animate !mt-12" style="animation-delay: 0.8s;">
@@ -658,10 +623,10 @@
               </div>
             </a>
           </div>
-          <p class="footer-copyright text-[#A05E2C] text-base font-normal leading-normal">© 2024 Juliana Palavissini. Todos os direitos reservados.</p>
+          <p class="footer-copyright text-[#A05E2C] text-base font-normal leading-normal">© 2021 Juliana Palavissini. Todos os direitos reservados.</p>
         </div>
         <p class="text-center text-sm text-gray-500 mt-4">
-          Site desenvolvido por <a href="https://wa.me/5546991207326" target="_blank" class="underline hover:text-black font-semibold">(Luis Eduardo Dalla)</a> — Fale comigo pelo WhatsApp.
+          Site desenvolvido por <a href="https://wa.me/5546991207326" target="_blank" class="underline hover:text-black font-semibold">(Eduardo Dalla)</a> — Fale comigo pelo WhatsApp.
         </p>
       </footer>
       
@@ -765,6 +730,3 @@
     </script>
   </body>
 </html>
-
-
-
