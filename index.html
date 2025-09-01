@@ -493,7 +493,6 @@
   background-repeat: no-repeat;
   background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Isso cria o efeito parallax */
   color: #d6d6c9;
   height: 100vh; /* ocupa tela toda */
   display: flex;
@@ -1007,8 +1006,8 @@
             .profile-name {
                 margin: 2rem 0 0 0;
                 width: 100%;
-                font-size: 1.8rem;
-                text-align: center;
+                font-size: 1.4rem;
+                text-align: left;
                 line-height: 1.2;
                 margin-left: 0; /* Remove a margem negativa que empurrava o texto para fora */
             }
@@ -1137,15 +1136,13 @@
 
     /* Contact Section Mobile */
     .contact-section {
-        height: 100vh; /* ocupa tela toda */
+        height: 60vh; /* ocupa tela toda */
          display: flex;
-        min-height: 100vh;
         padding: 2rem 1rem;
         flex-direction: column;
         background-image: url(img/frame.png);
         background-position: center;
         background-size: cover;
-    background-attachment: fixed; /* Isso cria o efeito parallax */
     }
 
    
@@ -1183,6 +1180,7 @@
     .footer {
     padding: 3rem 1.5rem;
     height: auto; /* remove 95vh, deixa fluir */
+    padding-top: 30rem;
   }
 
   .footer-nav {
@@ -1334,7 +1332,7 @@
             <img class="profile-image" src="https://c.animaapp.com/MrxKUJ7f/img/rectangle-7@2x.png" alt="Juliana Palavissini">
 
             <div class="profile-name">
-                <span>Juliana Palavissini:</span><br>
+                <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Juliana Palavissini:</span><br>
                 <span>Especialista e mestre em alisamento</span><br>
                 <span>capilar com formação internacional.</span>
             </div>
@@ -1535,8 +1533,7 @@
            
      <div class="footer-line"></div>
     <p class="copyright-text">© 2021 Juliana Palavissini. Todos os direitos reservados.</p>
-             
-        </footer>
+ </footer>
    
         <section class="credits-section">
     <div class="credits-container">
@@ -1729,6 +1726,95 @@
             window.addEventListener('resize', function() {
                 initAnimations();
             });
+        });
+          // Inicializar os textos dos botões após o carregamento do DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar data-text attribute para cada link do menu mobile
+            const mobileNavButtons = document.querySelectorAll('.mobile-nav-button');
+            
+            mobileNavButtons.forEach(button => {
+                const text = button.textContent;
+                button.setAttribute('data-text', text);
+                
+                // Envolver o texto em um span para animação
+                button.innerHTML = `<span>${text}</span>`;
+            });
+            
+            // Configurar a animação de entrada dos botões
+            gsap.set('.mobile-nav-button span', { y: '100%' });
+            gsap.set('.mobile-nav-button::after', { y: '0%' });
+            
+            // Função para animar a entrada dos botões
+            function animateMenuIn() {
+                gsap.to('.mobile-nav-button span', {
+                    y: '0%',
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                    delay: 0.2
+                });
+            }
+            
+            // Função para animar a saída dos botões
+            function animateMenuOut() {
+                gsap.to('.mobile-nav-button span', {
+                    y: '100%',
+                    duration: 0.6,
+                    stagger: 0.05,
+                    ease: "power2.in"
+                });
+            }
+            
+            // Integrar com a lógica existente de abrir/fechar menu
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const body = document.body;
+            
+            let isMenuOpen = false;
+            
+            // Modificar a função de abrir menu
+            function openMenu() {
+                isMenuOpen = true;
+                menuToggle.classList.add('active');
+                mobileMenu.classList.add('active');
+                body.classList.add('menu-open');
+                
+                // Animação de entrada com clip-path
+                animateMenuIn();
+            }
+            
+            // Modificar a função de fechar menu
+            function closeMenu() {
+                isMenuOpen = false;
+                
+                // Animação de saída com clip-path
+                animateMenuOut();
+                
+                // Esperar a animação terminar antes de esconder o menu
+                setTimeout(() => {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }, 600);
+            }
+            
+            // Manter o restante da lógica do menu existente
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    if (!isMenuOpen) {
+                        openMenu();
+                    } else {
+                        closeMenu();
+                    }
+                });
+                
+                // Fechar o menu ao clicar em um link
+                mobileNavButtons.forEach(link => {
+                    link.addEventListener('click', function() {
+                        closeMenu();
+                    });
+                });
+            }
         });
 </script>
 </body>
