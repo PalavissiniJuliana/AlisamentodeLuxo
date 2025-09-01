@@ -47,6 +47,10 @@
             background-color: var(--color-bg);
         }
         
+
+
+
+
         /* Header e Navegação */
         .header {
             padding: 2rem 1.5rem;
@@ -85,68 +89,76 @@
         }
 
         .menu-toggle,
-        .mobile-menu {
-            display: none;
-        }
+.mobile-menu {
+    display: none;
+}
         
         /* Hero Section */
         .hero-section {
-            height: 95vh;
-            display: flex;
-            align-items: flex-end;
-            padding: 2rem;
-            box-sizing: border-box;
-            width: auto;
+  height: 95vh;
+  display: flex;
+  align-items: flex-end; /* gruda no final da tela */
+  padding: 2rem;
+  box-sizing: border-box;
+  width: auto;
         }
         
-        .hero-container {
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
-            align-items: baseline;
-        }
+       .hero-container {
+   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  align-items: baseline; /* garante alinhamento pela linha base */
+}
 
-        .hero-name-block {
-            grid-column: 1 / 2;
-            grid-row: 1 / 2;
-        }
+.hero-name-block {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
 
-        .hero-name {
-            font-size: 170px;
-            font-weight: 900;
-            text-align: left;
-            line-height: 0.9;
-            margin-left: 1rem;
-        }
+.hero-name{
+    font-size: 170px;
+  font-weight: 900;
+  text-align: left;
+  line-height: 0.9;
+  margin-left: 1rem;
+}
 
-        .hero-lastname {
-            font-size: 170px;
-            font-weight: 900;
-            margin: 0;
-            line-height: 0.9;
-            margin-left: 8rem;
-        }
 
-        .hero-subtitle {
-            width: 250px;
+.hero-lastname {
+  font-size: 170px;
+  font-weight: 900;
+  margin: 0;
+  line-height: 0.9;
+  margin-left: 8rem;
+  
+}
+
+.hero-subtitle {
+           width: 250px;
             align-self: flex-start;
             margin-left: -16rem;
             font-size: 0.9rem;
             font-family: monospace;
             text-align: right;
             margin-top: 7rem;
-        }
+            
+  
+}
 
-        .trademark-text {
-            grid-column: 1 / 2;
-            grid-row: 3/ 3;
-            font-size: 0.8rem;
-            font-family: monospace;
-            margin-top: -1.5rem;
-        }
+.trademark-text {
+  grid-column: 1 / 2;
+  grid-row: 3/ 3;
+  font-size: 0.8rem;
+  font-family: monospace;
+  margin-top: -1.5rem;
+}
         
-        /* About Section */
+       
+
+
+
+/* About Section */
         .about-section {
             padding: 15rem 1.5rem;
             position: relative;
@@ -155,19 +167,19 @@
         }
         
         .profile-section {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            max-width: 1300px;
-            margin: 0 auto;
+           display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1300px;
+  margin: 0 auto;
         }
         
         .profile-image {
-            width: 380px;
-            height: 452px;
-            border-radius: 5px;
-            object-fit: cover;
-            flex-shrink: 0;
+            width: 380;
+ height: 452px;
+  border-radius: 5px;
+  object-fit: cover;
+  flex-shrink: 0;
         }
         
         .profile-name {
@@ -184,49 +196,68 @@
             display: block;
         }
 
+        
         .profile-name span {
             display: inline-block;
             transform: translateY(100%);
             opacity: 0;
         }
-        
-        .about-text-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 0.5px solid var(--color-text);
-            margin-left: 28rem;
-            text-align: right;
-        }
 
-        .about-button-container {
-            grid-column: 1 / span 2;
-            text-align: right;
-            margin-top: 1.5rem;
-        }
-        
-        .ver-mais-button {
-            font-family: var(--font-mono);
-            font-weight: 400;
-            position: relative;
-            padding: 0.5rem 1rem;
-            font-size: 16px;
-            text-decoration: none;
-            color: var(--color-text-light);
-            background-color: var(--color-dark);
-            cursor: pointer;
-            overflow: hidden;
-            transition: var(--transition);
-        }
 
-        .ver-mais-button:hover {
+
+        
+       .about-text-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Dois parágrafos lado a lado */
+        gap: 2rem;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 0.5px solid var(--color-text);
+        margin-left: 28rem;
+        text-align: right; /* Alinhamento à direita */
+    }
+
+    /* Container para o botão abaixo dos parágrafos */
+    .about-button-container {
+        grid-column: 1 / span 2;
+        text-align: right;
+        margin-top: 1.5rem;
+    }
+
+    
+    
+    
+    /* Estilo do botão "Ver mais" */
+
+.ver-mais-button {
+    font-family: var(--font-mono);
+  font-weight: 400;
+  position: relative;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  text-decoration: none;
+  color: var(--color-text-light);
+  background-color: var(--color-dark);
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+ .ver-mais-button:hover {
             background-color: #ffffff00;
             transform: scale(1.05);
             border: 0.5px solid #141414;
             color: #141414;
         }
+
+
+
+
+
+
+
+
+
         
         .about-text {
             font-family: var(--font-sans);
@@ -235,15 +266,16 @@
             letter-spacing: -0.04em;
             line-height: 1.1;
             position: relative;
-            overflow: hidden;
-            display: block;
+    overflow: hidden;
+    display: block;
         }
 
-        .about-text span {
+         .about-text span {
             display: inline-block;
             transform: translateY(-100%);
             opacity: 0;
         }
+
         
         .about-year {
             font-family: var(--font-mono);
@@ -252,6 +284,9 @@
             letter-spacing: -0.1em;
             margin-top: 2rem;
         }
+        
+        
+        
         
         /* AGENDAR Section */
         .schedule-section {
@@ -312,6 +347,8 @@
             margin-bottom: 1rem;
             line-height: 1.3;
         }
+        
+        
         
         /* Courses Section */
         .courses-section {
@@ -388,8 +425,10 @@
         .agendar-button:hover {
             transform: scale(1.05);
             background-color: #ffffff00;
+            transform: scale(1.05);
             border: 0.5px solid #141414;
             color: #141414;
+        
         }
         
         .agendar-button:hover .agendar-text {
@@ -412,233 +451,258 @@
         }
         
         /* Adicionar estilos para o container do título e botão */
-        .courses-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
+    .courses-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+    
+    /* Estilo para o botão "Ver todos" */
+    .ver-todos-cursos {
+        font-family: var(--font-mono);
+        font-weight: 400;
+        font-size: 16px;
+        letter-spacing: -0.1em;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: var(--transition);
+        background-color: var(--color-dark);
+        color: var(--color-text-light);
+        border: none;
+        cursor: pointer;
+        white-space: nowrap;
+        margin-left: 1rem;
+    }
+    
+    .ver-todos-cursos:hover {
+        background-color: #ffffff00;
+        transform: scale(1.05);
+        border: 0.5px solid #141414;
+        color: #141414;
+    }
+      
         
-        /* Estilo para o botão "Ver todos" */
-        .ver-todos-cursos {
-            font-family: var(--font-mono);
-            font-weight: 400;
-            font-size: 16px;
-            letter-spacing: -0.1em;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            transition: var(--transition);
-            background-color: var(--color-dark);
-            color: var(--color-text-light);
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-            margin-left: 1rem;
-        }
-        
-        .ver-todos-cursos:hover {
-            background-color: #ffffff00;
-            transform: scale(1.05);
-            border: 0.5px solid #141414;
-            color: #141414;
-        }
-        
+       
+       
+       
+       
         /* Contact Section */
         .contact-section {
-            background-image: url(img/frame.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #d6d6c9;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding: 2rem 4rem;
-            z-index: 2;
-            position: relative;
-        }
+  background-image: url(img/frame.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Isso cria o efeito parallax */
+  color: #d6d6c9;
+  height: 100vh; /* ocupa tela toda */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2rem 4rem;
+  z-index: 2;
+  position: relative;
+}
 
-        .contact-content {
-            display: flex;
-            justify-content: left;
-            align-items: flex-start;
-            flex: 1;  
-        }
 
-        .contact-message {
-            font-size: 3rem;
-            letter-spacing: -0.05em;
-            line-height: 1.1;
-            font-weight: 700;
-            width: 650px;
-            margin-top: -24rem;
-            margin-right: -60rem;
-            margin-left: 40rem;
-        }
+.contact-content {
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+  flex: 1;  
+}
 
-        .contact-footer {
-            display: flex;
-            align-items: flex-end;
-            justify-content: flex-start;
-            width: 400px;
-        }
+.contact-message {
+  font-size: 3rem;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  font-weight: 700;
+  width: 650px;
+  margin-top: -24rem; /* controla altura */
+  margin-right: -60rem;
+  margin-left: 40rem;
+  
+}
 
-        .contact-title {
-            font-size: 130px;
-            font-weight: 900;
-            margin: 0;
-            display: inline-block;
-            padding-bottom: 0.1rem;
-            color: inherit;
-            text-decoration: none;
-            position: relative;
-        }
+.contact-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 400px;
+}
 
-        .contact-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: #d6d6c9;
-            transition: transform 0.7s ease;
-            transform-origin: left;
-        }
+.contact-title {
+  font-size: 130px;
+  font-weight: 900;
+  margin: 0;
+  display: inline-block;
+  padding-bottom: 0.1rem;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
 
-        .contact-title:hover::after {
-            transform: scaleX(0);
-        }
+.contact-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #d6d6c9;
+  transition: transform 0.7s ease;
+  transform-origin: left;
+}
+
+.contact-title:hover::after {
+  transform: scaleX(0);
+}
         
-        /* Footer */
-        .footer {
-            padding: 0rem 2rem;
-            position: relative;
-            z-index: 0;
-            background-color: var(--color-bg);
-            height: 95vh;
-        }
+        
 
-        .footer-nav {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.1rem;
-            margin-top: -27rem;
-        }
 
-        .footer-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 5rem;
-            color: var(--color-dark);
-            text-decoration: none;
-            letter-spacing: 0em;
-            transition: var(--transition);
-        }
 
-        .footer-link:hover {
-            letter-spacing: 5px;
-            color: #7a7972;
-        }
+/* Footer */
+       .footer {
+     padding: 0rem 2rem;
+    position: relative;
+    z-index: 0;
+    background-color: var(--color-bg); /* se quiser contraste */
+    height: 95vh;
+    
+    
+}
 
-        .footer-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+.footer-nav {
+    display: flex;
+    flex-direction: column; /* ou row se quiser horizontal */
+    align-items: flex-start; /* alinhamento à esquerda */
+    gap: 0.1rem; /* espaçamento entre links */
+    margin-top: -27rem;
+}
 
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
+.footer-link {
+    font-family: 'Inter', sans-serif; /* mesma do menu mobile */
+    font-weight: 900; /* igual ao menu mobile */
+    font-size: 5rem; /* ajustável */
+    color: var(--color-dark);
+    text-decoration: none;
+    letter-spacing: 0em;
+    transition: var(--transition);
+}
 
-        .social-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #c4c3b7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            font-weight: 700;
-            color: var(--color-dark);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
+.footer-link:hover {
+    letter-spacing: 5px; /* mesmo efeito hover do menu mobile */
+    color: #7a7972; /* mesma cor hover */
+}
 
-        .social-circle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
-            transition: left 0.7s ease;
-        }
 
-        .social-circle:hover::before {
-            left: 100%;
-        }
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
 
-        .social-circle:hover {
-            background: var(--color-dark);
-            color: var(--color-bg);
-        }
+.social-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
-        .social-circle svg {
-            transition: var(--transition);
-        }
+.social-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #c4c3b7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--color-dark);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
 
-        .social-circle:hover svg {
-            fill: var(--color-bg);
-            transform: scale(1.1);
-        }
+.social-circle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+    transition: left 0.7s ease;
+}
 
-        .footer-contacts {
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin-right: 4rem;
-        }
+.social-circle:hover::before {
+    left: 100%;
+}
 
-        .contact-block {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-        }
+.social-circle:hover {
+    background: var(--color-dark);
+    color: var(--color-bg);
+}
 
-        .contact-label {
-            font-family: var(--font-mono);
-            font-size: 12px;
-            color: #6b6b6b;
-            font-weight: 600;
-        }
+.social-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .contact-info {
-            font-family: var(--font-sans);
-            font-size: 14px;
-            color: #141414;
-            text-decoration: underline;
-            font-weight: 400;
-        }
+.social-circle svg {
+    transition: var(--transition);
+}
 
-        .footer-line {
-            width: 100%;
-            height: 1px;
-            background-color: #6b6b6b;
-            opacity: 0.5;
-            margin-top: 1rem;
-        }
+.social-circle:hover svg {
+    fill: var(--color-bg);
+    transform: scale(1.1);
+}
+
+
+
+.footer-contacts {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-right: 4rem;
+}
+
+.contact-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.contact-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #6b6b6b;
+    font-weight: 600;
+}
+
+.contact-info {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: #141414;
+    text-decoration: underline;
+    font-weight: 400;
+}
+
+
+
+
+.footer-line {
+    width: 100%;
+    height: 1px;
+    background-color: #6b6b6b; /* mesma cor dos textos */
+    opacity: 0.5; /* levemente suave */
+    margin-top: 1rem;
+}
 
         .copyright-text {
             font-family: var(--font-mono);
@@ -650,232 +714,214 @@
             margin-top: 1rem;
         }
 
+
         .credits-section {
-            background-color: #141414;
-            padding: 1.5rem 0;
-            text-align: center;
-        }
+    background-color: #141414;
+    padding: 1.5rem 0;
+    text-align: center;
+}
 
-        .credits-text {
-            color: #c4c3b7;
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            margin: 0;
-        }
+.credits-text {
+    color: #c4c3b7;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    margin: 0;
+}
 
-        .credits-link {
-            color: #c4c3b7;
-            text-decoration: underline;
-            transition: color 0.7s ease;
-        }
+.credits-link {
+    color: #c4c3b7;
+    text-decoration: underline;
+    transition: color 0.7s ease;
+}
 
-        .credits-link:hover {
-            color: #ffffff;
-        }
+.credits-link:hover {
+    color: #ffffff;
+}
         
-        /* Media Query para Mobile */
-        @media (max-width: 1024px) {
-            /* Ajustes para tablets */
-            .hero-name, .hero-lastname {
-                font-size: 120px;
-            }
-            
-            .hero-subtitle {
-                margin-left: -10rem;
-            }
-            
-            .profile-name {
-                margin-left: -200px;
-                width: auto;
-            }
-            
-            .about-text-container {
-                margin-left: 20rem;
-            }
-            
-            .contact-message {
-                margin-left: 30rem;
-                margin-right: -40rem;
-                font-size: 2.5rem;
-            }
-            
-            .contact-title {
-                font-size: 100px;
-            }
-            
-            .footer-link {
-                font-size: 4rem;
-            }
-        }
-        
-        @media (max-width: 767px) {
-            /* Header Mobile */
-            .header {
-                padding: 1rem;
-            }
-            
-            /* Esconder a navegação padrão no mobile */
-            .navbar-container {
-                display: none;
-            }
+       /* Media Query para Mobile */
+@media (max-width: 767px) {
+    /* Header Mobile */
+    .header {
+        padding: 1rem;
+    }
+    
+   /* Esconder a navegação padrão no mobile */
+.navbar-container {
+    display: none;
+}
 
-            /* Botão hamburguer */
-            .menu-toggle {
-                display: block;
-                position: fixed;
-                top: 1.5rem;
-                right: 1rem;
-                z-index: 1000;
-                background: none;
-                border: none;
-                cursor: pointer;
-                padding: 0.5rem;
-            }
+/* Botão hamburguer */
+.menu-toggle {
+    display: block;
+    position: fixed;
+    top: 1.5rem;
+    right: 1rem;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
 
-            .menu-toggle span {
-                display: block;
-                width: 30px;
-                height: 2px;
-                background-color: var(--color-dark);
-                margin: 6px 0;
-                transition: var(--transition);
-            }
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-dark);
+    margin: 6px 0;
+    transition: var(--transition);
+}
 
-            .menu-toggle span:nth-child(1) {
-                width: 35px;
-            }
+.menu-toggle span:nth-child(1) {
+    width: 35px; /* Linha um pouco maior */
+}
 
-            .menu-toggle span:nth-child(2) {
-                width: 65px;
-            }
+.menu-toggle span:nth-child(2) {
+    width: 65px; /* Linha um pouco menor */
+}
 
-            .menu-toggle.active span {
-                background-color: var(--color-bg);
-            }
+.menu-toggle.active span {
+    background-color: var(--color-bg); /* Cor escura para contraste com fundo claro */
+}
 
-            .menu-toggle span {
-                transition: background-color 0.3s ease, transform 0.7s ease;
-            }
+/* Transição suave para a mudança de cor */
+.menu-toggle span {
+    transition: background-color 0.3s ease, transform 0.7s ease;
+}
 
-            /* Menu mobile */
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: var(--color-bg);
-                z-index: 999;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                padding-bottom: 3rem;
-                align-items: center;
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-            }
+/* Menu mobile */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 3rem;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
 
-            .mobile-menu.active {
-                opacity: 1;
-                visibility: visible;
-            }
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-            .mobile-nav-button {
-                font-family: 'Inter', sans-serif;
-                font-weight: 900;
-                color: var(--color-bg);
-                font-size: 3.5rem;
-                background: none;
-                border: none;
-                cursor: pointer;
-                padding: 7px;
-                text-decoration: none;
-                display: block;
-                position: relative;
-                overflow: hidden;
-                text-align: left;
-                width: 100%;
-                padding-bottom: 1px;
-                margin-left: 25px;
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease, letter-spacing 0.3s ease;
-            }
+.mobile-nav-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: var(--color-bg);
+    font-size: 3.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    width: 100%;
+    padding-bottom: 1px;
+    margin-left: 25px;
+     opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease, letter-spacing 0.3s ease;
+}
 
-            .mobile-nav-button span {
-                display: block;
-                position: relative;
-                transition: transform 0.7s cubic-bezier(0.16, 0.85, 0.3, 1.1);
-                transform: translateY(0%);
-            }
+/* Texto original (será clippado) */
+.mobile-nav-button span {
+    display: block;
+    position: relative;
+    transition: transform 0.7s cubic-bezier(0.16, 0.85, 0.3, 1.1);
+    transform: translateY(0%);
+}
 
-            .mobile-nav-button::after {
-                content: attr(data-text);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                padding: 7px;
-                transform: translateY(100%);
-                transition: transform 0.7s cubic-bezier(0.16, 0.85, 0.3, 1.1);
-                color: #141414;
-            }
+/* Texto duplicado para o efeito (será revelado) */
+.mobile-nav-button::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    transform: translateY(100%);
+    transition: transform 0.7s cubic-bezier(0.16, 0.85, 0.3, 1.1);
+    color: #141414;
+}
 
-            .mobile-menu .mobile-nav-button {
-                font-family: 'Inter', sans-serif;
-                font-weight: 900;
-                color: var(--color-bg);
-                font-size: 3.5rem;
-                background: none;
-                border: none;
-                cursor: pointer;
-                text-decoration: none;
-                transition: color 0.3s ease;
-                display: block;
-                text-align: left;
-                width: 100%;
-                margin-left: 25px;
-            }
 
-            .mobile-menu.active .mobile-nav-button {
-                opacity: 1;
-                transform: translateY(0);
-            }
 
-            .mobile-menu {
-                transform: translateX(100%);
-                transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s ease, visibility 0.9s ease;
-            }
+/* Ajuste para o menu mobile */
+.mobile-menu .mobile-nav-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: var(--color-bg);
+    font-size: 3.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-left: 25px;
+}
 
-            .mobile-menu.active {
-                transform: translateX(0);
-            }
+.mobile-menu.active .mobile-nav-button {
+    opacity: 1;
+    transform: translateY(0);
+}
 
-            .mobile-menu::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: var(--color-dark);
-                z-index: -1;
-                transform-origin: right;
-                transform: scaleX(0);
-                transition: transform 0.9s cubic-bezier(0.16, 0.85, 0.3, 1.1);
-            }
+/* Transição de abertura do menu da direita para a esquerda */
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s ease, visibility 0.9s ease;
+}
 
-            .mobile-menu.active::before {
-                transform: scaleX(1);
-                transform-origin: left;
-            }
-            
-            /* Hero Section Mobile */
-            .hero-section {
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* Estilização adicional para o efeito de abertura */
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-dark);
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.9s cubic-bezier(0.16, 0.85, 0.3, 1.1);
+}
+
+.mobile-menu.active::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+
+
+
+
+
+    
+    /* Hero Section Mobile */
+    .hero-section {
                 height: auto;
                 min-height: 70vh;
                 padding: 1rem;
@@ -914,7 +960,7 @@
                 line-height: 0.9;
                 text-align: center;
                 width: 100%;
-                margin-left: 0;
+                margin-left: -1.5rem;
             }
             
             .hero-subtitle {
@@ -934,235 +980,260 @@
                 text-align: center;
             }
     
-            /* About Section Mobile */
-            .about-section {
-                padding: 5rem 1rem;
-                margin-top: 5rem;
-                margin-bottom: 5rem;
-            }
-            
-            .profile-section {
-                flex-direction: column;
-                align-items: center;
-            }
-                
-            .profile-image {
-                width: 100%;
-                max-width: 280px;
-                height: auto;
-                margin: 0 auto;
-            }
-            
-            .profile-name {
-                margin: 2rem 0 0 0;
-                width: 100%;
-                font-size: 1.4rem;
-                text-align: center;
-                line-height: 1.2;
-                overflow: hidden;
-            }
-            
-            .about-text-container {
-                margin-left: 0;
-                grid-template-columns: 1fr;
-                gap: 1rem;
-                padding-top: 1.5rem;
-                margin-top: 2rem;
-                text-align: left; 
-            }
-            
-            .about-button-container {
-                grid-column: 1;
-                text-align: left;
-                margin-top: 1.5rem;
-            }
+                       
+    
 
-            .about-text {
-                font-family: var(--font-sans);
-                font-weight: 400;
-                font-size: 0.8rem;
-                letter-spacing: -0.04em;
-                line-height: 1.5;
-            }
-            
-            .ver-mais-button {
-                font-size: 16px;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .about-year {
-                margin-top: 1.5rem;
-                text-align: center;
-            }
-            
-            .about-text {
-                font-family: var(--font-sans);
-                font-weight: 400;
-                font-size: 0.8rem;
-                letter-spacing: -0.04em;
-                line-height: 1.5;
-            }
-            
-            /* Schedule Section Mobile */
-            .schedule-section {
-                padding: 2rem 1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .schedule-title {
-                font-size: 1.8rem;
-                text-align: left;
-                margin-bottom: -4rem;
-            }
-            
-            /* AGENDAR Section Mobile */
-            .luxury-section {
-                padding: 2rem 1rem;
-                margin-bottom: 5rem;
-            }
-            
-            .luxury-container {
-                gap: 5rem;
-            }
-            
-            .luxury-title {
-                font-size: 14px;
-            }
-            
-            /* Courses Section Mobile */
-            .courses-section {
-                padding: 2rem 1rem;
-                margin-bottom: 15rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-                text-align: center;
-                margin-bottom: -3.5rem;
-                margin-top:1rem 
-            }
-            
-            .courses-grid {
-                gap: 5rem;
-            }
-            
-            .courses-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                margin-bottom: 3rem;
-            }
-            
-            .course-title {
-                font-size: 14px;
-            }
-
-            .ver-todos-cursos {
-                margin-left: 0;
-                align-self: flex-end;
-            }
-
-            /* Contact Section Mobile */
-            .contact-section {
-                height: auto;
-                min-height: 100vh;
-                padding: 2rem 1rem;
-                flex-direction: column;
-                background-attachment: scroll; /* Remove parallax no mobile */
-            }
-
-            .contact-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            
-            .contact-message {
-                font-size: 1.8rem;
-                margin: 0 0 2rem 0;
-                max-width: 100%;
-                text-align: right;
-                line-height: 1.2;
-                width: auto;
-                margin-left: 0;
-                margin-right: 0;
-                margin-top: 0;
-            }
-            
-            .contact-footer {
-                width: 100%;
-                justify-content: center;
-                margin-top: 2rem;
-            }
-            
-            .contact-title {
-                font-size: 60px;
-                text-align: center;
-            }
-            
-            /* Footer Mobile */
-            .footer {
-                padding: 3rem 1.5rem;
-                height: auto;
-            }
-
-            .footer-nav {
-                margin-top: 0;
-                gap: 0.5rem;
-            }
-
-            .footer-link {
-                font-size: 3rem;
-            }
-
-            .footer-right {
-                align-items: flex-start;
-                gap: 1rem;
-                margin-top: 2rem;
-            }
-
-            .social-buttons {
-                gap: 0.8rem;
-            }
-
-            .social-circle {
-                width: 35px;
-                height: 35px;
-            }
-
-            .footer-contacts {
-                margin-right: 0;
-                margin-top: 2rem;
-                gap: 1rem;
-            }
-
-            .contact-label {
-                font-size: 11px;
-            }
-
-            .contact-info {
-                font-size: 13px;
-            }
-
-            .footer-line {
-                margin: 2rem 0 1rem;
-            }
-
-            .copyright-text {
-                font-size: 12px;
-                margin-right: 0;
-                text-align: center;
-                display: block;
-            }
-
-            .credits-section {
-                padding: 1rem 0;
-            }
-            
-            .credits-text {
-                font-size: 12px;
-            }
+                       /* About Section Mobile */
+    .about-section {
+        padding: 5rem 1rem;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+    
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+    }
+        
+    
+    .profile-image {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        margin: 0 auto;
+    }
+    
+    .profile-name {
+        margin: 2rem 0 0 0;
+        width: 100%;
+        font-size: 1.4rem;
+        text-align: center;
+        line-height: 1.2;
+        
+        overflow: hidden;
+    }
+    
+    .about-text-container {
+        margin-left: 0;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        margin-top: 2rem;
+        text-align: left; 
+    }
+    
+.about-button-container {
+            grid-column: 1; /* Ajusta para uma coluna no mobile */
+            text-align: left; /* Alinhamento à esquerda no mobile */
+            margin-top: 1.5rem;
         }
+
+         .about-text {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 0.8rem;
+            letter-spacing: -0.04em;
+            line-height: 1.5;
+        }
+        
+        .ver-mais-button {
+            font-size: 16px;
+            padding: 0.4rem 0.8rem;
+        }
+
+
+    .about-year {
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+    
+     .about-text {
+            font-family: var(--font-sans);
+            font-weight: 400;
+            font-size: 0.8rem;
+            letter-spacing: -0.04em;
+            line-height: 1.5;
+        }
+    
+    
+    
+    /* Schedule Section Mobile */
+    .schedule-section {
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .schedule-title {
+        font-size: 1.8rem;
+        text-align: left;
+        margin-bottom: -4rem;
+    }
+    
+    
+    
+    /* AGENDAR Section Mobile */
+    .luxury-section {
+        padding: 2rem 1rem;
+        margin-bottom: 5rem;
+    }
+    
+    .luxury-container {
+        gap: 5rem;
+    }
+    
+    .luxury-title {
+        font-size: 14px;
+    }
+    
+   
+   
+                  /* Courses Section Mobile */
+    .courses-section {
+        padding: 2rem 1rem;
+        margin-bottom: 15rem;
+    }
+
+    
+    .section-title {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: -3.5rem;
+        margin-top:1rem 
+    }
+    
+    .courses-grid {
+        gap: 5rem;
+    }
+    
+  .courses-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+.course-title{
+    font-size: 14px;
+}
+
+        .ver-todos-cursos {
+            margin-left: 0;
+            align-self: flex-end;
+        }
+
+
+
+
+
+
+    /* Contact Section Mobile */
+    .contact-section {
+        height: 100vh; /* ocupa tela toda */
+         display: flex;
+        min-height: 100vh;
+        padding: 2rem 1rem;
+        flex-direction: column;
+        background-image: url(img/frame.png);
+        background-position: center;
+        background-size: cover;
+    background-attachment: fixed; /* Isso cria o efeito parallax */
+    }
+
+   
+    
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .contact-message {
+        font-size: 1.8rem;
+        margin: 0 0 2rem 0;
+        max-width: 100%;
+        text-align: right;
+        line-height: 1.2;
+    }
+    
+   
+    
+    .contact-footer {
+        width: 100%;
+        justify-content: center;
+        margin-top: 2rem;
+    }
+    
+    .contact-title {
+        font-size: 60px;
+        text-align: center;
+    }
+    
+     
+    
+    
+    .footer {
+    padding: 3rem 1.5rem;
+    height: auto; /* remove 95vh, deixa fluir */
+  }
+
+  .footer-nav {
+    margin-top: -25rem; /* remove -27rem */
+    gap: 0.5rem;
+  }
+
+  .footer-link {
+    font-size: 3rem; /* reduz tamanho para caber bem */
+  }
+
+  .footer-right {
+    align-items: flex-start; /* no mobile, melhor alinhado à esquerda */
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .social-buttons {
+    gap: 0.8rem;
+  }
+
+  .social-circle {
+    width: 35px;
+    height: 35px;
+  }
+
+  .footer-contacts {
+    margin-right: 0; /* remove excesso */
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  .contact-label {
+    font-size: 11px;
+  }
+
+  .contact-info {
+    font-size: 13px;
+  }
+
+  .footer-line {
+    margin: 2rem 0 1rem;
+  }
+
+  .copyright-text {
+    font-size: 12px;
+    margin-right: 0; /* centraliza */
+    text-align: center;
+    display: block;
+  }
+
+  .credits-section {
+        padding: 1rem 0;
+    }
+    
+    .credits-text {
+        font-size: 12px;
+    }
+
+}
         
         /* Media Queries para desktop */
         @media (min-width: 1024px) {
@@ -1208,41 +1279,22 @@
         html {
             scroll-behavior: smooth;
         }
-        
-        /* Prevenir quebra de palavras em elementos importantes */
-        .hero-name, .hero-lastname, .footer-link {
-            word-break: keep-all;
-            overflow-wrap: break-word;
-        }
-        
-        /* Melhorar toque em dispositivos móveis */
-        button, a, .nav-button, .social-circle {
-            -webkit-tap-highlight-color: transparent;
-            touch-action: manipulation;
-        }
-        
-        /* Prevenir zoom em inputs no iOS */
-        @media screen and (max-width: 767px) {
-            input, select, textarea {
-                font-size: 16px !important;
-            }
-        }
     </style>
 </head>
 <body>
 
     <button class="menu-toggle">
-        <span></span>
-        <span></span>
-    </button>
+    <span></span>
+    <span></span>
+</button>
 
-    <div class="mobile-menu">
-        <a href="index.html" class="mobile-nav-button">Início</a>
-        <a href="Cursos.html" class="mobile-nav-button">Cursos</a>
-        <a href="Mentoria.html" class="mobile-nav-button">Mentoria</a>
-        <a href="Contato.html" class="mobile-nav-button">Contato</a>
-        <a href="Sobre.html" class="mobile-nav-button">Sobre</a>
-    </div> 
+<div class="mobile-menu">
+    <a href="index.html" class="mobile-nav-button">Início</a>
+    <a href="Cursos.html" class="mobile-nav-button">Cursos</a>
+    <a href="Mentoria.html" class="mobile-nav-button">Mentoria</a>
+    <a href="Contato.html" class="mobile-nav-button">Contato</a>
+    <a href="Sobre.html" class="mobile-nav-button">Sobre</a>
+</div> 
 
     <div class="main-container">
         <header class="header">
@@ -1255,55 +1307,55 @@
             </nav>
         </header>
 
-        <section class="hero-section">
-            <div class="hero-container">
-                <div class="hero-name-block">
-                    <h1 class="hero-name">JULIANA</h1>
-                    <h1 class="hero-lastname">PALAVISSINI</h1>
-                </div>
-                <p class="hero-subtitle">TRANSFORMANDO INICIANTES<br> EM PROFISSIONAIS</p>
-                <p class="trademark-text">®ALISAMENTO DE LUXO</p>
-            </div>
-        </section>
+       <section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-name-block">
+      <h1 class="hero-name">JULIANA</h1>
+      <h1 class="hero-lastname">PALAVISSINI</h1>
+    </div>
+    <p class="hero-subtitle">TRANSFORMANDO INICIANTES<br> EM PROFISSIONAIS</p>
+    <p class="trademark-text">®ALISAMENTO DE LUXO</p>
+  </div>
+</section>
 
         <section class="about-section">
-            <div class="profile-section">
-                <img class="profile-image" src="https://c.animaapp.com/MrxKUJ7f/img/rectangle-7@2x.png" alt="Juliana Palavissini">
+  <div class="profile-section">
+    <img class="profile-image" src="https://c.animaapp.com/MrxKUJ7f/img/rectangle-7@2x.png" alt="Juliana Palavissini">
 
-                <div class="profile-name">
-                    <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Juliana Palavissini:</span><br>
-                    <span>Especialista e mestre em alisamento</span><br>
-                    <span>capilar com formação internacional.</span>
-                </div>
-            </div>
+    <div class="profile-name">
+      <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Juliana Palavissini:</span><br>
+      <span>Especialista e mestre em alisamento</span><br>
+      <span>capilar com formação internacional.</span>
+    </div>
+  </div>
 
             <div class="about-year">©2025</div>
             
-            <div class="about-text-container">
-                <p class="about-text">
-                    <span>Com mais de 25 anos de experiência no mercado,</span>
-                    <span>Juliana Palavissini consolida-se como autoridade máxima</span>
-                    <span>em alisamento capilar. Sua expertise vai além da técnica</span>
-                    <span>apurada - como Mestre certificada internacionalmente</span>
-                    <span>pela FEPECS, ela domina as mais avançadas</span>
-                    <span>metodologias de alisamento definitivo e</span>
-                    <span>semidefinitivo, garantindo resultados imediatos</span>
-                    <span>e de alta durabilidade.</span>
-                </p>
-                <p class="about-text">
-                    <span>Juliana transforma seu conhecimento técnico em</span>
-                    <span>educação de excelência através de mentorias</span>
-                    <span>especializadas e cursos que formam profissionais</span>
-                    <span>completos no mercado capilar. Seu método exclusivo já</span>
-                    <span>capacitou mais de 500 alunas com índice de satisfação</span>
-                    <span>total, consolidando seu legado como referência</span>
-                    <span>tanto na execução quanto no ensino das técnicas</span>
-                    <span>de alisamento.</span>
-                </p>
-                <div class="about-button-container">
-                    <a href="Sobre.html" class="ver-mais-button">Ver Mais</a>
-                </div>
-            </div>
+          <div class="about-text-container">
+    <p class="about-text">
+        <span>Com mais de 25 anos de experiência no mercado,</span>
+        <span>Juliana Palavissini consolida-se como autoridade máxima</span>
+        <span>em alisamento capilar. Sua expertise vai além da técnica</span>
+        <span>apurada - como Mestre certificada internacionalmente</span>
+        <span>pela FEPECS, ela domina as mais avançadas</span>
+        <span>metodologias de alisamento definitivo e</span>
+        <span>semidefinitivo, garantindo resultados imediatos</span>
+        <span>e de alta durabilidade.</span>
+    </p>
+    <p class="about-text">
+        <span>Juliana transforma seu conhecimento técnico em</span>
+        <span>educação de excelência através de mentorias</span>
+        <span>especializadas e cursos que formam profissionais</span>
+        <span>completos no mercado capilar. Seu método exclusivo já</span>
+        <span>capacitou mais de 500 alunas com índice de satisfação</span>
+        <span>total, consolidando seu legado como referência</span>
+        <span>tanto na execução quanto no ensino das técnicas</span>
+        <span>de alisamento.</span>
+    </p>
+    <div class="about-button-container">
+        <a href="Sobre.html" class="ver-mais-button">Ver Mais</a>
+    </div>
+</div>
         </section>
 
         <section class="schedule-section">
@@ -1356,11 +1408,16 @@
             </div>
         </section>
 
+
+
+
+
+
         <section class="courses-section">
-            <div class="courses-header">
-                <h2 class="section-title">Cursos</h2>
-                <a href="Cursos.html" class="ver-todos-cursos">Ver Todos</a>
-            </div>
+             <div class="courses-header">
+        <h2 class="section-title">Cursos</h2>
+        <a href="Cursos.html" class="ver-todos-cursos">Ver Todos</a>
+    </div>
             
             <div class="courses-grid">
                 <div class="course-card">
@@ -1393,458 +1450,290 @@
         </section>
 
         <section class="contact-section">
-            <div class="contact-content">
-                <p class="contact-message">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estou à sua disposição para curar uma experiência única.
-                </p>
-            </div>
+  <div class="contact-content">
+    <p class="contact-message">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Estou à sua disposição para curar uma experiência única.
+    </p>
+  </div>
 
-            <div class="contact-footer">
-                <a href="Contato.html" class="contact-title">CONTATO</a>
-            </div>
-        </section>
+  <div class="contact-footer">
+    <a href="Contato.html" class="contact-title">CONTATO</a>
+  </div>
+</section>
+
         
-        <footer class="footer"> 
-            <div class="footer-nav">
-                <a href="index.html" class="footer-link">Início</a>
-                <a href="Cursos.html" class="footer-link">Cursos</a>
-                <a href="Mentoria.html" class="footer-link">Mentoria</a>
-                <a href="Contato.html" class="footer-link">Contato</a>
-                <a href="Sobre.html" class="footer-link">Sobre</a>
-            </div>
-            
-            <!-- Área da direita com redes e contatos -->
-            <div class="footer-right">
-                <div class="social-buttons">
-                    <a href="https://wa.me/554185274188" class="social-circle">
-                        <!-- WhatsApp (estilo iOS 17 filled) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.84 3.591"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/alisamentodeluxo?utm_source=ig_web_button_share_sheet&igsh=MThlYWw0OGs1emU3eg==" class="social-circle">
-                        <!-- Instagram (estilo iOS 17 filled) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-circle">
-                        <!-- Facebook (estilo iOS 17 filled) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-circle">
-                        <!-- Twitter/X (estilo iOS 17 filled) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-circle">
-                        <!-- YouTube (estilo iOS 17 filled) -->
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                    </a>
-                </div>
 
-                <div class="footer-contacts">
-                    <div class="contact-block">
-                        <p class="contact-label">[E-mail]</p>
-                        <a href="mailto:contato@email.com" class="contact-info">PalavissiniJuliana@gmail.com</a>
-                    </div>
 
-                    <div class="contact-block">
-                        <p class="contact-label">[Telefone]</p>
-                        <a href="https://wa.me/554185274188" class="contact-info">+55(41) 8527-4188</a>
-                    </div>
-                </div>
-                
-                <div class="footer-line"></div>
-                <p class="copyright-text">© 2021 Juliana Palavissini. Todos os direitos reservados.</p>
-            </div>
+         <footer class="footer"> <div class="footer-nav">
+        <a href="index.html" class="footer-link">Início</a>
+        <a href="Cursos.html" class="footer-link">Cursos</a>
+        <a href="Mentoria.html" class="footer-link">Mentoria</a>
+        <a href="Contato.html" class="footer-link">Contato</a>
+        <a href="Sobre.html" class="footer-link">Sobre</a>
+    </div>
+
+    
+    
+    <!-- Área da direita com redes e contatos -->
+    <div class="footer-right">
+     <div class="social-buttons">
+    <a href="https://wa.me/554185274188" class="social-circle">
+        <!-- WhatsApp (estilo iOS 17 filled) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.84 3.591"/>
+        </svg>
+    </a>
+    <a href="https://www.instagram.com/alisamentodeluxo?utm_source=ig_web_button_share_sheet&igsh=MThlYWw0OGs1emU3eg==" class="social-circle">
+        <!-- Instagram (estilo iOS 17 filled) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+    </a>
+    <a href="#" class="social-circle">
+        <!-- Facebook (estilo iOS 17 filled) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+    </a>
+    <a href="#" class="social-circle">
+        <!-- Twitter/X (estilo iOS 17 filled) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+    </a>
+    <a href="#" class="social-circle">
+        <!-- YouTube (estilo iOS 17 filled) -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+    </a>
+</div>
+
+
+       <div class="footer-contacts">
+    <div class="contact-block">
+        <p class="contact-label">[E-mail]</p>
+        <a href="mailto:contato@email.com" class="contact-info">PalavissiniJuliana@gmail.com</a>
+    </div>
+
+    <div class="contact-block">
+        <p class="contact-label">[Telefone]</p>
+        <a href="https://wa.me/554185274188" class="contact-info">+55(41) 8527-4188</a>
+    </div>
+</div>
+           
+     <div class="footer-line"></div>
+    <p class="copyright-text">© 2021 Juliana Palavissini. Todos os direitos reservados.</p>
+             
         </footer>
    
         <section class="credits-section">
-            <div class="credits-container">
-                <p class="credits-text">Criado por -<a href="https://seulink.com" target="_blank" class="credits-link"> Eduardo Dalla</a></p>
-            </div>
-        </section>
+    <div class="credits-container">
+        <p class="credits-text">Criado por -<a href="https://seulink.com" target="_blank" class="credits-link"> Eduardo Dalla</a></p>
+    </div>
+</section>
+    
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script>
-        // Inicializar o ScrollTrigger do GSAP
-        gsap.registerPlugin(ScrollTrigger);
+ // Inicializar o ScrollTrigger do GSAP
+    gsap.registerPlugin(ScrollTrigger);
 
-        // Animação para o menu de navegação
-        gsap.fromTo('.nav-button', 
-            { opacity: 0, y: -70 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.4 }
+    // Animação para o menu de navegação
+    gsap.fromTo('.nav-button', 
+        { opacity: 0, y: -70 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.4 }
+    );
+
+    // Animação para a seção Hero
+   // Iniciar animação do hero após o loading
+setTimeout(function() {
+    gsap.timeline()
+        .fromTo('.hero-name', 
+            { opacity: 0, x: -100 },
+            { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
+        )
+        .fromTo('.hero-lastname', 
+            { opacity: 0, x: 100 },
+            { opacity: 1, x: 0, duration: 1, ease: "power3.out" }, "-=0.5"
+        )
+        .fromTo('.hero-subtitle', 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8 }, "-=0.3"
+        )
+        .fromTo('.trademark-text', 
+            { opacity: 0 },
+            { opacity: 1, duration: 0.5 }
         );
+}, 0); 
 
-        // Animação para a seção Hero
-        // Iniciar animação do hero após o loading
-        setTimeout(function() {
-            gsap.timeline()
-                .fromTo('.hero-name', 
-                    { opacity: 0, x: -100 },
-                    { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
-                )
-                .fromTo('.hero-lastname', 
-                    { opacity: 0, x: 100 },
-                    { opacity: 1, x: 0, duration: 1, ease: "power3.out" }, "-=0.5"
-                )
-                .fromTo('.hero-subtitle', 
-                    { opacity: 0, y: 30 },
-                    { opacity: 1, y: 0, duration: 0.8 }, "-=0.3"
-                )
-                .fromTo('.trademark-text', 
-                    { opacity: 0 },
-                    { opacity: 1, duration: 0.5 }
-                );
-        }, 0); 
    
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.about-section',
-                start: 'top 55%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.profile-image', 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
-        )
-        .fromTo('.profile-name span',
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
-        );
+   
+   
+      gsap.timeline({
+    scrollTrigger: {
+        trigger: '.about-section',
+        start: 'top 55%',
+        toggleActions: 'play none none reverse'
+    }
+})
+.fromTo('.profile-image', 
+    { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+)
+.fromTo('.profile-name span',  // cada span será animado individualmente
+   { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+);
 
-        // Animação para a seção Schedule (AGENDAR)
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.schedule-section',
-                start: 'top 95%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.schedule-section', 
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }
-        )
-        .fromTo('.schedule-title', 
-            { 
-                opacity: 0, 
-                y: 30,
-            },
-            { 
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "back.out(1.7)"
-            }, "-=0.5"
-        );
 
-        // Animação MELHORADA para a seção Luxury (cards de serviços)
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.luxury-section',
-                start: 'top 95%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.luxury-card', 
-            { 
-                opacity: 0, 
-                y: 80,
-                rotationY: 15,
-                scale: 0.9
-            },
-            { 
-                opacity: 1, 
-                y: 0, 
-                rotationY: 0,
-                scale: 1,
-                duration: 1.2, 
-                ease: "power2.out",
-                stagger: 0.3
-            }
-        )
-        .fromTo('.luxury-video', 
-            { 
-                opacity: 0,
-                scale: 1.2
-            },
-            { 
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power1.out"
-            }, "-=0.8"
-        )
-        .fromTo('.luxury-title', 
-            { 
-                opacity: 0,
-                y: 30
-            },
-            { 
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "back.out(1.7)"
-            }, "-=0.5"
-        )
-        .fromTo('.agendar-button', 
-            { 
-                opacity: 0,
-                scale: 0.8
-            },
-            { 
-                opacity: 1,
-                scale: 1,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: "elastic.out(1, 0.5)"
-            }, "-=0.3"
-        );
 
-        // Animação IDÊNTICA para a seção Courses (igual à Luxury)
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.courses-section',
-                start: 'top 95%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.course-card', 
-            { 
-                opacity: 0, 
-                y: 80,
-                rotationY: 15,
-                scale: 0.9
-            },
-            { 
-                opacity: 1, 
-                y: 0, 
-                rotationY: 0,
-                scale: 1,
-                duration: 1.2, 
-                ease: "power2.out",
-                stagger: 0.3
-            }
-        )
-        .fromTo('.course-image', 
-            { 
-                opacity: 0,
-                scale: 1.2
-            },
-            { 
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                stagger: 0.2,
-                ease: "power1.out"
-            }, "-=0.8"
-        )
-        .fromTo('.course-title', 
-            { 
-                opacity: 0,
-                y: 30
-            },
-            { 
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "back.out(1.7)"
-            }, "-=0.5"
-        )
-        .fromTo('.section-title', 
-            { 
-                opacity: 0,
-                y: 30
-            },
-            { 
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "back.out(1.7)"
-            }, "-=0.5"
-        )
-        .fromTo('.agendar-button', 
-            { 
-                opacity: 0,
-                scale: 0.8
-            },
-            { 
-                opacity: 1,
-                scale: 1,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: "elastic.out(1, 0.5)"
-            }, "-=0.3"
-        );
 
-        // Animação para a seção Contact
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.contact-section',
-                start: 'top 75%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.contact-message', 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
-        )
-        .fromTo('.contact-title', 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power4.out" }, "-=0.5"
-        );
 
-        // Animação para o Footer
-        gsap.fromTo('.copyright-text', {
-            scrollTrigger: {
-                trigger: '.footer',
-                start: 'top 90%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 20
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8
-        });
-
-        // Remover parallax em dispositivos móveis para melhor performance
-        if (window.innerWidth <= 767) {
-            document.querySelector('.contact-section').style.backgroundAttachment = 'scroll';
+   
+    
+    // Animação para a seção Contact
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '.contact-section',
+            start: 'top 75%',
+            toggleActions: 'play none none reverse'
         }
+    })
+    .fromTo('.contact-message', 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+    )
 
-        // Animação para os textos da seção "Sobre"
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.about-text-container',
-                start: 'top 75%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.about-text span', 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }
-        );
+    .fromTo('.contact-title', 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power4.out" }, "-=0.5"
+    );
 
-        // Inicializar os textos dos botões após o carregamento do DOM
-        document.addEventListener('DOMContentLoaded', function() {
-            // Adicionar data-text attribute para cada link do menu mobile
-            const mobileNavButtons = document.querySelectorAll('.mobile-nav-button');
-            
-            mobileNavButtons.forEach(button => {
-                const text = button.textContent;
-                button.setAttribute('data-text', text);
-                
-                // Envolver o texto em um span para animação
-                button.innerHTML = `<span>${text}</span>`;
-            });
-            
-            // Configurar a animação de entrada dos botões
-            gsap.set('.mobile-nav-button span', { y: '100%' });
-            gsap.set('.mobile-nav-button::after', { y: '0%' });
-            
-            // Função para animar a entrada dos botões
-            function animateMenuIn() {
-                gsap.to('.mobile-nav-button span', {
-                    y: '0%',
-                    duration: 0.8,
-                    stagger: 0.1,
-                    ease: "power3.out",
-                    delay: 0.2
-                });
-            }
-            
-            // Função para animar a saída dos botões
-            function animateMenuOut() {
-                gsap.to('.mobile-nav-button span', {
-                    y: '100%',
-                    duration: 0.6,
-                    stagger: 0.05,
-                    ease: "power2.in"
-                });
-            }
-            
-            // Integrar com a lógica existente de abrir/fechar menu
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const body = document.body;
-            
-            let isMenuOpen = false;
-            
-            // Modificar a função de abrir menu
-            function openMenu() {
-                isMenuOpen = true;
-                menuToggle.classList.add('active');
-                mobileMenu.classList.add('active');
-                body.classList.add('menu-open');
-                
-                // Animação de entrada com clip-path
-                animateMenuIn();
-            }
-            
-            // Modificar a função de fechar menu
-            function closeMenu() {
-                isMenuOpen = false;
-                
-                // Animação de saída com clip-path
-                animateMenuOut();
-                
-                // Esperar a animação terminar antes de esconder o menu
-                setTimeout(() => {
-                    menuToggle.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    body.classList.remove('menu-open');
-                }, 600);
-            }
-            
-            // Manter o restante da lógica do menu existente
-            if (menuToggle && mobileMenu) {
-                menuToggle.addEventListener('click', function() {
-                    if (!isMenuOpen) {
-                        openMenu();
-                    } else {
-                        closeMenu();
-                    }
-                });
-                
-                // Fechar o menu ao clicar em um link
-                mobileNavButtons.forEach(link => {
-                    link.addEventListener('click', function() {
-                        closeMenu();
-                    });
-                });
-            }
-            
-            // Prevenir comportamentos padrão problemáticos em mobile
-            document.addEventListener('touchstart', function(e) {
-                if (e.touches.length > 1) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            // Melhorar a experiência de toque
-            document.addEventListener('touchmove', function(e) {
-                if (e.scale !== 1) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
+    
+  
+
+
+  gsap.to(".contact-section", {
+  y: "-100%", // ajusta quanto ela vai subir
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".contact-section",
+    start: "top bottom", // quando a seção de contato entra na tela
+    end: "bottom top",   // até o final da seção
+    scrub: true
+  }
+});
+
+    // Animação para os textos da seção "Sobre"
+gsap.timeline({
+    scrollTrigger: {
+        trigger: '.about-text-container',
+        start: 'top 75%',
+        toggleActions: 'play none none reverse'
+    }
+})
+.fromTo('.about-text span', 
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }
+);
+
+
+
+
+
+// Inicializar os textos dos botões após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Adicionar data-text attribute para cada link do menu mobile
+    const mobileNavButtons = document.querySelectorAll('.mobile-nav-button');
+    
+    mobileNavButtons.forEach(button => {
+        const text = button.textContent;
+        button.setAttribute('data-text', text);
+        
+        // Envolver o texto em um span para animação
+        button.innerHTML = `<span>${text}</span>`;
+    });
+    
+    // Configurar a animação de entrada dos botões
+    gsap.set('.mobile-nav-button span', { y: '100%' });
+    gsap.set('.mobile-nav-button::after', { y: '0%' });
+    
+    // Função para animar a entrada dos botões
+    function animateMenuIn() {
+        gsap.to('.mobile-nav-button span', {
+            y: '0%',
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            delay: 0.2
         });
-    </script>
+    }
+    
+    // Função para animar a saída dos botões
+    function animateMenuOut() {
+        gsap.to('.mobile-nav-button span', {
+            y: '100%',
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power2.in"
+        });
+    }
+    
+    // Integrar com a lógica existente de abrir/fechar menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const body = document.body;
+    
+    let isMenuOpen = false;
+    
+    // Modificar a função de abrir menu
+    function openMenu() {
+        isMenuOpen = true;
+        menuToggle.classList.add('active');
+        mobileMenu.classList.add('active');
+        body.classList.add('menu-open');
+        
+        // Animação de entrada com clip-path
+        animateMenuIn();
+    }
+    
+    // Modificar a função de fechar menu
+    function closeMenu() {
+        isMenuOpen = false;
+        
+        // Animação de saída com clip-path
+        animateMenuOut();
+        
+        // Esperar a animação terminar antes de esconder o menu
+        setTimeout(() => {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('menu-open');
+        }, 600);
+    }
+    
+    // Manter o restante da lógica do menu existente
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            if (!isMenuOpen) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        });
+        
+        // Fechar o menu ao clicar em um link
+        mobileNavButtons.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMenu();
+            });
+        });
+    }
+});
+</script>
 </body>
 </html>
