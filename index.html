@@ -984,66 +984,77 @@
     
 
                        /* About Section Mobile */
-    .about-section {
-        padding: 5rem 1rem;
-        margin-top: 5rem;
-        margin-bottom: 5rem;
-    }
-    
-    .profile-section {
-        flex-direction: column;
-        align-items: center;
-    }
+   .about-section {
+                padding: 3rem 1rem;
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-image {
+                width: 100%;
+                max-width: 280px;
+                height: auto;
+                margin: 0 auto;
+                display: block; /* Garante que a imagem seja exibida */
+            }
+            
+            .profile-name {
+                margin: 2rem 0 0 0;
+                width: 100%;
+                font-size: 1.8rem;
+                text-align: center;
+                line-height: 1.2;
+                margin-left: 0; /* Remove a margem negativa que empurrava o texto para fora */
+            }
+            
+            .profile-name span {
+                opacity: 1; /* Garante que o texto seja visível */
+                transform: translateY(0); /* Remove transformação que escondia o texto */
+            }
+            
+            .about-text-container {
+                margin-left: 0;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding-top: 1.5rem;
+                margin-top: 2rem;
+                text-align: left; 
+            }
+            
+            .about-button-container {
+                grid-column: 1;
+                text-align: left;
+                margin-top: 1.5rem;
+            }
+            
+            .about-text {
+                font-size: 0.9rem;
+                letter-spacing: -0.02em;
+                line-height: 1.5;
+            }
+            
+            .about-text span {
+                opacity: 1; /* Garante que o texto seja visível */
+                transform: translateY(0); /* Remove transformação que escondia o texto */
+            }
+            
+            .ver-mais-button {
+                font-size: 14px;
+                padding: 0.5rem 1rem;
+            }
+
+            .about-year {
+                margin-top: 1.5rem;
+                text-align: center;
+                font-size: 14px;
+            }
         
-    
-    .profile-image {
-        width: 100%;
-        max-width: 280px;
-        height: auto;
-        margin: 0 auto;
-    }
-    
-    .profile-name {
-        margin: 2rem 0 0 0;
-        width: 100%;
-        font-size: 1.4rem;
-        text-align: center;
-        line-height: 1.2;
-    }
-    
-    .about-text-container {
-        margin-left: 0;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding-top: 1.5rem;
-        margin-top: 2rem;
-        text-align: left; 
-    }
-    
-.about-button-container {
-            grid-column: 1; /* Ajusta para uma coluna no mobile */
-            text-align: left; /* Alinhamento à esquerda no mobile */
-            margin-top: 1.5rem;
-        }
-
-         .about-text {
-            font-family: var(--font-sans);
-            font-weight: 400;
-            font-size: 0.8rem;
-            letter-spacing: -0.04em;
-            line-height: 1.5;
-        }
-        
-        .ver-mais-button {
-            font-size: 16px;
-            padding: 0.4rem 0.8rem;
-        }
-
-
-    .about-year {
-        margin-top: 1.5rem;
-        text-align: center;
-    }
     
      .about-text {
             font-family: var(--font-sans);
@@ -1316,45 +1327,46 @@
   </div>
 </section>
 
-        <section class="about-section">
-  <div class="profile-section">
-    <img class="profile-image" src="https://c.animaapp.com/MrxKUJ7f/img/rectangle-7@2x.png" alt="Juliana Palavissini">
+       <section class="about-section">
+        <div class="profile-section">
+            <!-- Correção do caminho da imagem -->
+            <img class="profile-image" src="https://c.animaapp.com/MrxKUJ7f/img/rectangle-7@2x.png" alt="Juliana Palavissini">
 
-    <div class="profile-name">
-      <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Juliana Palavissini:</span><br>
-      <span>Especialista e mestre em alisamento</span><br>
-      <span>capilar com formação internacional.</span>
-    </div>
-  </div>
+            <div class="profile-name">
+                <span>Juliana Palavissini:</span><br>
+                <span>Especialista e mestre em alisamento</span><br>
+                <span>capilar com formação internacional.</span>
+            </div>
+        </div>
 
-            <div class="about-year">©2025</div>
-            
-          <div class="about-text-container">
-    <p class="about-text">
-        <span>Com mais de 25 anos de experiência no mercado,</span>
-        <span>Juliana Palavissini consolida-se como autoridade máxima</span>
-        <span>em alisamento capilar. Sua expertise vai além da técnica</span>
-        <span>apurada - como Mestre certificada internacionalmente</span>
-        <span>pela FEPECS, ela domina as mais avançadas</span>
-        <span>metodologias de alisamento definitivo e</span>
-        <span>semidefinitivo, garantindo resultados imediatos</span>
-        <span>e de alta durabilidade.</span>
-    </p>
-    <p class="about-text">
-        <span>Juliana transforma seu conhecimento técnico em</span>
-        <span>educação de excelência através de mentorias</span>
-        <span>especializadas e cursos que formam profissionais</span>
-        <span>completos no mercado capilar. Seu método exclusivo já</span>
-        <span>capacitou mais de 500 alunas com índice de satisfação</span>
-        <span>total, consolidando seu legado como referência</span>
-        <span>tanto na execução quanto no ensino das técnicas</span>
-        <span>de alisamento.</span>
-    </p>
-    <div class="about-button-container">
-        <a href="Sobre.html" class="ver-mais-button">Ver Mais</a>
-    </div>
-</div>
-        </section>
+        <div class="about-year">©2025</div>
+        
+        <div class="about-text-container">
+            <p class="about-text">
+                <span>Com mais de 25 anos de experiência no mercado,</span>
+                <span>Juliana Palavissini consolida-se como autoridade máxima</span>
+                <span>em alisamento capilar. Sua expertise vai além da técnica</span>
+                <span>apurada - como Mestre certificada internacionalmente</span>
+                <span>pela FEPECS, ela domina as mais avançadas</span>
+                <span>metodologias de alisamento definitivo e</span>
+                <span>semidefinitivo, garantindo resultados imediatos</span>
+                <span>e de alta durabilidade.</span>
+            </p>
+            <p class="about-text">
+                <span>Juliana transforma seu conhecimento técnico em</span>
+                <span>educação de excelência através de mentorias</span>
+                <span>especializadas e cursos que formam profissionais</span>
+                <span>completos no mercado capilar. Seu método exclusivo já</span>
+                <span>capacitou mais de 500 alunas com índice de satisfação</span>
+                <span>total, consolidando seu legado como referência</span>
+                <span>tanto na execução quanto no ensino das técnicas</span>
+                <span>de alisamento.</span>
+            </p>
+            <div class="about-button-container">
+                <a href="Sobre.html" class="ver-mais-button">Ver Mais</a>
+            </div>
+        </div>
+    </section>
 
         <section class="schedule-section">
             <h2 class="schedule-title">Agendar</h2>
