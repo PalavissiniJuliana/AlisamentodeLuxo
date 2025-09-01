@@ -1,0 +1,1290 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Juliana Palavissini - Sobre</title>
+        <style>
+            /* Reset e importações */
+            @import url('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css');
+            @import url('https://fonts.googleapis.com/css2?family=B612+Mono:wght@400;700&family=Inter:wght@400;700;800&display=swap');
+            
+            * {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                box-sizing: border-box;
+            }
+            
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: 'Inter', sans-serif;
+                background-color: #d9d7cb;
+                color: #141414;
+                overflow-x: hidden;
+            }
+            
+            /* Variáveis para cores e fontes */
+            :root {
+                --color-bg: #d9d7cb;
+                --color-dark: #141414;
+                --color-light: #c4c3b7;
+                --color-text: #141414;
+                --color-text-light: #c4c3b7;
+                --font-mono: 'B612 Mono', monospace;
+                --font-sans: 'Inter', sans-serif;
+                --transition: all 0.7s ease;
+            }
+            
+            /* Container principal responsivo */
+            .main-container {
+                width: 100%;
+                max-width: 1440px;
+                margin: 0 auto;
+                position: relative;
+                background-color: var(--color-bg);
+            }
+            
+            /* Header e Navegação */
+            .header {
+                padding: 2rem 1.5rem;
+                position: relative;
+                z-index: 100;
+            }
+            
+            .navbar-container {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .nav-button {
+                font-family: var(--font-mono);
+                font-weight: 400;
+                color: var(--color-text);
+                font-size: 15px;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 8px 16px;
+                border-radius: 4px;
+                transition: var(--transition);
+                position: relative;
+                white-space: nowrap;
+                text-decoration: none;
+            }
+            
+            .nav-button:hover {
+                font-weight: 700;
+                color: #000000;
+                transform: translateY(-3px);
+                letter-spacing: 3px;
+            }
+
+            .menu-toggle,
+            .mobile-menu {
+                display: none;
+            }
+            
+           
+
+            
+            
+            
+            
+            
+            /* About Intro Section */
+            .about-intro-section {
+                padding: 4rem 1.5rem;
+                min-height: 40vh;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                position: relative;
+                margin-top: 33vh;
+            }
+            
+            .about-intro-text {
+                font-family: var(--font-sans);
+                font-weight: 700;
+                font-size: clamp(2rem, 5vw, 4rem);
+                letter-spacing: -0.05em;
+                line-height: 1;
+            text-align: right;
+                width: 1200px;
+            
+            }
+            
+            
+            
+            
+            
+            
+            /* Parallax Section */
+            .parallax-section {
+                height: 170vh;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .parallax-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url('img/bg1.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                z-index: 1;
+            }
+            
+            .parallax-content {
+                position: relative;
+                z-index: 2;
+                text-align: center;
+            }
+            
+            .parallax-image {
+                width: 400px;
+                height: 500px;
+                object-fit: cover;
+                border-radius: 5px;
+                box-shadow: 0 0 20px rgba(236, 236, 236, 0.127);
+                
+            }
+            
+            
+            
+            
+            /* About Details Section */
+            .about-details-section {
+                padding: 8rem 1.5rem;
+                position: relative;
+                margin-bottom: 15rem;
+            }
+            
+            .about-details-container {
+                max-width: 650px;
+                margin: 0 auto;
+                text-align: center;
+                
+            }
+            
+            .about-details-text {
+                font-family: var(--font-mono);
+                font-size: 18px;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .about-details-title {
+                font-family: var(--font-mono);
+                font-weight: 700;
+                font-size: 3.2rem;
+                letter-spacing: -0.05em;
+                margin-top: 8rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+            
+            .about-highlights {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .about-highlights li {
+                font-family: var(--font-mono);
+                margin-bottom: 1rem;
+                padding-left: 1.5rem;
+                position: relative;
+                text-align: center;
+            }
+            
+            .about-highlights li:before {
+                content: "→";
+                position: absolute;
+                left: 0;
+            }
+
+              .about-intro-line {
+            display: block;
+            overflow: hidden;
+            line-height: 1.2;
+            margin-bottom: 0.1rem;
+        }
+        
+        .about-intro-line span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        
+
+
+
+
+        .snap-section {
+    display: flex;
+    align-items: stretch; /* garante colunas alinhadas */
+    min-height: 100vh;
+    margin-bottom: 10rem;
+    }
+
+    .text-content {
+    flex: 1;
+    margin-left: 5rem;
+    }
+
+    .text-item {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
+    }
+
+    .text-item h2 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 3.2rem;
+    color: #141414;
+    letter-spacing: -0.05em;
+    margin-bottom: 15px;
+    }
+
+
+    .text-item h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #141414;
+    
+    }
+
+    .title-line {
+    width: 450px;
+    height: 0.5px;
+    background-color: #969696;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+
+    }
+
+    .text-item p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555555;
+    max-width: 450px;
+    }
+
+
+
+    .image-container {
+    flex: 1;          /* metade da tela */
+    height: 100vh;    /* altura fixa da viewport */
+    position: sticky; /* fixa na rolagem */
+    top: 0;
+    overflow: hidden;
+    }
+
+    .image-container img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .image-container img.active {
+    opacity: 1;
+    transform: scale(1);
+    }
+
+
+
+
+            
+            /* Footer */
+            .footer {
+                padding: 2rem 1.5rem;
+                margin-top: 4rem;
+                text-align: center;
+            }
+            
+            .copyright-text {
+                font-family: var(--font-mono);
+                font-weight: 400;
+                font-size: 13px;
+                letter-spacing: -0.1em;
+            }
+            
+            /* Media Query para Mobile */
+            @media (max-width: 767px) {
+                /* Header Mobile */
+                .header {
+                    padding: 1rem;
+                }
+
+                /* Esconder a navegação padrão no mobile */
+                .navbar-container {
+                    display: none;
+                }
+
+               /* Botão hamburguer */
+.menu-toggle {
+    display: block;
+    position: fixed;
+    top: 1.5rem;
+    right: 1rem;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--color-dark);
+    margin: 6px 0;
+    transition: var(--transition);
+}
+
+.menu-toggle span:nth-child(1) {
+    width: 35px; /* Linha um pouco maior */
+}
+
+.menu-toggle span:nth-child(2) {
+    width: 65px; /* Linha um pouco menor */
+}
+
+.menu-toggle.active span {
+    background-color: var(--color-bg); /* Cor escura para contraste com fundo claro */
+}
+
+/* Transição suave para a mudança de cor */
+.menu-toggle span {
+    transition: background-color 0.3s ease, transform 0.7s ease;
+}
+
+/* Menu mobile */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 3rem;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: var(--color-bg);
+    font-size: 3.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 7px;
+    text-decoration: none;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    width: 100%;
+    padding-bottom: 1px;
+    margin-left: 25px;
+     opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+/* Texto original (será clippado) */
+.mobile-nav-button span {
+    display: block;
+    position: relative;
+    transition: transform 0.7s cubic-bezier(0.16, 0.85, 0.3, 1.1);
+    transform: translateY(0%);
+}
+
+/* Texto duplicado para o efeito (será revelado) */
+.mobile-nav-button::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 7px;
+    transform: translateY(100%);
+    transition: transform 0.7s cubic-bezier(0.16, 0.85, 0.3, 1.1);
+    color: #141414;
+}
+
+
+
+/* Ajuste para o menu mobile */
+.mobile-menu .mobile-nav-button {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    color: var(--color-bg);
+    font-size: 3.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-left: 25px;
+}
+
+.mobile-menu.active .mobile-nav-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transição de abertura do menu da direita para a esquerda */
+.mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0s ease, visibility 0.9s ease;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+/* Estilização adicional para o efeito de abertura */
+.mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-dark);
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.9s cubic-bezier(0.16, 0.85, 0.3, 1.1);
+}
+
+.mobile-menu.active::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+
+
+
+
+
+
+                /* Hero Section Mobile */
+                .hero-section {
+                    height: auto;
+                    min-height: 65vh;
+                    justify-content: center;
+                    align-items: center;
+                }
+                
+                .hero-container {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                    gap: 1rem;
+                    justify-content: center;
+                }
+                
+                .hero-name{
+                    font-size: 55px;
+                    margin-left: 0px;
+                    line-height: 0.9;
+                    text-align: center;
+                }
+
+                .hero-lastname {
+                    font-size: 55px;
+                     margin-left: -25px;
+                    line-height: 0.9;
+                    text-align: center;
+                }
+                
+                .hero-subtitle {
+                    margin-right: 9rem;
+                    font-size: 0.8rem;
+                    margin-bottom: 0;
+                    text-align: center;
+                    margin-left: 8rem;
+                }
+                
+                .trademark-text {
+                    text-align: center;
+                    margin-top: 0;
+                    font-size: 0.7rem;
+                    margin-right: 1rem;
+                }
+                
+                
+                /* About Intro Section Mobile */
+                .about-intro-section {
+                    padding: 1.2rem 0.5rem;
+                    justify-content: center;
+                    text-align: right;
+                }
+                
+                .about-intro-text {
+                    font-size: 1.4rem;
+                    margin-right: 0;
+                    max-width: 100%;
+                    text-align: right;
+                    margin-bottom: 2rem;
+                    margin-left: 0;
+                    
+                }
+                
+               
+               
+               
+                /* Parallax Section Mobile */
+                .parallax-section {
+                    height: 170vh;
+                }
+                
+                .parallax-bg {
+                    background-attachment: scroll;
+                }
+                
+                .parallax-image {
+                    width: 200px;
+                    height: 280px;
+                }
+                
+                
+                
+                /* About Details Section Mobile */
+             
+              .about-details-section {
+               padding: 4rem 1rem;
+                    width: 100%;
+                position: relative;
+                margin-bottom: 15rem;
+                margin-top: -10rem !important;
+            }
+            
+            .about-details-container {
+                max-width: 100vh;
+                width: 100%;
+                text-align: center;
+                margin-right: -5px;
+            }
+            
+            .about-details-text {
+                font-family: var(--font-sans);
+                font-size: 0.8rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+                text-align: left;
+            }
+            
+            .about-details-title {
+                font-family: var(--font-mono);
+                font-weight: 700;
+                font-size: 1.8rem;
+                letter-spacing: -0.05em;
+                margin-top: 10rem;
+                margin-bottom: 1.5rem;
+                text-align: left;
+            }
+            
+            .about-highlights {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .about-highlights li {
+                font-family: var(--font-sans);
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+                padding-left: 0.8rem;
+                position: relative;
+                text-align: left;
+            }
+
+
+            
+             
+             
+             
+                .snap-section {
+                flex-direction: column;
+                min-height: auto;
+                margin-bottom: 1rem;
+            }
+
+             /* Ajustar o tamanho da fonte para equilibrar com imagens menores */
+            .mobile-text h2 {
+                font-family: var(--font-mono);
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: #141414;
+                margin-bottom: 10px;
+            }
+            
+            .mobile-text h3 {
+                font-family: var(--font-sans);
+                font-size: 1rem;
+                font-weight: 100;
+                color: #141414;
+            }
+            
+            .mobile-text p {
+                font-family: var(--font-sans);
+                font-size: 0.80rem;
+                color: #727272;
+            }
+           
+
+
+            .mobile-image {
+                display: flex;
+                justify-content: center; /* Centraliza horizontalmente */
+                align-items: center; /* Centraliza verticalmente */
+                margin: 0 auto; /* Centraliza o container */
+                width: 92%; /* Ocupa toda a largura disponível */
+                margin-bottom: 20px;
+            }
+
+              .mobile-image img {
+                height: 250px; /* Altura reduzida */
+                width: 100%; /* Largura reduzida */
+                max-width: 490px; /* Largura máxima */
+                object-fit: cover; /* Mantém a proporção */
+                border-radius: 5px; /* Bordas arredondadas */
+                display: block;
+                margin: 0 auto;
+            }
+
+            /* Centralizar também os textos */
+            .mobile-text {
+                text-align: left;
+                width: 85%;
+                margin-left: 15px;
+            }
+            
+            .mobile-text .title-line {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        
+            
+            /* Remover o comportamento sticky no mobile */
+            .image-container {
+                position: relative;
+                top: auto;
+            }
+            
+            /* Agrupar cada imagem com seu texto correspondente */
+            .mobile-item {
+                margin-bottom: 5rem;
+            }
+        }
+            
+            /* Media Queries para desktop */
+            @media (min-width: 1024px) {
+                .header {
+                    padding: 2rem 4rem;
+                }
+                
+                .hero-section, .about-intro-section, .about-details-section {
+                    padding: 4rem;
+                }
+                
+                .hero-lastname {
+                    text-indent: 8rem;
+                }
+            }
+            
+            /* Utilitários para alinhamento de texto */
+            .text-right {
+                text-align: right;
+            }
+            
+            .text-left {
+                text-align: left;
+            }
+            
+            /* Animações suaves para scroll */
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
+    </head>
+    <body>
+
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="mobile-menu">
+            <a href="index.html" class="mobile-nav-button">Início</a>
+            <a href="Cursos.html" class="mobile-nav-button">Cursos</a>
+            <a href="Mentoria.html" class="mobile-nav-button">Mentoria</a>
+            <a href="Contato.html" class="mobile-nav-button">Contato</a>
+            <a href="Sobre.html" class="mobile-nav-button">Sobre</a>
+        </div> 
+
+        <div class="main-container">
+            <header class="header">
+                <nav class="navbar-container">
+                    <a href="index.html" class="nav-button">[Início]</a>
+                    <a href="Cursos.html" class="nav-button">[Cursos]</a>
+                    <a href="Mentoria.html" class="nav-button">[Mentoria]</a>
+                    <a href="Contato.html" class="nav-button">[Contato]</a>
+                    <a href="Sobre.html" class="nav-button">[Sobre]</a>
+                </nav>
+            </header>
+
+            
+             <section class="about-intro-section">
+        <p class="about-intro-text">
+            <span class="about-intro-line">
+                <span>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </span>
+            <span class="about-intro-line">
+                <span>Com mais de 25 anos de experiência,</span>
+            </span>
+            <span class="about-intro-line">
+                <span>Juliana é referência internacional em</span>
+            </span>
+            <span class="about-intro-line">
+                <span>alisamento e reconstrução capilar.</span>
+            </span>
+        </p>
+    </section>
+
+
+            <section class="parallax-section">
+                <div class="parallax-bg"></div>
+                <div class="parallax-content">
+                    <img src="img/FOTO001.png" alt="Juliana Palavissini" class="parallax-image">
+                </div>
+            </section>
+
+
+
+        <section class="snap-section">
+    <div class="text-content">
+        <div class="text-item">
+        <h2>Técnica</h2>
+        <h3>Método Exclusivo de Alisamento</h3>
+        <div class="title-line"></div>
+        <p>Desenvolvida após anos de pesquisa, nossa técnica exclusiva combina conhecimento científico avançado com a prática artesanal, garantindo resultados superiores que preservam a saúde capilar enquanto entregam transformações impressionantes e duradouras.</p>
+        <div class="title-line"></div>
+        </div>
+        <div class="text-item">
+        <h2>Alunas</h2>
+        <h3>Capacitação e Certificação</h3>
+        <div class="title-line"></div>
+        <p>Com mais de 500 profissionais capacitados em sua metodologia, Juliana oferece treinamentos completos que transformam iniciantes em especialistas e elevam o nível de profissionais já estabelecidos no mercado.</p>
+        <div class="title-line"></div>
+        </div>
+        <div class="text-item">
+        <h2>Produtos</h2>
+        <h3>Linha Palavissini Beauty</h3>
+        <div class="title-line"></div>
+        <p>Desenvolvida com tecnologia de ponta e ingredientes de alta qualidade, nossa linha de produtos foi especialmente formulada para potencializar os resultados das técnicas de alisamento e garantir a saúde dos fios.</p>
+        <div class="title-line"></div>
+        </div>
+        <div class="text-item">
+        <h2>Reconhecimento</h2>
+        <h3>Palestrante e Mestre</h3>
+        <div class="title-line"></div>
+        <p>Com presença em congressos internacionais de beleza, Juliana é reconhecida como uma das maiores especialistas em alisamento capilar, compartilhando seu conhecimento com profissionais de todo o mundo.</p>
+        <div class="title-line"></div>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <img src="img/sobre1.png" alt="">
+        <img src="img/sobre2.png" alt="">
+        <img src="img/sobre3.png" alt="">
+        <img src="img/FOTO001.png" alt="">
+    </div>
+
+
+
+     <!-- Conteúdo adicional para mobile: cada imagem com seu texto -->
+        <div class="mobile-content">
+            <div class="mobile-item">
+                <div class="mobile-image">
+                    <img src="img/sobre1.png" alt="Técnica de alisamento">
+                </div>
+                <div class="mobile-text">
+                    <h2>Técnica</h2>
+                   
+                    <h3>Método Exclusivo de Alisamento</h3>
+                    <div class="title-line"></div>
+                    <p>Desenvolvida após anos de pesquisa, nossa técnica exclusiva combina conhecimento científico avançado com a prática artesanal, garantindo resultados superiores que preservam a saúde capilar enquanto entregam transformações impressionantes e duradouras.</p>
+                   <div class="title-line"></div>
+                </div>
+            </div>
+            
+            <div class="mobile-item">
+                <div class="mobile-image">
+                    <img src="img/sobre2.png" alt="Capacitação de alunas">
+                </div>
+                <div class="mobile-text">
+                    <h2>Alunas</h2>
+                   
+                    <h3>Capacitação e Certificação</h3>
+                    <div class="title-line"></div>
+                    <p>Com mais de 500 profissionais capacitados em sua metodologia, Juliana oferece treinamentos completos que transformam iniciantes em especialistas e elevam o nível de profissionais já estabelecidos no mercado.</p>
+                   <div class="title-line"></div>
+                </div>
+            </div>
+            
+            <div class="mobile-item">
+                <div class="mobile-image">
+                    <img src="img/sobre3.png" alt="Produtos Palavissini Beauty">
+                </div>
+                <div class="mobile-text">
+                    <h2>Produtos</h2>
+                   
+                    <h3>Linha Palavissini Beauty</h3>
+                    <div class="title-line"></div>
+                    <p>Desenvolvida com tecnologia de ponta e ingredientes de alta qualidade, nossa linha de produtos foi especialmente formulada para potencializar os resultados das técnicas de alisamento e garantir a saúde dos fios.</p>
+                    <div class="title-line"></div>
+                </div>
+            </div>
+            
+            <div class="mobile-item">
+                <div class="mobile-image">
+                    <img src="img/FOTO001.png" alt="Reconhecimento internacional">
+                </div>
+                <div class="mobile-text">
+                    <h2>Reconhecimento</h2>
+                   
+                    <h3>Palestrante e Mestre</h3>
+                    <div class="title-line"></div>
+                    <p>Com presença em congressos internacionais de beleza, Juliana é reconhecida como uma das maiores especialistas em alisamento capilar, compartilhando seu conhecimento com profissionais de todo o mundo.</p>
+                    <div class="title-line"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="about-details-section">
+                <div class="about-details-container">
+                    <div>
+                        <h3 class="about-details-title">Trajetória</h3>
+                        <p class="about-details-text">
+                            Juliana Palavissini iniciou sua carreira há mais de duas décadas, 
+                            especializando-se em técnicas de alisamento capilar. Com formação 
+                            internacional e certificação pela FEPECS, tornou-se mestre nas 
+                            metodologias de alisamento definitivo e semidefinitivo.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="about-details-title">Reconhecimento</h3>
+                        <ul class="about-highlights">
+                            <li>Mestre certificada internacionalmente pela FEPECS</li>
+                            <li>Mais de 500 profissionais capacitados em sua metodologia</li>
+                            <li>Índice de satisfação de 100% entre suas alunas</li>
+                            <li>Palestrante em congressos internacionais de beleza</li>
+                            <li>Desenvolvedora de técnica exclusiva de alisamento</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <footer class="footer">
+                <p class="copyright-text">© 2021 Juliana Palavissini. Todos os direitos reservados.</p>
+            </footer>
+        </div>
+
+        <!-- GSAP Library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+        <script>
+            // Inicializar o ScrollTrigger do GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animação para o menu de navegação
+    gsap.fromTo('.nav-button', 
+        { opacity: 0, y: -20 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.5 }
+    );
+
+
+    // Animação parallax para a imagem de fundo
+    gsap.to('.parallax-bg', {
+        scrollTrigger: {
+            trigger: '.parallax-section',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+        },
+        yPercent: -25,
+        ease: "none"
+    });
+
+    // Animação para a imagem central com parallax
+    gsap.to('.parallax-image', {
+        scrollTrigger: {
+            trigger: '.parallax-section',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+        },
+        yPercent: -15,
+        ease: "none"
+    });
+
+    // Animação para a seção de detalhes
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '.about-details-section',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+        }
+    })
+    .fromTo('.about-details-title', 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+    )
+    .fromTo('.about-details-text', 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1 }, "-=0.4"
+    )
+    .fromTo('.about-highlights li', 
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.5, stagger: 0.1 }, "-=0.3"
+    );
+
+    // Animação para o Footer
+    gsap.fromTo('.copyright-text', {
+        scrollTrigger: {
+            trigger: '.footer',
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 20
+    }, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8
+    });
+
+   
+   
+   
+   
+   
+   
+    // Inicializar os textos dos botões após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', function() {
+    // Adicionar data-text attribute para cada link do menu mobile
+    const mobileNavButtons = document.querySelectorAll('.mobile-nav-button');
+    
+    mobileNavButtons.forEach(button => {
+        const text = button.textContent;
+        button.setAttribute('data-text', text);
+        
+        // Envolver o texto em um span para animação
+        button.innerHTML = `<span>${text}</span>`;
+    });
+    
+    // Configurar a animação de entrada dos botões
+    gsap.set('.mobile-nav-button span', { y: '100%' });
+    gsap.set('.mobile-nav-button::after', { y: '0%' });
+    
+    // Função para animar a entrada dos botões
+    function animateMenuIn() {
+        gsap.to('.mobile-nav-button span', {
+            y: '0%',
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            delay: 0.2
+        });
+    }
+    
+    // Função para animar a saída dos botões
+    function animateMenuOut() {
+        gsap.to('.mobile-nav-button span', {
+            y: '100%',
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "power2.in"
+        });
+    }
+    
+    // Integrar com a lógica existente de abrir/fechar menu
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const body = document.body;
+    
+    let isMenuOpen = false;
+    
+    // Modificar a função de abrir menu
+    function openMenu() {
+        isMenuOpen = true;
+        menuToggle.classList.add('active');
+        mobileMenu.classList.add('active');
+        body.classList.add('menu-open');
+        
+        // Animação de entrada com clip-path
+        animateMenuIn();
+    }
+    
+    // Modificar a função de fechar menu
+    function closeMenu() {
+        isMenuOpen = false;
+        
+        // Animação de saída com clip-path
+        animateMenuOut();
+        
+        // Esperar a animação terminar antes de esconder o menu
+        setTimeout(() => {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('menu-open');
+        }, 600);
+    }
+    
+    // Manter o restante da lógica do menu existente
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            if (!isMenuOpen) {
+                openMenu();
+            } else {
+                closeMenu();
+            }
+        });
+        
+        // Fechar o menu ao clicar em um link
+        mobileNavButtons.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMenu();
+            });
+        });
+    }
+});
+
+    
+    
+    
+    // SISTEMA PRINCIPAL DE SNAP-SECTION - CORRIGIDO
+    document.addEventListener("DOMContentLoaded", function() {
+        // Verificar se estamos em mobile
+        if (window.innerWidth > 767) {
+            // Código para desktop
+            const textItems = document.querySelectorAll(".text-item");
+            const images = document.querySelectorAll(".image-container img");
+            
+            // Esconder o conteúdo mobile no desktop
+            document.querySelector('.mobile-content').style.display = 'none';
+
+            // Configurar estado inicial das imagens
+            function initImages() {
+                images.forEach((img, i) => {
+                    if (i === 0) {
+                        img.classList.add("active");
+                       gsap.to(img, { opacity: 1, duration: 0.1, ease: "power4.out" });
+                    } else {
+                        img.classList.remove("active");
+                        gsap.to(img, { opacity: 0, duration: 0.01 });
+                    }
+                });
+            }
+            initImages();
+
+            // Criar ScrollTriggers para cada text-item
+            textItems.forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: "top center",
+                    end: "bottom center",
+                    onEnter: () => setActiveImage(index),
+                    onEnterBack: () => setActiveImage(index),
+                    markers: false
+                });
+            });
+
+            function setActiveImage(index) {
+                images.forEach((img, i) => {
+                    if (i === index) {
+                        img.classList.add("active");
+                        gsap.to(img, { opacity: 1, duration: 0.5, ease: "power2.out" });
+                    } else {
+                        img.classList.remove("active");
+                        gsap.to(img, { opacity: 0, duration: 0.2, ease: "power2.out" });
+                    }
+                });
+            }
+
+            // Animação para os textos da snap-section
+            gsap.utils.toArray('.text-item').forEach((item, i) => {
+                gsap.fromTo(item, {
+                    opacity: 0,
+                    y: 50
+                }, {
+                    opacity: 1,
+                    x: 20,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 40%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+
+                // Animar elementos internos dos textos
+                gsap.fromTo(item.querySelectorAll('h2, h3, .title-line, p'), {
+                    opacity: 0,
+                    y: 30
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 50%",
+                        toggleActions: "play none none reverse"
+                    }
+                });
+            });
+
+        } else {
+            // Para mobile: esconder conteúdo desktop e mostrar mobile
+            document.querySelector('.text-content').style.display = 'none';
+            document.querySelector('.image-container').style.display = 'none';
+            document.querySelector('.mobile-content').style.display = 'block';
+        }
+
+        // Animação para o texto da about-intro-section (linha por linha)
+        gsap.set('.about-intro-line span', { y: 100, opacity: 0 });
+        
+        gsap.utils.toArray('.about-intro-line').forEach((line, index) => {
+            const span = line.querySelector('span');
+            
+            gsap.to(span, {
+                y: 0,
+                opacity: 1,
+                duration: 0.9,
+                ease: "power3.out",
+                delay: index * 0.2,
+                scrollTrigger: {
+                    trigger: '.about-intro-section',
+                    start: 'top 100%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        });
+    });
+
+
+   // Seleciona cada bloco mobile
+gsap.utils.toArray('.mobile-item').forEach((item) => {
+    const image = item.querySelector('.mobile-image');
+    const h2 = item.querySelector('h2');
+    const h3 = item.querySelector('h3');
+    const lines = item.querySelectorAll('.title-line');
+    const p = item.querySelector('p');
+
+    // Timeline para esse item (controla ordem das animações)
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+        }
+    });
+
+    // Animação da imagem (entra da esquerda)
+    tl.from(image, {
+        x: -80,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+    // Animação do H2
+    tl.from(h2, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+    }, "-=0.6"); // começa antes de terminar a imagem
+
+    // Animação do H3
+    tl.from(h3, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+    }, "-=0.5");
+
+    // Animação das linhas decorativas
+    tl.from(lines, {
+        scaleX: 0,
+        opacity: 0,
+        transformOrigin: "left center",
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.2
+    }, "-=0.5");
+
+    // Animação do parágrafo
+    tl.from(p, {
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    }, "-=0.4");
+});
+        </script>
+    </body>
+    </html>
