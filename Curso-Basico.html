@@ -899,6 +899,7 @@
         background-image: url(img/frame.png);
         background-position: center;
         background-size: cover;
+        display: flex !important;
     }
 
    
@@ -915,6 +916,7 @@
         max-width: 100%;
         text-align: right;
         line-height: 1.2;
+        opacity: 1 !important;
     }
     
    
@@ -928,8 +930,15 @@
     .contact-title {
         font-size: 60px;
         text-align: center;
+        opacity: 1 !important;
     }
 
+    .contact-message,
+            .contact-title {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
 
 
  .depoimentos-container {
