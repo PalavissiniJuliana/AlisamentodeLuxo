@@ -383,7 +383,6 @@
   background-repeat: no-repeat;
    background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Isso cria o efeito parallax */
   color: #d6d6c9;
   height: 100vh; /* ocupa tela toda */
   display: flex;
@@ -900,7 +899,6 @@
         background-image: url(img/frame.png);
         background-position: center;
         background-size: cover;
-   
     }
 
    
@@ -935,26 +933,11 @@
 
 
  .depoimentos-container {
-        display: flex;                /* garante alinhamento */
-        gap: 1rem;                    /* espaço entre cards */
-        animation: scrollDepoimentosMobile 40s linear infinite;
-        will-change: transform;       /* melhora performance */
+        display: none;                /* garante alinhamento */
     }
-
-    .depoimento-card {
-        min-width: 300px;
-        flex-shrink: 0;               /* impede encolher e sumir */
-        font-size: 0.9rem;
-    }
-.depoimento-texto {
-                font-size: 16px;
-            }
-            
-    @keyframes scrollDepoimentosMobile {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-300px * 5 - 1rem * 10)); }
-    }
-
+.depoimentos-title{
+    display: none;
+}
         
       
 
