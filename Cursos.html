@@ -688,6 +688,7 @@
         max-width: 100%;
         text-align: right;
         line-height: 1.2;
+        z-index: 3;
     }
     
    
@@ -1004,17 +1005,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script>
-        // Inicializar o ScrollTrigger do GSAP
-        gsap.registerPlugin(ScrollTrigger);
 
-        // Animação para o menu de navegação
-        gsap.fromTo('.nav-button', 
-            { opacity: 0, y: -20 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.5 }
-        );
 
-       
-        // Animação para a seção Courses
+// Verificar se é desktop antes de inicializar animações
+        function initAnimations() {
+            if (window.innerWidth > 767) {
+                gsap.registerPlugin(ScrollTrigger);
+
+                // Animação para o menu de navegação
+                gsap.fromTo('.nav-button', 
+                    { opacity: 0, y: -70 },
+                    { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, delay: 0.4 }
+                );
+
+                 // Animação para a seção Courses
         gsap.timeline({
             scrollTrigger: {
                 trigger: '.courses-section',
@@ -1080,154 +1084,152 @@
         );
 
 
+                // Animação para a seção Contact
+                gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.contact-section',
+                        start: 'top 75%',
+                        toggleActions: 'play none none reverse'
+                    }
+                })
+                .fromTo('.contact-message', 
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+                )
+                .fromTo('.contact-title', 
+                    { opacity: 0, y: 30 },
+                    { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power4.out" }, "-=0.5"
+                );
 
- // Animação para a seção Contact
-    gsap.timeline({
-        scrollTrigger: {
-            trigger: '.contact-section',
-            start: 'top 75%',
-            toggleActions: 'play none none reverse'
-        }
-    })
-    .fromTo('.contact-message', 
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
-    )
-   
-    .fromTo('.contact-title', 
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power4.out" }, "-=0.5"
-    );
+                // Animação para o Footer
+                gsap.fromTo('.copyright-text', {
+                    scrollTrigger: {
+                        trigger: '.footer',
+                        start: 'top 90%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    opacity: 0,
+                    y: 20
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8
+                });
 
+                // Animação parallax para a seção de contato
+                gsap.to(".contact-section", {
+                    y: "-100%",
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: ".contact-section",
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
 
-
-        // Animação para o Footer
-        gsap.fromTo('.copyright-text', {
-            scrollTrigger: {
-                trigger: '.footer',
-                start: 'top 90%',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 0,
-            y: 20
-        }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8
-        });
-
-
-       // Inicializar os textos dos botões após o carregamento do DOM
-document.addEventListener('DOMContentLoaded', function() {
-    // Adicionar data-text attribute para cada link do menu mobile
-    const mobileNavButtons = document.querySelectorAll('.mobile-nav-button');
-    
-    mobileNavButtons.forEach(button => {
-        const text = button.textContent;
-        button.setAttribute('data-text', text);
-        
-        // Envolver o texto em um span para animação
-        button.innerHTML = `<span>${text}</span>`;
-    });
-    
-    // Configurar a animação de entrada dos botões
-    gsap.set('.mobile-nav-button span', { y: '100%' });
-    gsap.set('.mobile-nav-button::after', { y: '0%' });
-    
-    // Função para animar a entrada dos botões
-    function animateMenuIn() {
-        gsap.to('.mobile-nav-button span', {
-            y: '0%',
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out",
-            delay: 0.2
-        });
-    }
-    
-    // Função para animar a saída dos botões
-    function animateMenuOut() {
-        gsap.to('.mobile-nav-button span', {
-            y: '100%',
-            duration: 0.6,
-            stagger: 0.05,
-            ease: "power2.in"
-        });
-    }
-    
-    
-    
-    
-    
-    
-    // Integrar com a lógica existente de abrir/fechar menu
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const body = document.body;
-    
-    let isMenuOpen = false;
-    
-    // Modificar a função de abrir menu
-    function openMenu() {
-        isMenuOpen = true;
-        menuToggle.classList.add('active');
-        mobileMenu.classList.add('active');
-        body.classList.add('menu-open');
-        
-        // Animação de entrada com clip-path
-        animateMenuIn();
-    }
-    
-    // Modificar a função de fechar menu
-    function closeMenu() {
-        isMenuOpen = false;
-        
-        // Animação de saída com clip-path
-        animateMenuOut();
-        
-        // Esperar a animação terminar antes de esconder o menu
-        setTimeout(() => {
-            menuToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            body.classList.remove('menu-open');
-        }, 600);
-    }
-    
-    // Manter o restante da lógica do menu existente
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
-            if (!isMenuOpen) {
-                openMenu();
-            } else {
-                closeMenu();
+            
             }
-        });
-        
-        // Fechar o menu ao clicar em um link
-        mobileNavButtons.forEach(link => {
-            link.addEventListener('click', function() {
-                closeMenu();
+        }
+
+        // Inicializar animações apenas se for desktop
+        document.addEventListener('DOMContentLoaded', function() {
+            initAnimations();
+            
+            // Re-inicializar animações se a janela for redimensionada para desktop
+            window.addEventListener('resize', function() {
+                initAnimations();
             });
         });
-    }
-});
-
-
-
-
-
-
-
-    gsap.to(".contact-section", {
-  y: "-100%", // ajusta quanto ela vai subir
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".contact-section",
-    start: "top bottom", // quando a seção de contato entra na tela
-    end: "bottom top",   // até o final da seção
-    scrub: true
-  }
-});
+          // Inicializar os textos dos botões após o carregamento do DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            // Adicionar data-text attribute para cada link do menu mobile
+            const mobileNavButtons = document.querySelectorAll('.mobile-nav-button');
+            
+            mobileNavButtons.forEach(button => {
+                const text = button.textContent;
+                button.setAttribute('data-text', text);
+                
+                // Envolver o texto em um span para animação
+                button.innerHTML = `<span>${text}</span>`;
+            });
+            
+            // Configurar a animação de entrada dos botões
+            gsap.set('.mobile-nav-button span', { y: '100%' });
+            gsap.set('.mobile-nav-button::after', { y: '0%' });
+            
+            // Função para animar a entrada dos botões
+            function animateMenuIn() {
+                gsap.to('.mobile-nav-button span', {
+                    y: '0%',
+                    duration: 0.8,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                    delay: 0.2
+                });
+            }
+            
+            // Função para animar a saída dos botões
+            function animateMenuOut() {
+                gsap.to('.mobile-nav-button span', {
+                    y: '100%',
+                    duration: 0.6,
+                    stagger: 0.05,
+                    ease: "power2.in"
+                });
+            }
+            
+            // Integrar com a lógica existente de abrir/fechar menu
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const body = document.body;
+            
+            let isMenuOpen = false;
+            
+            // Modificar a função de abrir menu
+            function openMenu() {
+                isMenuOpen = true;
+                menuToggle.classList.add('active');
+                mobileMenu.classList.add('active');
+                body.classList.add('menu-open');
+                
+                // Animação de entrada com clip-path
+                animateMenuIn();
+            }
+            
+            // Modificar a função de fechar menu
+            function closeMenu() {
+                isMenuOpen = false;
+                
+                // Animação de saída com clip-path
+                animateMenuOut();
+                
+                // Esperar a animação terminar antes de esconder o menu
+                setTimeout(() => {
+                    menuToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                }, 600);
+            }
+            
+            // Manter o restante da lógica do menu existente
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', function() {
+                    if (!isMenuOpen) {
+                        openMenu();
+                    } else {
+                        closeMenu();
+                    }
+                });
+                
+                // Fechar o menu ao clicar em um link
+                mobileNavButtons.forEach(link => {
+                    link.addEventListener('click', function() {
+                        closeMenu();
+                    });
+                });
+            }
+        });
     </script>
 </body>
 </html>
