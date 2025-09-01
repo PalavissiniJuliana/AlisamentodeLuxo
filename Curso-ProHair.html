@@ -930,15 +930,14 @@
 
              /* Contact Section Mobile */
     .contact-section {
-        height: 100vh; /* ocupa tela toda */
+        height: 60vh; /* ocupa tela toda */
          display: flex;
-        min-height: 100vh;
         padding: 2rem 1rem;
         flex-direction: column;
         background-image: url(img/frame.png);
         background-position: center;
         background-size: cover;
-    background-attachment: fixed; /* Isso cria o efeito parallax */
+        display: flex !important;
     }
 
    
@@ -955,6 +954,7 @@
         max-width: 100%;
         text-align: right;
         line-height: 1.2;
+         opacity: 1 !important;
     }
     
    
@@ -965,48 +965,37 @@
         margin-top: 2rem;
     }
     
-    .contact-title {
+       .contact-title {
         font-size: 60px;
         text-align: center;
+        opacity: 1 !important;
     }
-
-
-
-.depoimentos-title {
-                font-size: 1.4rem;
-                font-weight: 700;
-
-                padding-right: 1rem;
-                margin-bottom: 2rem;
+   
+    .contact-message,
+            .contact-title {
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
             }
+
+
+
+
             
-            .depoimento-card {
-                width: 300px;
-                height: 400px;
-                margin: 0 1rem;
-                padding: 1.5rem;
-            }
-            
-            .depoimento-texto {
-                font-size: 16px;
-            }
-            
-            @keyframes scrollDepoimentos {
-                0% {
-                    transform: translateX(0);
-                }
-                100% {
-                    transform: translateX(calc(-300px * 5 - 1rem * 10));
-                }
-            }
-        
+         .depoimentos-container {
+        display: none;                /* garante alinhamento */
+    }
+.depoimentos-title{
+    display: none;
+}
 
 
         
             
          .footer {
-    padding: 3rem 1.5rem;
+   padding: 3rem 1.5rem;
     height: auto; /* remove 95vh, deixa fluir */
+    padding-top: 30rem;
   }
 
   .footer-nav {
