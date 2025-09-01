@@ -895,11 +895,13 @@
     .contact-section {
         height: 60vh; /* ocupa tela toda */
          display: flex;
+        min-height: 100vh;
         padding: 2rem 1rem;
         flex-direction: column;
         background-image: url(img/frame.png);
         background-position: center;
         background-size: cover;
+   
     }
 
    
@@ -1445,22 +1447,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Animação para a seção de depoimentos
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.depoimentos-section',
-                start: 'top 75%',
-                toggleActions: 'play none none reverse'
-            }
-        })
-        .fromTo('.depoimentos-title', 
-            { opacity: 0, y: 30 },
-            { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
-        )
-        .fromTo('.depoimento-card', 
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 0.6, stagger: 0.2 }, "-=0.4"
-        );
+ // =============================
+    // DEPOIMENTOS
+    // =============================
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: '.depoimentos-section',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+        }
+    })
+    .fromTo('.depoimentos-title', 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8 }
+    )
+    .fromTo('.depoimento-card', 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.2 }, "-=0.4"
+    );
     </script>
 </body>
 </html>
